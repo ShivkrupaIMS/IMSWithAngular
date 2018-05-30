@@ -1,0 +1,11 @@
+F:\E Drive\BhaminiWork\Assets\IMS\IMSWithAngular\IMS.DF\bin\Debug\IMS.DF.dll
+F:\E Drive\BhaminiWork\Assets\IMS\IMSWithAngular\IMS.DF\bin\Debug\IMS.DF.pdb
+F:\E Drive\BhaminiWork\Assets\IMS\IMSWithAngular\IMS.DF\bin\Debug\IMS.DB.dll
+F:\E Drive\BhaminiWork\Assets\IMS\IMSWithAngular\IMS.DF\bin\Debug\IMS.VM.dll
+F:\E Drive\BhaminiWork\Assets\IMS\IMSWithAngular\IMS.DF\bin\Debug\EntityFramework.dll
+F:\E Drive\BhaminiWork\Assets\IMS\IMSWithAngular\IMS.DF\bin\Debug\IMS.DB.pdb
+F:\E Drive\BhaminiWork\Assets\IMS\IMSWithAngular\IMS.DF\bin\Debug\IMS.VM.pdb
+F:\E Drive\BhaminiWork\Assets\IMS\IMSWithAngular\IMS.DF\bin\Debug\EntityFramework.xml
+F:\E Drive\BhaminiWork\Assets\IMS\IMSWithAngular\IMS.DF\obj\Debug\IMS.DF.csprojResolveAssemblyReference.cache
+F:\E Drive\BhaminiWork\Assets\IMS\IMSWithAngular\IMS.DF\obj\Debug\IMS.DF.dll
+F:\E Drive\BhaminiWork\Assets\IMS\IMSWithAngular\IMS.DF\obj\Debug\IMS.DF.pdb

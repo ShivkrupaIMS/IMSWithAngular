@@ -1,0 +1,23 @@
+﻿<input type="button" class="btn btn-primary" value="Add Country" ng-click="addNewCountry()" />
+<input type="button" class="btn btn-primary" value="Edit Country 1" ng-click="updateCountry(1)" />
+<br /><br />
+<div class="container-fluid table-responsive">
+    <table class="table-responsive">
+        <thead>
+            <tr>
+                <th width="30%">Id</th>
+                <th width="40%">Name</th>
+                <th width="10%">Code</th>
+                <th width="10%">Is Active</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="x in countryList">
+                <td>{{x.countryId}}</td>
+                <td><a ng-click="updateCountry(x.countryId)">{{x.countryName}}</a></td>
+                <td>{{x.countryCode}}</td>
+                <td>{{x.isActive}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

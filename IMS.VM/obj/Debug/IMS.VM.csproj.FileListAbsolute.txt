@@ -1,0 +1,5 @@
+F:\E Drive\BhaminiWork\Assets\IMS\IMSWithAngular\IMS.VM\bin\Debug\IMS.VM.dll
+F:\E Drive\BhaminiWork\Assets\IMS\IMSWithAngular\IMS.VM\bin\Debug\IMS.VM.pdb
+F:\E Drive\BhaminiWork\Assets\IMS\IMSWithAngular\IMS.VM\obj\Debug\IMS.VM.csprojResolveAssemblyReference.cache
+F:\E Drive\BhaminiWork\Assets\IMS\IMSWithAngular\IMS.VM\obj\Debug\IMS.VM.dll
+F:\E Drive\BhaminiWork\Assets\IMS\IMSWithAngular\IMS.VM\obj\Debug\IMS.VM.pdb

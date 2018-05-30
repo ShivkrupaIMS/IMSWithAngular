@@ -1,0 +1,17 @@
+F:\E Drive\BhaminiWork\Assets\IMS\IMSWithAngular\IMS.BL\bin\Debug\IMS.BL.dll
+F:\E Drive\BhaminiWork\Assets\IMS\IMSWithAngular\IMS.BL\bin\Debug\IMS.BL.pdb
+F:\E Drive\BhaminiWork\Assets\IMS\IMSWithAngular\IMS.BL\bin\Debug\IMS.DF.dll
+F:\E Drive\BhaminiWork\Assets\IMS\IMSWithAngular\IMS.BL\bin\Debug\IMS.DL.dll
+F:\E Drive\BhaminiWork\Assets\IMS\IMSWithAngular\IMS.BL\bin\Debug\IMS.VM.dll
+F:\E Drive\BhaminiWork\Assets\IMS\IMSWithAngular\IMS.BL\bin\Debug\IMS.DB.dll
+F:\E Drive\BhaminiWork\Assets\IMS\IMSWithAngular\IMS.BL\bin\Debug\EntityFramework.SqlServer.dll
+F:\E Drive\BhaminiWork\Assets\IMS\IMSWithAngular\IMS.BL\bin\Debug\EntityFramework.dll
+F:\E Drive\BhaminiWork\Assets\IMS\IMSWithAngular\IMS.BL\bin\Debug\IMS.DF.pdb
+F:\E Drive\BhaminiWork\Assets\IMS\IMSWithAngular\IMS.BL\bin\Debug\IMS.DL.pdb
+F:\E Drive\BhaminiWork\Assets\IMS\IMSWithAngular\IMS.BL\bin\Debug\IMS.VM.pdb
+F:\E Drive\BhaminiWork\Assets\IMS\IMSWithAngular\IMS.BL\bin\Debug\IMS.DB.pdb
+F:\E Drive\BhaminiWork\Assets\IMS\IMSWithAngular\IMS.BL\bin\Debug\EntityFramework.SqlServer.xml
+F:\E Drive\BhaminiWork\Assets\IMS\IMSWithAngular\IMS.BL\bin\Debug\EntityFramework.xml
+F:\E Drive\BhaminiWork\Assets\IMS\IMSWithAngular\IMS.BL\obj\Debug\IMS.BL.csprojResolveAssemblyReference.cache
+F:\E Drive\BhaminiWork\Assets\IMS\IMSWithAngular\IMS.BL\obj\Debug\IMS.BL.dll
+F:\E Drive\BhaminiWork\Assets\IMS\IMSWithAngular\IMS.BL\obj\Debug\IMS.BL.pdb
