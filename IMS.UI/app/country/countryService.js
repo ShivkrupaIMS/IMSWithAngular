@@ -11,18 +11,22 @@
         }
 
         var updateCountry = function (country) {
-            return $http.post('http://pihipdevweb01/api/country/EditCountry', { countryId: country.countryId, country: country } );
+            return $http.post('http://pihipdevweb01/api/country/EditCountry', country );
             //return country;
         }
 
         var getCountryList = function () {
-            return $http.get('http://pihipdevweb01/api/country/GetCountry')
+            return $http.get('http://pihipdevweb01/api/country/GetCountryList');
+        }
+        var deleteCountry = function (country) {
+            return $http.post('http://pihipdevweb01/api/country/DeleteCountry', country);
         }
         return {
             insertCountry: insertCountry,
             updateCountry: updateCountry,
             getCountry: getCountry,
-            getCountryList: getCountryList
+            getCountryList: getCountryList,
+            deleteCountry: deleteCountry
         }
 
     }]);

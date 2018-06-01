@@ -35,6 +35,27 @@
             $location.path('/updateCountry/' + id);
         };
         
+        $scope.deleteCountry = function (id) {
+            if (id != undefined) {
+                var r = confirm("Are you sure you want to delete this record?");
+                if (r == true) {
+                    countryService.deleteCountry(id).then(function (data) {
+                        alert("deleted Successfully!!");
+                        //$scope.customers.push(data);
+                        getCountryList();
+                        $location.path('/country');
+                    }, function (data) {
+                        alert("An Error has occured while deleting Country! " + data);
+                        //$scope.loading = false;
+                    });
+                } else {
+                    getCountryList();
+                    $location.path('/country');
+                }
+               
+            }
+        };
+
         //$scope.countryList = function () {
         //    countryService.getCountryList().then(function (data) {
         //        return data.data;
@@ -46,19 +67,21 @@
         $scope.submitForm = function () {
             
             if ($scope.editableCountry.countryId == undefined) {
-                alert("add" + $scope.editableCountry.countryId);
                 countryService.insertCountry($scope.editableCountry).then(function (data) {
                     alert("Added Successfully!!");
                     //$scope.customers.push(data);
+                    getCountryList();
+                    $location.path('/country');
                 },function (data) {
                     alert("An Error has occured while Adding Country! " + data);
                     //$scope.loading = false;
                 });
             }
             else {
-                alert("update" + $scope.editableCountry.countryId);
                 countryService.updateCountry($scope.editableCountry).then(function (data) {
                     alert("Updated Successfully!!");
+                    getCountryList();
+                    $location.path('/country');
                     //$scope.customers.push(data);
                 }, function (data) {
                     alert("An Error has occured while updating Country! " + data);
@@ -67,7 +90,8 @@
             }
 
             $scope.country = angular.copy($scope.editableCountry);
-            $window.history.back();
+            
+            //$window.history.back();
         };
 
         $scope.cancelForm = function () {

@@ -25,13 +25,13 @@ namespace IMS.API.Controllers
         {
             return _countryBL.AddCountry(c);
         }
-        [HttpDelete]
-        public int DeleteCountry(int countryId)
+        [HttpPost]
+        public int DeleteCountry(CountryVM c)
         {
-            return _countryBL.DeleteCountry(countryId);
+            return _countryBL.DeleteCountry(c.CountryId);
         }
         [HttpPost]
-        public CountryVM EditCountry(int countryId,CountryVM c )
+        public CountryVM EditCountry(CountryVM c )
         {
             return _countryBL.EditCountry(c);
         }
