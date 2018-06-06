@@ -40,8 +40,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BL\ICityBL.cs" />
+    <Compile Include="BL\ICompanyTypeBL.cs" />
     <Compile Include="BL\ICountryBL.cs" />
+    <Compile Include="BL\IHSNSACBL.cs" />
+    <Compile Include="BL\IItemTypeBL.cs" />
+    <Compile Include="BL\IItemUnitBL.cs" />
+    <Compile Include="BL\IStateBL.cs" />
+    <Compile Include="DL\ICityDL.cs" />
+    <Compile Include="DL\ICompanyTypeDL.cs" />
     <Compile Include="DL\ICountryDL.cs" />
+    <Compile Include="DL\IHSNSACDL.cs" />
+    <Compile Include="DL\IItemTypeDL.cs" />
+    <Compile Include="DL\IItemUnitDL.cs" />
+    <Compile Include="DL\IStateDL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

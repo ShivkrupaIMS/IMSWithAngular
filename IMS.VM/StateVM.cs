@@ -8,6 +8,11 @@ namespace IMS.VM
 {
     public class StateVM
     {
+        public int StateId { get; set; }
+        //public string StateCode { get; set; }
+        public string StateName { get; set; }
+        public bool IsActive { get; set; }
 
+        public CountryVM Country { get; set; }
     }
 }

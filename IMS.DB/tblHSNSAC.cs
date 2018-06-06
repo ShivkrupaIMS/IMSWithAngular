@@ -12,24 +12,15 @@ namespace IMS.DB
     using System;
     using System.Collections.Generic;
     
-    public partial class tblCountry
+    public partial class tblHSNSAC
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public tblCountry()
-        {
-            this.tblStates = new HashSet<tblState>();
-        }
-    
-        public int CountryId { get; set; }
-        public string CountryCode { get; set; }
-        public string CountryName { get; set; }
+        public int HSNSACId { get; set; }
+        public string HSNSACNo { get; set; }
+        public double TaxRate { get; set; }
         public bool IsActive { get; set; }
         public string CreatedBy { get; set; }
         public Nullable<System.DateTime> CreatedDate { get; set; }
         public string ModifiedBy { get; set; }
         public Nullable<System.DateTime> ModifiedDate { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblState> tblStates { get; set; }
     }
 }

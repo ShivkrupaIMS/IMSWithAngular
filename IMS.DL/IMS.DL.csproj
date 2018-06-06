@@ -50,8 +50,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseDL.cs" />
+    <Compile Include="CityDL.cs" />
+    <Compile Include="CompanyTypeDL.cs" />
     <Compile Include="CountryDL.cs" />
+    <Compile Include="HSNSACDL.cs" />
+    <Compile Include="ItemTypeDL.cs" />
+    <Compile Include="ItemUnitDL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StateDL.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\IMS.DB\IMS.DB.csproj">

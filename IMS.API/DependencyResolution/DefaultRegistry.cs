@@ -36,6 +36,18 @@ namespace IMS.API.DependencyResolution {
                 });
             For<ICountryDL>().Use<CountryDL>();
             For<ICountryBL>().Use<CountryBL>();
+            For<IStateDL>().Use<StateDL>();
+            For<IStateBL>().Use<StateBL>();
+            For<ICityDL>().Use<CityDL>();
+            For<ICityBL>().Use<CityBL>();
+            For<IItemTypeDL>().Use<ItemTypeDL>();
+            For<IItemTypeBL>().Use<ItemTypeBL>();
+            For<IItemUnitDL>().Use<ItemUnitDL>();
+            For<IItemUnitBL>().Use<ItemUnitBL>();
+            For<ICompanyTypeDL>().Use<CompanyTypeDL>();
+            For<ICompanyTypeBL>().Use<CompanyTypeBL>();
+            For<IHSNSACDL>().Use<HSNSACDL>();
+            For<IHSNSACBL>().Use<HSNSACBL>();
         }
 
         #endregion
