@@ -35,11 +35,14 @@ namespace IMS.UI
                       "~/Scripts/angular-route.js",
                       "~/scripts/angular-ui/ui-bootstrap-tpls.min.js"));
 
-            bundles.Add(new ScriptBundle("~/bundles/mycustomejs").Include(
+            bundles.Add(new ScriptBundle("~/bundles/mycustomjs").Include(
                       "~/app/IMSApp.js",
                       "~/app/country/countryService.js",
                       "~/app/country/countryController.js",
                       "~/app/country/countryDirective.js",
+                       "~/app/state/stateService.js",
+                      "~/app/state/stateController.js",
+                      "~/app/state/stateDirective.js",
                       "~/app/homeController.js"
                       ));
         }

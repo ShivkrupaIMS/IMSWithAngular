@@ -1,0 +1,25 @@
+﻿<input type="button" class="btn btn-primary" value="Add State" ng-click="addNewState()" />
+<br /><br />
+<div class="container-fluid">
+    <table class="table table-responsive table-bordered table-striped table-hover">
+        <thead>
+            <tr>
+                <th width="10%">Id</th>
+                <th width="40%">Name</th>
+                <th width="20%">Country</th>
+                <th width="10%">Is Active</th>
+                <th width="10%" colspan="2" style="text-align:center">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="x in stateList">
+                <td>{{x.stateId}}</td>
+                <td>{{x.stateName}}</td>
+                <td>{{x.country.countryName}}</td>
+                <td>{{x.isActive}}</td>
+                <td><input type="button" class="btn btn-sm btn-primary" value="Edit" ng-click="updateState(x.stateId)" /></td>
+                <td><input type="button" class="btn btn-sm btn-primary" value="Delete" ng-click="deleteState(x)" /></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

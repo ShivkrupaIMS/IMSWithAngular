@@ -157,6 +157,11 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app\state\state.html" />
+    <Content Include="app\state\stateController.js" />
+    <Content Include="app\state\stateDirective.js" />
+    <Content Include="app\state\stateList.html" />
+    <Content Include="app\state\stateService.js" />
     <Content Include="app\country\country.html" />
     <Content Include="app\country\countryController.js" />
     <Content Include="app\country\countryDirective.js" />

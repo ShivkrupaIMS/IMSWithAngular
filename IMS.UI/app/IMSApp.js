@@ -18,6 +18,18 @@ var configFunction = function ($routeProvider, $httpProvider) {
             templateUrl: "/app/country/country.html",
             controller: "countryController"
         })
+        .when("/state", {
+            templateUrl: "/app/state/stateList.html",
+            controller: "stateController"
+        })
+        .when("/newState", {
+            templateUrl: "/app/state/state.html",
+            controller: "stateController"
+        })
+        .when("/updateState/:stateId", {
+            templateUrl: "/app/state/state.html",
+            controller: "stateController"
+        })
         .otherwise({
             redirectTo: "/home"
         });

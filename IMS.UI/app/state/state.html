@@ -1,0 +1,34 @@
+﻿<div class="modal-header">
+    <h3 class="modal-title">State</h3>
+</div>
+<div class="modal-body">
+    <form role="form" class="form-horizontal" name="state">
+            <div class="form-group" ng-class="{'has-error': editableState.stateName.$invalid}">
+                <label for="stateName" class="col-sm-3 control-label">Name</label>
+                <div class="col-sm-9">
+                    <input type="text" name="stateName" id="stateName" class="form-control" ng-required="true" autocomplete="on" ng-model="editableState.stateName" />
+                    <span class="help-block" ng-show="editableState.stateName.$error.required">Name is required</span>
+                </div>
+            </div>
+        <div class="form-group" ng-class="{'has-error': editableState.country.$invalid}">
+            <label for="country" class="col-sm-3 control-label">Country</label>
+            <div class="col-sm-9" *ngIf="countryList">
+                <select ng-model="countryValue">
+                    <option ng-repeat="x in countryList" ng-selected="countryValue == x.countryId" value="{{x.countryId}}">{{x.countryName}}</option>
+                </select>
+                <span class="help-block" ng-show="editableState.country.$error.required">Country is required</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="checkbox col-sm-9 col-sm-offset-3" >
+                <label><input type="checkbox" name="isActive" value="isActive" ng-model="editableState.isActive" />Is Active</label>
+            </div>
+        </div>
+    </form>
+</div>
+<div>
+    <div class="col-sm-9  col-sm-offset-3">
+        <input type="button" class="btn btn-secondary" value="Cancel" ng-click="cancelForm()" />
+        <input type="submit" class="btn btn-primary" value="Submit" ng-click="submitForm()" />
+    </div>
+</div>
