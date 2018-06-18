@@ -13,9 +13,10 @@
         <div class="form-group" ng-class="{'has-error': editableState.country.$invalid}">
             <label for="country" class="col-sm-3 control-label">Country</label>
             <div class="col-sm-9" *ngIf="countryList">
-                <select ng-model="countryValue">
+                <!--<select ng-model="countryValue">
                     <option ng-repeat="x in countryList" ng-selected="countryValue == x.countryId" value="{{x.countryId}}">{{x.countryName}}</option>
-                </select>
+                </select>-->
+                <input type="text" ng-model="countryValue" uib-typeahead="country as country.countryName for country in countryList | filter:$viewValue | limitTo:10" class="form-control">
                 <span class="help-block" ng-show="editableState.country.$error.required">Country is required</span>
             </div>
         </div>

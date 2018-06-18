@@ -1,9 +1,11 @@
 ﻿IMSApp.controller('stateController',["$scope",  "$location", "$window", "$routeParams", "stateService", "countryService",
 function ($scope, $location, $window, $routeParams, stateService,countryService) {
 
-        var getStateList = function () {
+    var getStateList = function () {
+            $scope.loading = true;
             stateService.getStateList().then(function (data) {
                 $scope.stateList = data.data;
+                 $scope.loading = false;
             }, function (data) {
                 alert("An Error has occured while getting state list! " + data);
             });
@@ -17,6 +19,7 @@ function ($scope, $location, $window, $routeParams, stateService,countryService)
             });
         }
 
+
         getStateList();
         getCountryList();
 
@@ -27,8 +30,7 @@ function ($scope, $location, $window, $routeParams, stateService,countryService)
                 $scope.state = data.data;
                 //$scope.customers.push(data);
                 $scope.editableState = angular.copy($scope.state);
-                $scope.countryValue = angular.copy($scope.state.country.countryId);
-                alert($scope.countryValue);
+                $scope.countryValue = angular.copy($scope.state.country);
             }, function (data) {
                 alert("An Error has occured while getting state! " + data);
                 //$scope.loading = false;
@@ -78,7 +80,7 @@ function ($scope, $location, $window, $routeParams, stateService,countryService)
         //}
         //alert($scope.state);
         $scope.submitForm = function () {
-            $scope.editableState.country = { countryId: $scope.countryValue }; // = angular.copy($scope.countryValue);// {countryId : $scope.countryValue.countryId, countryName : $scope.countryValue.countryName, isActive: $scope.countryValue.isActive};
+            $scope.editableState.country = { countryId: $scope.countryValue.countryId }; // = angular.copy($scope.countryValue);// {countryId : $scope.countryValue.countryId, countryName : $scope.countryValue.countryName, isActive: $scope.countryValue.isActive};
             if ($scope.editableState.stateId == undefined) {
                 stateService.insertState($scope.editableState).then(function (data) {
                     alert("Added Successfully!!");
@@ -103,7 +105,7 @@ function ($scope, $location, $window, $routeParams, stateService,countryService)
             }
 
             $scope.state = angular.copy($scope.editableState);
-            
+            $scope.loading = true;
             //$window.history.back();
         };
 
