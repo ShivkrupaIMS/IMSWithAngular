@@ -11,9 +11,11 @@
         <EntityTypeShape EntityType="IMSModel.tblCity" Width="1.5" PointX="5" PointY="0.875" />
         <AssociationConnector Association="IMSModel.FK_tblCity_tblState" />
         <EntityTypeShape EntityType="IMSModel.tblCompanyType" Width="1.5" PointX="0.5" PointY="4" />
-        <EntityTypeShape EntityType="IMSModel.tblHSNSAC" Width="1.5" PointX="2.5" PointY="4" />
         <EntityTypeShape EntityType="IMSModel.tblItemType" Width="1.5" PointX="4.5" PointY="4" />
         <EntityTypeShape EntityType="IMSModel.tblItemUnit" Width="1.5" PointX="6.5" PointY="4" />
+        <EntityTypeShape EntityType="IMSModel.tblLicenseType" Width="1.5" PointX="0.75" PointY="7.75" />
+        <EntityTypeShape EntityType="IMSModel.tblManufacturer" Width="1.5" PointX="2.75" PointY="7.75" />
+        <EntityTypeShape EntityType="IMSModel.tblHSNSAC" Width="1.5" PointX="2.5" PointY="4" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

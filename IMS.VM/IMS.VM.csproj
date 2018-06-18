@@ -46,6 +46,8 @@
     <Compile Include="HSNSACVM.cs" />
     <Compile Include="ItemTypeVM.cs" />
     <Compile Include="ItemUnitVM.cs" />
+    <Compile Include="LicenseTypeVM.cs" />
+    <Compile Include="ManufacturerVM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StateVM.cs" />
   </ItemGroup>

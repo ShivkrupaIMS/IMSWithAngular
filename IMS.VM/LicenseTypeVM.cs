@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 
 namespace IMS.VM
 {
-    public class HSNSACVM
+    public class LicenseTypeVM
     {
-        public int HSNSACId { get; set; }
-        public string HSNSACNo { get; set; }
-        public double? TaxRate { get; set; }
+        public int LicenseTypeId { get; set; }
+        public string LicenseType { get; set; }
+
+        public string Description { get; set; }
         public bool IsActive { get; set; }
     }
 }

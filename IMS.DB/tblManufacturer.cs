@@ -12,11 +12,11 @@ namespace IMS.DB
     using System;
     using System.Collections.Generic;
     
-    public partial class tblHSNSAC
+    public partial class tblManufacturer
     {
-        public int HSNSACId { get; set; }
-        public string HSNSACNo { get; set; }
-        public Nullable<double> TaxRate { get; set; }
+        public int ManufacturerId { get; set; }
+        public string ManufacturerName { get; set; }
+        public string Description { get; set; }
         public bool IsActive { get; set; }
         public string CreatedBy { get; set; }
         public Nullable<System.DateTime> CreatedDate { get; set; }

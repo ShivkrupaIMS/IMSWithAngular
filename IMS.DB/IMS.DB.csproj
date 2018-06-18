@@ -85,6 +85,12 @@
     <Compile Include="tblItemUnit.cs">
       <DependentUpon>IMS.tt</DependentUpon>
     </Compile>
+    <Compile Include="tblLicenseType.cs">
+      <DependentUpon>IMS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblManufacturer.cs">
+      <DependentUpon>IMS.tt</DependentUpon>
+    </Compile>
     <Compile Include="tblState.cs">
       <DependentUpon>IMS.tt</DependentUpon>
     </Compile>

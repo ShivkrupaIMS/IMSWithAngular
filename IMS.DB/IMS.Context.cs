@@ -29,8 +29,10 @@ namespace IMS.DB
         public virtual DbSet<tblState> tblStates { get; set; }
         public virtual DbSet<tblCity> tblCities { get; set; }
         public virtual DbSet<tblCompanyType> tblCompanyTypes { get; set; }
-        public virtual DbSet<tblHSNSAC> tblHSNSACs { get; set; }
         public virtual DbSet<tblItemType> tblItemTypes { get; set; }
         public virtual DbSet<tblItemUnit> tblItemUnits { get; set; }
+        public virtual DbSet<tblLicenseType> tblLicenseTypes { get; set; }
+        public virtual DbSet<tblManufacturer> tblManufacturers { get; set; }
+        public virtual DbSet<tblHSNSAC> tblHSNSACs { get; set; }
     }
 }

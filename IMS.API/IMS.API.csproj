@@ -224,6 +224,8 @@
     <Compile Include="Controllers\HSNSACController.cs" />
     <Compile Include="Controllers\ItemTypeController.cs" />
     <Compile Include="Controllers\ItemUnitController.cs" />
+    <Compile Include="Controllers\LicenseTypeController.cs" />
+    <Compile Include="Controllers\ManufacturerController.cs" />
     <Compile Include="Controllers\StateController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="DependencyResolution\DefaultRegistry.cs" />
