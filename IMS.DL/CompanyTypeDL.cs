@@ -34,29 +34,39 @@ namespace IMS.DL
         public CompanyTypeVM EditCompanyType(CompanyTypeVM c)
         {
             DB.tblCompanyType CompanyType = IMSDB.tblCompanyTypes.Find(c.CompanyTypeId);
-            CompanyType.CompanyType = c.CompanyType;
-            CompanyType.IsActive = c.IsActive;
-            IMSDB.Entry(CompanyType).State = EntityState.Modified;
-            IMSDB.SaveChanges();
+            if (CompanyType != null)
+            {
+                CompanyType.CompanyType = c.CompanyType;
+                CompanyType.IsActive = c.IsActive;
+                IMSDB.Entry(CompanyType).State = EntityState.Modified;
+                IMSDB.SaveChanges();
+            }
             return c;
         }
 
         public CompanyTypeVM GetCompanyTypeById(int CompanyTypeId)
         {
             DB.tblCompanyType CompanyType = IMSDB.tblCompanyTypes.Where(p => p.CompanyTypeId == CompanyTypeId).FirstOrDefault();
-            return new CompanyTypeVM()
+            if(CompanyType!=null)
             {
-                CompanyTypeId = CompanyType.CompanyTypeId,
-                CompanyType = CompanyType.CompanyType,
-                IsActive = CompanyType.IsActive
-            };
+                return new CompanyTypeVM()
+                {
+                    CompanyTypeId = CompanyType.CompanyTypeId,
+                    CompanyType = CompanyType.CompanyType,
+                    IsActive = CompanyType.IsActive
+                };
+            }
+            return null;
 
         }
 
         public IList<CompanyTypeVM> GetCompanyTypeList()
         {
             List<CompanyTypeVM> companyTypeList = new List<CompanyTypeVM>();
-            IMSDB.tblCompanyTypes.ToList().ForEach(p => companyTypeList.Add(
+            List<DB.tblCompanyType> itemTypes = IMSDB.tblCompanyTypes.ToList();
+            if (itemTypes != null)
+            {
+                itemTypes.ForEach(p => companyTypeList.Add(
                     new CompanyTypeVM()
                     {
                         CompanyTypeId = p.CompanyTypeId,
@@ -64,6 +74,8 @@ namespace IMS.DL
                         IsActive = p.IsActive
                     }
                     ));
+            }
+            
             return companyTypeList;
         }
     }

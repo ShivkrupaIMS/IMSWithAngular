@@ -35,39 +35,52 @@ namespace IMS.DL
         public CountryVM EditCountry(CountryVM c)
         {
             DB.tblCountry country = IMSDB.tblCountries.Find(c.CountryId);
-            country.CountryName = c.CountryName;
-            country.CountryCode = c.CountryCode;
-            country.IsActive = c.IsActive;
-            IMSDB.Entry(country).State = EntityState.Modified;
-            IMSDB.SaveChanges();
+            if (country != null)
+            {
+                country.CountryName = c.CountryName;
+                country.CountryCode = c.CountryCode;
+                country.IsActive = c.IsActive;
+                IMSDB.Entry(country).State = EntityState.Modified;
+                IMSDB.SaveChanges();
+            }
             return c;
         }
 
         public CountryVM GetCountryById(int countryId)
         {
            DB.tblCountry country = IMSDB.tblCountries.Where(p => p.CountryId == countryId).FirstOrDefault();
-            return new CountryVM()
+            if (country != null)
             {
-                CountryId = country.CountryId,
-                CountryName = country.CountryName,
-                CountryCode = country.CountryCode,
-                IsActive = country.IsActive
-            };
+                return new CountryVM()
+                {
+                    CountryId = country.CountryId,
+                    CountryName = country.CountryName,
+                    CountryCode = country.CountryCode,
+                    IsActive = country.IsActive
+                };
+            }
+
+            return null;
                     
         }
 
         public IList<CountryVM> GetCountryList()
         {
             List<CountryVM> countryList = new List<CountryVM>();
-            IMSDB.tblCountries.ToList().ForEach(p => countryList.Add(
-                    new CountryVM()
-                    {
-                        CountryId = p.CountryId,
-                        CountryName = p.CountryName,
-                        CountryCode = p.CountryCode,
-                        IsActive = p.IsActive
-                    }
-                    ));
+            List<DB.tblCountry> countries = IMSDB.tblCountries.ToList();
+            if (countries!=null)
+            {
+                countries.ForEach(p => countryList.Add(
+                   new CountryVM()
+                   {
+                       CountryId = p.CountryId,
+                       CountryName = p.CountryName,
+                       CountryCode = p.CountryCode,
+                       IsActive = p.IsActive
+                   }
+                   ));
+            }
+           
             return countryList;
         }
     }

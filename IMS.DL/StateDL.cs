@@ -36,42 +36,54 @@ namespace IMS.DL
         public StateVM EditState(StateVM c)
         {
             DB.tblState State = IMSDB.tblStates.Find(c.StateId);
-            State.StateName = c.StateName;
-            State.CountryId = c.Country.CountryId;
-            //State.StateCode = c.StateCode;
-            State.IsActive = c.IsActive;
-            IMSDB.Entry(State).State = EntityState.Modified;
-            IMSDB.SaveChanges();
+            if (State != null)
+            {
+                State.StateName = c.StateName;
+                State.CountryId = c.Country.CountryId;
+                //State.StateCode = c.StateCode;
+                State.IsActive = c.IsActive;
+                IMSDB.Entry(State).State = EntityState.Modified;
+                IMSDB.SaveChanges();
+            }
             return c;
         }
 
         public StateVM GetStateById(int StateId)
         {
             DB.tblState State = IMSDB.tblStates.Where(p => p.StateId == StateId).FirstOrDefault();
-            return new StateVM()
+            if (State != null)
             {
-                StateId = State.StateId,
-                StateName = State.StateName,
-                //StateCode = State.StateCode,
-                Country = new CountryVM { CountryId = State.tblCountry.CountryId,CountryCode= State.tblCountry.CountryCode, CountryName = State.tblCountry.CountryName, IsActive = State.tblCountry.IsActive},
-                IsActive = State.IsActive
-            };
+                return new StateVM()
+                {
+                    StateId = State.StateId,
+                    StateName = State.StateName,
+                    //StateCode = State.StateCode,
+                    Country = new CountryVM { CountryId = State.tblCountry.CountryId, CountryCode = State.tblCountry.CountryCode, CountryName = State.tblCountry.CountryName, IsActive = State.tblCountry.IsActive },
+                    IsActive = State.IsActive
+                };
+            }
 
+            return null;
         }
 
         public IList<StateVM> GetStateList()
         {
             List<StateVM> StateList = new List<StateVM>();
-            IMSDB.tblStates.ToList().ForEach(p => StateList.Add(
-                    new StateVM()
-                    {
-                        StateId = p.StateId,
-                        StateName = p.StateName,
+            List<DB.tblState> states = IMSDB.tblStates.ToList();
+            if (states != null)
+            {
+                states.ForEach(p => StateList.Add(
+                        new StateVM()
+                        {
+                            StateId = p.StateId,
+                            StateName = p.StateName,
                         //StateCode = p.StateCode,
                         Country = new CountryVM { CountryId = p.tblCountry.CountryId, CountryCode = p.tblCountry.CountryCode, CountryName = p.tblCountry.CountryName, IsActive = p.tblCountry.IsActive },
-                        IsActive = p.IsActive
-                    }
-                    ));
+                            IsActive = p.IsActive
+                        }
+                        ));
+            }
+
             return StateList;
         }
     }

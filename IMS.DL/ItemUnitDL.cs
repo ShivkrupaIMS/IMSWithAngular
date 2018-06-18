@@ -34,29 +34,39 @@ namespace IMS.DL
         public ItemUnitVM EditItemUnit(ItemUnitVM c)
         {
             DB.tblItemUnit ItemUnit = IMSDB.tblItemUnits.Find(c.ItemUnitId);
-            ItemUnit.ItemUnit = c.ItemUnit;
-            ItemUnit.IsActive = c.IsActive;
-            IMSDB.Entry(ItemUnit).State = EntityState.Modified;
-            IMSDB.SaveChanges();
+            if (ItemUnit != null)
+            {
+                ItemUnit.ItemUnit = c.ItemUnit;
+                ItemUnit.IsActive = c.IsActive;
+                IMSDB.Entry(ItemUnit).State = EntityState.Modified;
+                IMSDB.SaveChanges();
+            }
             return c;
         }
 
         public ItemUnitVM GetItemUnitById(int ItemUnitId)
         {
             DB.tblItemUnit ItemUnit = IMSDB.tblItemUnits.Where(p => p.ItemUnitId == ItemUnitId).FirstOrDefault();
-            return new ItemUnitVM()
+            if(ItemUnit!=null)
             {
-                ItemUnitId = ItemUnit.ItemUnitId,
-                ItemUnit = ItemUnit.ItemUnit,
-                IsActive = ItemUnit.IsActive
-            };
+                return new ItemUnitVM()
+                {
+                    ItemUnitId = ItemUnit.ItemUnitId,
+                    ItemUnit = ItemUnit.ItemUnit,
+                    IsActive = ItemUnit.IsActive
+                };
+            }
+            return null;
 
         }
 
         public IList<ItemUnitVM> GetItemUnitList()
         {
             List<ItemUnitVM> itemUnitList = new List<ItemUnitVM>();
-            IMSDB.tblItemUnits.ToList().ForEach(p => itemUnitList.Add(
+            List<DB.tblItemUnit> itemUnits = IMSDB.tblItemUnits.ToList();
+            if(itemUnits!=null)
+            {
+                itemUnits.ForEach(p => itemUnitList.Add(
                     new ItemUnitVM()
                     {
                         ItemUnitId = p.ItemUnitId,
@@ -64,6 +74,8 @@ namespace IMS.DL
                         IsActive = p.IsActive
                     }
                     ));
+            }
+            
             return itemUnitList;
         }
     }

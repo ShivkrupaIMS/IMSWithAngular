@@ -36,33 +36,43 @@ namespace IMS.DL
         public CityVM EditCity(CityVM c)
         {
             DB.tblCity City = IMSDB.tblCities.Find(c.CityId);
-            City.CityName = c.CityName;
-            City.StateId = c.State.StateId;
-            //City.CityCode = c.CityCode;
-            City.IsActive = c.IsActive;
-            IMSDB.Entry(City).State = EntityState.Modified;
-            IMSDB.SaveChanges();
+            if (City != null)
+            {
+                City.CityName = c.CityName;
+                City.StateId = c.State.StateId;
+                //City.CityCode = c.CityCode;
+                City.IsActive = c.IsActive;
+                IMSDB.Entry(City).State = EntityState.Modified;
+                IMSDB.SaveChanges();
+            }
             return c;
         }
 
         public CityVM GetCityById(int CityId)
         {
             DB.tblCity City = IMSDB.tblCities.Where(p => p.CityId == CityId).FirstOrDefault();
-            return new CityVM()
+            if (City != null)
             {
-                CityId = City.CityId,
-                CityName = City.CityName,
-                //CityCode = City.CityCode,
-                State = new StateVM { StateId = City.tblState.StateId, StateName = City.tblState.StateName, IsActive = City.tblState.IsActive },
-                IsActive = City.IsActive
-            };
+                return new CityVM()
+                {
+                    CityId = City.CityId,
+                    CityName = City.CityName,
+                    //CityCode = City.CityCode,
+                    State = new StateVM { StateId = City.tblState.StateId, StateName = City.tblState.StateName, IsActive = City.tblState.IsActive },
+                    IsActive = City.IsActive
+                };
+            }
 
+            return null;
         }
 
         public IList<CityVM> GetCityList()
         {
             List<CityVM> CityList = new List<CityVM>();
-            IMSDB.tblCities.ToList().ForEach(p => CityList.Add(
+            List<DB.tblCity> cities = IMSDB.tblCities.ToList();
+            if (cities != null)
+            {
+                cities.ForEach(p => CityList.Add(
                     new CityVM()
                     {
                         CityId = p.CityId,
@@ -72,6 +82,8 @@ namespace IMS.DL
                         IsActive = p.IsActive
                     }
                     ));
+            }
+            
             return CityList;
         }
     }

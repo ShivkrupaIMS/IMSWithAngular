@@ -35,31 +35,41 @@ namespace IMS.DL
         public HSNSACVM EditHSNSAC(HSNSACVM c)
         {
             DB.tblHSNSAC HSNSAC = IMSDB.tblHSNSACs.Find(c.HSNSACId);
-            HSNSAC.TaxRate = c.TaxRate;
-            HSNSAC.HSNSACNo = c.HSNSACNo;
-            HSNSAC.IsActive = c.IsActive;
-            IMSDB.Entry(HSNSAC).State = EntityState.Modified;
-            IMSDB.SaveChanges();
+            if (HSNSAC != null)
+            {
+                HSNSAC.TaxRate = c.TaxRate;
+                HSNSAC.HSNSACNo = c.HSNSACNo;
+                HSNSAC.IsActive = c.IsActive;
+                IMSDB.Entry(HSNSAC).State = EntityState.Modified;
+                IMSDB.SaveChanges();
+            }
             return c;
         }
 
         public HSNSACVM GetHSNSACById(int HSNSACId)
         {
             DB.tblHSNSAC HSNSAC = IMSDB.tblHSNSACs.Where(p => p.HSNSACId == HSNSACId).FirstOrDefault();
-            return new HSNSACVM()
+            if (HSNSAC != null)
             {
-                HSNSACId = HSNSAC.HSNSACId,
-                TaxRate = HSNSAC.TaxRate,
-                HSNSACNo = HSNSAC.HSNSACNo,
-                IsActive = HSNSAC.IsActive
-            };
+                return new HSNSACVM()
+                {
+                    HSNSACId = HSNSAC.HSNSACId,
+                    TaxRate = HSNSAC.TaxRate,
+                    HSNSACNo = HSNSAC.HSNSACNo,
+                    IsActive = HSNSAC.IsActive
+                };
+            }
+            return null;
 
         }
 
         public IList<HSNSACVM> GetHSNSACList()
         {
             List<HSNSACVM> HSNSACList = new List<HSNSACVM>();
-            IMSDB.tblHSNSACs.ToList().ForEach(p => HSNSACList.Add(
+            List<DB.tblHSNSAC> HsnSacs = IMSDB.tblHSNSACs.ToList();
+            if (HsnSacs != null)
+            {
+                HsnSacs.ForEach(p => HSNSACList.Add(
                     new HSNSACVM()
                     {
                         HSNSACId = p.HSNSACId,
@@ -68,6 +78,8 @@ namespace IMS.DL
                         IsActive = p.IsActive
                     }
                     ));
+            }
+            
             return HSNSACList;
         }
     }

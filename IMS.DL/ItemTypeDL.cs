@@ -34,29 +34,39 @@ namespace IMS.DL
         public ItemTypeVM EditItemType(ItemTypeVM c)
         {
             DB.tblItemType ItemType = IMSDB.tblItemTypes.Find(c.ItemTypeId);
-            ItemType.ItemType = c.ItemType;
-            ItemType.IsActive = c.IsActive;
-            IMSDB.Entry(ItemType).State = EntityState.Modified;
-            IMSDB.SaveChanges();
+            if (ItemType != null)
+            {
+                ItemType.ItemType = c.ItemType;
+                ItemType.IsActive = c.IsActive;
+                IMSDB.Entry(ItemType).State = EntityState.Modified;
+                IMSDB.SaveChanges();
+            }
             return c;
         }
 
         public ItemTypeVM GetItemTypeById(int ItemTypeId)
         {
             DB.tblItemType ItemType = IMSDB.tblItemTypes.Where(p => p.ItemTypeId == ItemTypeId).FirstOrDefault();
-            return new ItemTypeVM()
+            if(ItemType!=null)
             {
-                ItemTypeId = ItemType.ItemTypeId,
-                ItemType = ItemType.ItemType,
-                IsActive = ItemType.IsActive
-            };
+                return new ItemTypeVM()
+                {
+                    ItemTypeId = ItemType.ItemTypeId,
+                    ItemType = ItemType.ItemType,
+                    IsActive = ItemType.IsActive
+                };
+            }
 
+            return null;
         }
 
         public IList<ItemTypeVM> GetItemTypeList()
         {
             List<ItemTypeVM> itemTypeList = new List<ItemTypeVM>();
-            IMSDB.tblItemTypes.ToList().ForEach(p => itemTypeList.Add(
+            List<DB.tblItemType> itemTypes = IMSDB.tblItemTypes.ToList();
+            if(itemTypes!=null)
+            {
+                itemTypes.ForEach(p => itemTypeList.Add(
                     new ItemTypeVM()
                     {
                         ItemTypeId = p.ItemTypeId,
@@ -64,6 +74,8 @@ namespace IMS.DL
                         IsActive = p.IsActive
                     }
                     ));
+            }
+            
             return itemTypeList;
         }
     }
