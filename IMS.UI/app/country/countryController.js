@@ -17,8 +17,10 @@
         }
 
         var getCountryList = function () {
+            $scope.loading = true;
             countryService.getCountryList().then(function (data) {
                 $scope.countryList = data.data;
+                $scope.loading = false;
             }, function (data) {
                 alert("An Error has occured while getting Country list! " + data);
             });

@@ -1,6 +1,9 @@
-﻿<input type="button" class="btn btn-primary" value="Add Country" ng-click="addNewCountry()" />
-<br /><br />
+﻿<div id="loadingDiv" ng-show="loading">
+    <img src="~/../images/loading.gif" class="ajax-loader" />
+</div>
 <div class="container-fluid">
+    <a class="btn btn-sm btn-primary" ng-click="addNewCountry()"><i class="fa fa-plus icon-style"></i><span class="icon-style"><strong>Add</strong></span></a>
+    <br /><br />
     <table class="table table-responsive table-bordered table-striped table-hover">
         <thead>
             <tr>
@@ -17,8 +20,8 @@
                 <td>{{x.countryName}}</td>
                 <td>{{x.countryCode}}</td>
                 <td>{{x.isActive}}</td>
-                <td><input type="button" class="btn btn-sm btn-primary" value="Edit" ng-click="updateCountry(x.countryId)" /></td>
-                <td><input type="button" class="btn btn-sm btn-primary" value="Delete" ng-click="deleteCountry(x)" /></td>
+                <td><a class="btn btn-sm btn-primary a-btn-slide-text" ng-click="updateCountry(x.countryId)"><i class="fa fa-edit icon-style"></i><span class="icon-style"><strong>Edit</strong></span></a></td>
+                <td><a class="btn btn-sm btn-primary a-btn-slide-text" ng-click="deleteCountry(x)"><i class="fa fa-remove icon-style"></i><span class="icon-style"><strong>Delete</strong></span></a></td>
             </tr>
         </tbody>
     </table>

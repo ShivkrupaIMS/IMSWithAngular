@@ -56,3 +56,8 @@ input.ng-invalid .ng-touched{
     margin-top: -32px;  /* -1 * image height / 2 */
     display: block;     
 }
+
+.icon-style{
+    color:white;
+    padding-right:5px;
+}
