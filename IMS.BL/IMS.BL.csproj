@@ -40,16 +40,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AccountingMethodBL.cs" />
     <Compile Include="CityBL.cs" />
     <Compile Include="CompanyTypeBL.cs" />
     <Compile Include="CountryBL.cs" />
+    <Compile Include="CustomerTypeBL.cs" />
+    <Compile Include="GSTRegistrationTypeBL.cs" />
     <Compile Include="HSNSACBL.cs" />
+    <Compile Include="InvoiceStatusBL.cs" />
+    <Compile Include="InvoiceTermBL.cs" />
+    <Compile Include="InvoiceTypeBL.cs" />
     <Compile Include="ItemTypeBL.cs" />
     <Compile Include="ItemUnitBL.cs" />
     <Compile Include="LicenseTypeBL.cs" />
     <Compile Include="ManufacturerBL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StateBL.cs" />
+    <Compile Include="SupplierTypeBL.cs" />
+    <Compile Include="TaxSlabBL.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\IMS.DF\IMS.DF.csproj">

@@ -10,7 +10,7 @@ namespace IMS.VM
     {
         public int ManufacturerId { get; set; }
         public string ManufacturerName { get; set; }
-
+        public string ShortName { get; set; }
         public string Description { get; set; }
         public bool IsActive { get; set; }
     }

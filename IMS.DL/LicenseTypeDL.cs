@@ -18,6 +18,7 @@ namespace IMS.DL
                 {
                     LicenseType = c.LicenseType,
                     Description = c.Description,
+                    ShortName = c.ShortName,
                     IsActive = c.IsActive
                 });
             IMSDB.SaveChanges();
@@ -39,6 +40,7 @@ namespace IMS.DL
             {
                 LicenseType.LicenseType = c.LicenseType;
                 LicenseType.Description = c.Description;
+                LicenseType.ShortName = c.ShortName;
                 LicenseType.IsActive = c.IsActive;
                 IMSDB.Entry(LicenseType).State = EntityState.Modified;
                 IMSDB.SaveChanges();
@@ -56,6 +58,7 @@ namespace IMS.DL
                     LicenseTypeId = LicenseType.LicenseTypeId,
                     LicenseType = LicenseType.LicenseType,
                     Description = LicenseType.Description,
+                    ShortName = LicenseType.ShortName,
                     IsActive = LicenseType.IsActive
                 };
             }
@@ -75,6 +78,7 @@ namespace IMS.DL
                         LicenseTypeId = p.LicenseTypeId,
                         LicenseType = p.LicenseType,
                         Description = p.Description,
+                        ShortName=p.ShortName,
                         IsActive = p.IsActive
                     }
                     ));

@@ -18,6 +18,7 @@ namespace IMS.DL
                 {
                     ManufacturerName = c.ManufacturerName,
                     Description = c.Description,
+                    ShortName = c.ShortName,
                     IsActive = c.IsActive
                 });
             IMSDB.SaveChanges();
@@ -39,6 +40,7 @@ namespace IMS.DL
             {
                 Manufacturer.ManufacturerName = c.ManufacturerName;
                 Manufacturer.Description = c.Description;
+                Manufacturer.ShortName = c.ShortName;
                 Manufacturer.IsActive = c.IsActive;
                 IMSDB.Entry(Manufacturer).State = EntityState.Modified;
                 IMSDB.SaveChanges();
@@ -56,6 +58,7 @@ namespace IMS.DL
                     ManufacturerId = Manufacturer.ManufacturerId,
                     ManufacturerName = Manufacturer.ManufacturerName,
                     Description = Manufacturer.Description,
+                    ShortName = Manufacturer.ShortName,
                     IsActive = Manufacturer.IsActive
                 };
             }
@@ -75,6 +78,7 @@ namespace IMS.DL
                         ManufacturerId = p.ManufacturerId,
                         ManufacturerName = p.ManufacturerName,
                         Description = p.Description,
+                        ShortName = p.ShortName,
                         IsActive = p.IsActive
                     }
                     ));

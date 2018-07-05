@@ -31,8 +31,18 @@ namespace IMS.DB
         public virtual DbSet<tblCompanyType> tblCompanyTypes { get; set; }
         public virtual DbSet<tblItemType> tblItemTypes { get; set; }
         public virtual DbSet<tblItemUnit> tblItemUnits { get; set; }
+        public virtual DbSet<tblHSNSAC> tblHSNSACs { get; set; }
+        public virtual DbSet<tblAccountingMethod> tblAccountingMethods { get; set; }
+        public virtual DbSet<tblCustomerType> tblCustomerTypes { get; set; }
+        public virtual DbSet<tblGSTRegistrationType> tblGSTRegistrationTypes { get; set; }
+        public virtual DbSet<tblInvoiceStatuses> tblInvoiceStatuses { get; set; }
+        public virtual DbSet<tblItem> tblItems { get; set; }
+        public virtual DbSet<tblItemDetail> tblItemDetails { get; set; }
         public virtual DbSet<tblLicenseType> tblLicenseTypes { get; set; }
         public virtual DbSet<tblManufacturer> tblManufacturers { get; set; }
-        public virtual DbSet<tblHSNSAC> tblHSNSACs { get; set; }
+        public virtual DbSet<tblSupplierType> tblSupplierTypes { get; set; }
+        public virtual DbSet<tblTaxSlab> tblTaxSlabs { get; set; }
+        public virtual DbSet<tblInvoiceTerm> tblInvoiceTerms { get; set; }
+        public virtual DbSet<tblInvoiceType> tblInvoiceTypes { get; set; }
     }
 }

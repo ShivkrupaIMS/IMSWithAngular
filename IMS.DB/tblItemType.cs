@@ -14,6 +14,12 @@ namespace IMS.DB
     
     public partial class tblItemType
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public tblItemType()
+        {
+            this.tblItems = new HashSet<tblItem>();
+        }
+    
         public int ItemTypeId { get; set; }
         public string ItemType { get; set; }
         public bool IsActive { get; set; }
@@ -21,5 +27,8 @@ namespace IMS.DB
         public Nullable<System.DateTime> CreatedDate { get; set; }
         public string ModifiedBy { get; set; }
         public Nullable<System.DateTime> ModifiedDate { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tblItem> tblItems { get; set; }
     }
 }

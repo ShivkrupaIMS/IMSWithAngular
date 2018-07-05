@@ -10,7 +10,7 @@ namespace IMS.VM
     {
         public int LicenseTypeId { get; set; }
         public string LicenseType { get; set; }
-
+        public string ShortName { get; set; }
         public string Description { get; set; }
         public bool IsActive { get; set; }
     }

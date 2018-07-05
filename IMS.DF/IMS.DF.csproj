@@ -40,24 +40,40 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BL\IAccountingMethodBL.cs" />
     <Compile Include="BL\ICityBL.cs" />
+    <Compile Include="BL\ICustomerTypeBL.cs" />
     <Compile Include="BL\ICompanyTypeBL.cs" />
     <Compile Include="BL\ICountryBL.cs" />
     <Compile Include="BL\IHSNSACBL.cs" />
+    <Compile Include="BL\IInvoiceTermBL.cs" />
+    <Compile Include="BL\IInvoiceStatusBL.cs" />
+    <Compile Include="BL\ITaxSlabBL.cs" />
+    <Compile Include="BL\IInvoiceTypeBL.cs" />
     <Compile Include="BL\IItemTypeBL.cs" />
     <Compile Include="BL\IItemUnitBL.cs" />
     <Compile Include="BL\ILicenseTypeBL.cs" />
     <Compile Include="BL\IManufacturerBL.cs" />
     <Compile Include="BL\IStateBL.cs" />
+    <Compile Include="BL\IGSTRegistrationTypeBL.cs" />
+    <Compile Include="BL\ISupplierTypeBL.cs" />
+    <Compile Include="DL\IAccountingMethodDL.cs" />
     <Compile Include="DL\ICityDL.cs" />
     <Compile Include="DL\ICompanyTypeDL.cs" />
     <Compile Include="DL\ICountryDL.cs" />
+    <Compile Include="DL\IGSTRegistrationTypeDL.cs" />
+    <Compile Include="DL\IInvoiceStatusDL.cs" />
+    <Compile Include="DL\IInvoiceTypeDL.cs" />
+    <Compile Include="DL\IInvoiceTermDL.cs" />
+    <Compile Include="DL\ISupplierTypeDL.cs" />
+    <Compile Include="DL\ICustomerTypeDL.cs" />
     <Compile Include="DL\IHSNSACDL.cs" />
     <Compile Include="DL\IItemTypeDL.cs" />
     <Compile Include="DL\IItemUnitDL.cs" />
     <Compile Include="DL\ILicenseTypeDL.cs" />
     <Compile Include="DL\IManufacturerDL.cs" />
     <Compile Include="DL\IStateDL.cs" />
+    <Compile Include="DL\ITaxSlabDL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

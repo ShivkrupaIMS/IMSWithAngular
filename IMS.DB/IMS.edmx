@@ -5,6 +5,18 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="IMSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tblAccountingMethod">
+          <Key>
+            <PropertyRef Name="AccountingMethodId" />
+          </Key>
+          <Property Name="AccountingMethodId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AccountingMethod" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="255" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="255" />
+          <Property Name="ModifiedDate" Type="datetime" />
+        </EntityType>
         <EntityType Name="tblCity">
           <Key>
             <PropertyRef Name="CityId" />
@@ -43,6 +55,30 @@
           <Property Name="ModifiedBy" Type="varchar" MaxLength="255" />
           <Property Name="ModifiedDate" Type="datetime" />
         </EntityType>
+        <EntityType Name="tblCustomerType">
+          <Key>
+            <PropertyRef Name="CustomerTypeId" />
+          </Key>
+          <Property Name="CustomerTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CustomerType" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="255" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="255" />
+          <Property Name="ModifiedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tblGSTRegistrationType">
+          <Key>
+            <PropertyRef Name="GSTRegistrationTypeId" />
+          </Key>
+          <Property Name="GSTRegistrationTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GSTRegistrationType" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="255" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="255" />
+          <Property Name="ModifiedDate" Type="datetime" />
+        </EntityType>
         <EntityType Name="tblHSNSAC">
           <Key>
             <PropertyRef Name="HSNSACId" />
@@ -55,6 +91,84 @@
           <Property Name="CreatedDate" Type="datetime" />
           <Property Name="ModifiedBy" Type="varchar" MaxLength="255" />
           <Property Name="ModifiedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tblInvoiceStatus">
+          <Key>
+            <PropertyRef Name="InvoiceStatusId" />
+          </Key>
+          <Property Name="InvoiceStatusId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="InvoiceStatus" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="255" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="255" />
+          <Property Name="ModifiedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tblInvoiceTerm">
+          <Key>
+            <PropertyRef Name="InvoiceTermId" />
+          </Key>
+          <Property Name="InvoiceTermId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="InvoiceTerm" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="255" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="255" />
+          <Property Name="ModifiedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tblInvoiceType">
+          <Key>
+            <PropertyRef Name="InvoiceTypeId" />
+          </Key>
+          <Property Name="InvoiceTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="InvoiceType" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="255" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="255" />
+          <Property Name="ModifiedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tblItem">
+          <Key>
+            <PropertyRef Name="ItemId" />
+          </Key>
+          <Property Name="ItemId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="HsnSacId" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="1000" Nullable="false" />
+          <Property Name="Comment" Type="varchar" MaxLength="1000" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="ItemTypeId" Type="int" Nullable="false" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="255" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="255" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="Ingradient" Type="varchar" MaxLength="255" />
+          <Property Name="IGST" Type="float" Nullable="false" />
+          <Property Name="CGST" Type="float" Nullable="false" />
+          <Property Name="SGST" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblItemDetails">
+          <Key>
+            <PropertyRef Name="ItemDetailsId" />
+          </Key>
+          <Property Name="ItemDetailsId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ItemId" Type="int" Nullable="false" />
+          <Property Name="Sku" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="ItemUnitId" Type="int" Nullable="false" />
+          <Property Name="PackageSize" Type="int" Nullable="false" />
+          <Property Name="PurchasePrice" Type="decimal" Precision="19" Scale="2" Nullable="false" />
+          <Property Name="SalePrice" Type="decimal" Precision="19" Scale="2" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="255" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="255" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="MRP" Type="decimal" Precision="19" Scale="2" Nullable="false" />
+          <Property Name="PackageWeight" Type="varchar" MaxLength="50" />
+          <Property Name="ManufacturerId" Type="int" />
+          <Property Name="MinQuantity" Type="int" />
+          <Property Name="Discount" Type="int" />
         </EntityType>
         <EntityType Name="tblItemType">
           <Key>
@@ -92,6 +206,7 @@
           <Property Name="CreatedDate" Type="datetime" />
           <Property Name="ModifiedBy" Type="varchar" MaxLength="255" />
           <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="ShortName" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="tblManufacturer">
           <Key>
@@ -105,6 +220,7 @@
           <Property Name="CreatedDate" Type="datetime" />
           <Property Name="ModifiedBy" Type="varchar" MaxLength="255" />
           <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="ShortName" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="tblState">
           <Key>
@@ -119,6 +235,30 @@
           <Property Name="ModifiedDate" Type="datetime" />
           <Property Name="CountryId" Type="int" />
         </EntityType>
+        <EntityType Name="tblSupplierType">
+          <Key>
+            <PropertyRef Name="SupplierTypeId" />
+          </Key>
+          <Property Name="SupplierTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SupplierType" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="255" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="255" />
+          <Property Name="ModifiedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tblTaxSlab">
+          <Key>
+            <PropertyRef Name="TaxSlabId" />
+          </Key>
+          <Property Name="TaxSlabId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TaxSlab" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="255" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="255" />
+          <Property Name="ModifiedDate" Type="datetime" />
+        </EntityType>
         <Association Name="FK_tblCity_tblState">
           <End Role="tblState" Type="Self.tblState" Multiplicity="1" />
           <End Role="tblCity" Type="Self.tblCity" Multiplicity="*" />
@@ -128,6 +268,54 @@
             </Principal>
             <Dependent Role="tblCity">
               <PropertyRef Name="StateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblItem_tblHSNSAC">
+          <End Role="tblHSNSAC" Type="Self.tblHSNSAC" Multiplicity="1" />
+          <End Role="tblItem" Type="Self.tblItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblHSNSAC">
+              <PropertyRef Name="HSNSACId" />
+            </Principal>
+            <Dependent Role="tblItem">
+              <PropertyRef Name="HsnSacId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblItem_tblItemType">
+          <End Role="tblItemType" Type="Self.tblItemType" Multiplicity="1" />
+          <End Role="tblItem" Type="Self.tblItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblItemType">
+              <PropertyRef Name="ItemTypeId" />
+            </Principal>
+            <Dependent Role="tblItem">
+              <PropertyRef Name="ItemTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblItemDetails_tblItem">
+          <End Role="tblItem" Type="Self.tblItem" Multiplicity="1" />
+          <End Role="tblItemDetails" Type="Self.tblItemDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblItem">
+              <PropertyRef Name="ItemId" />
+            </Principal>
+            <Dependent Role="tblItemDetails">
+              <PropertyRef Name="ItemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblItemDetails_tblItemUnit">
+          <End Role="tblItemUnit" Type="Self.tblItemUnit" Multiplicity="1" />
+          <End Role="tblItemDetails" Type="Self.tblItemDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblItemUnit">
+              <PropertyRef Name="ItemUnitId" />
+            </Principal>
+            <Dependent Role="tblItemDetails">
+              <PropertyRef Name="ItemUnitId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -144,18 +332,44 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="IMSModelStoreContainer">
+          <EntitySet Name="tblAccountingMethod" EntityType="Self.tblAccountingMethod" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblCity" EntityType="Self.tblCity" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblCompanyType" EntityType="Self.tblCompanyType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblCountry" EntityType="Self.tblCountry" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblCustomerType" EntityType="Self.tblCustomerType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblGSTRegistrationType" EntityType="Self.tblGSTRegistrationType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblHSNSAC" EntityType="Self.tblHSNSAC" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblInvoiceStatus" EntityType="Self.tblInvoiceStatus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblInvoiceTerm" EntityType="Self.tblInvoiceTerm" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblInvoiceType" EntityType="Self.tblInvoiceType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblItem" EntityType="Self.tblItem" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblItemDetails" EntityType="Self.tblItemDetails" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblItemType" EntityType="Self.tblItemType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblItemUnit" EntityType="Self.tblItemUnit" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblLicenseType" EntityType="Self.tblLicenseType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblManufacturer" EntityType="Self.tblManufacturer" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblState" EntityType="Self.tblState" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblSupplierType" EntityType="Self.tblSupplierType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblTaxSlab" EntityType="Self.tblTaxSlab" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_tblCity_tblState" Association="Self.FK_tblCity_tblState">
             <End Role="tblState" EntitySet="tblState" />
             <End Role="tblCity" EntitySet="tblCity" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblItem_tblHSNSAC" Association="Self.FK_tblItem_tblHSNSAC">
+            <End Role="tblHSNSAC" EntitySet="tblHSNSAC" />
+            <End Role="tblItem" EntitySet="tblItem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblItem_tblItemType" Association="Self.FK_tblItem_tblItemType">
+            <End Role="tblItemType" EntitySet="tblItemType" />
+            <End Role="tblItem" EntitySet="tblItem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblItemDetails_tblItem" Association="Self.FK_tblItemDetails_tblItem">
+            <End Role="tblItem" EntitySet="tblItem" />
+            <End Role="tblItemDetails" EntitySet="tblItemDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblItemDetails_tblItemUnit" Association="Self.FK_tblItemDetails_tblItemUnit">
+            <End Role="tblItemUnit" EntitySet="tblItemUnit" />
+            <End Role="tblItemDetails" EntitySet="tblItemDetails" />
           </AssociationSet>
           <AssociationSet Name="FK_tblState_tblCountry" Association="Self.FK_tblState_tblCountry">
             <End Role="tblCountry" EntitySet="tblCountry" />
@@ -195,9 +409,35 @@
           <EntitySet Name="tblCompanyTypes" EntityType="IMSModel.tblCompanyType" />
           <EntitySet Name="tblItemTypes" EntityType="IMSModel.tblItemType" />
           <EntitySet Name="tblItemUnits" EntityType="IMSModel.tblItemUnit" />
+          <EntitySet Name="tblHSNSACs" EntityType="IMSModel.tblHSNSAC" />
+          <EntitySet Name="tblAccountingMethods" EntityType="IMSModel.tblAccountingMethod" />
+          <EntitySet Name="tblCustomerTypes" EntityType="IMSModel.tblCustomerType" />
+          <EntitySet Name="tblGSTRegistrationTypes" EntityType="IMSModel.tblGSTRegistrationType" />
+          <EntitySet Name="tblInvoiceStatuses" EntityType="IMSModel.tblInvoiceStatuses" />
+          <EntitySet Name="tblItems" EntityType="IMSModel.tblItem" />
+          <EntitySet Name="tblItemDetails" EntityType="IMSModel.tblItemDetail" />
           <EntitySet Name="tblLicenseTypes" EntityType="IMSModel.tblLicenseType" />
           <EntitySet Name="tblManufacturers" EntityType="IMSModel.tblManufacturer" />
-          <EntitySet Name="tblHSNSACs" EntityType="IMSModel.tblHSNSAC" />
+          <EntitySet Name="tblSupplierTypes" EntityType="IMSModel.tblSupplierType" />
+          <EntitySet Name="tblTaxSlabs" EntityType="IMSModel.tblTaxSlab" />
+          <AssociationSet Name="FK_tblItem_tblHSNSAC" Association="IMSModel.FK_tblItem_tblHSNSAC">
+            <End Role="tblHSNSAC" EntitySet="tblHSNSACs" />
+            <End Role="tblItem" EntitySet="tblItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblItem_tblItemType" Association="IMSModel.FK_tblItem_tblItemType">
+            <End Role="tblItemType" EntitySet="tblItemTypes" />
+            <End Role="tblItem" EntitySet="tblItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblItemDetails_tblItem" Association="IMSModel.FK_tblItemDetails_tblItem">
+            <End Role="tblItem" EntitySet="tblItems" />
+            <End Role="tblItemDetail" EntitySet="tblItemDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblItemDetails_tblItemUnit" Association="IMSModel.FK_tblItemDetails_tblItemUnit">
+            <End Role="tblItemUnit" EntitySet="tblItemUnits" />
+            <End Role="tblItemDetail" EntitySet="tblItemDetails" />
+          </AssociationSet>
+          <EntitySet Name="tblInvoiceTerms" EntityType="IMSModel.tblInvoiceTerm" />
+          <EntitySet Name="tblInvoiceTypes" EntityType="IMSModel.tblInvoiceType" />
           </EntityContainer>
         <EntityType Name="tblState">
           <Key>
@@ -275,6 +515,7 @@
           <Property Name="CreatedDate" Type="DateTime" Precision="3" />
           <Property Name="ModifiedBy" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tblItems" Relationship="IMSModel.FK_tblItem_tblItemType" FromRole="tblItemType" ToRole="tblItem" />
         </EntityType>
         <EntityType Name="tblItemUnit">
           <Key>
@@ -287,6 +528,116 @@
           <Property Name="CreatedDate" Type="DateTime" Precision="3" />
           <Property Name="ModifiedBy" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tblItemDetails" Relationship="IMSModel.FK_tblItemDetails_tblItemUnit" FromRole="tblItemUnit" ToRole="tblItemDetail" />
+        </EntityType>
+        <EntityType Name="tblHSNSAC">
+          <Key>
+            <PropertyRef Name="HSNSACId" />
+          </Key>
+          <Property Name="HSNSACId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HSNSACNo" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="TaxRate" Type="Double" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tblItems" Relationship="IMSModel.FK_tblItem_tblHSNSAC" FromRole="tblHSNSAC" ToRole="tblItem" />
+        </EntityType>
+        <EntityType Name="tblAccountingMethod">
+          <Key>
+            <PropertyRef Name="AccountingMethodId" />
+          </Key>
+          <Property Name="AccountingMethodId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AccountingMethod" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="tblCustomerType">
+          <Key>
+            <PropertyRef Name="CustomerTypeId" />
+          </Key>
+          <Property Name="CustomerTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerType" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="tblGSTRegistrationType">
+          <Key>
+            <PropertyRef Name="GSTRegistrationTypeId" />
+          </Key>
+          <Property Name="GSTRegistrationTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GSTRegistrationType" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="tblInvoiceStatuses">
+          <Key>
+            <PropertyRef Name="InvoiceStatusId" />
+          </Key>
+          <Property Name="InvoiceStatusId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="InvoiceStatus" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="tblItem">
+          <Key>
+            <PropertyRef Name="ItemId" />
+          </Key>
+          <Property Name="ItemId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HsnSacId" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="Comment" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="ItemTypeId" Type="Int32" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="Ingradient" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="IGST" Type="Double" Nullable="false" />
+          <Property Name="CGST" Type="Double" Nullable="false" />
+          <Property Name="SGST" Type="Double" Nullable="false" />
+          <NavigationProperty Name="tblHSNSAC" Relationship="IMSModel.FK_tblItem_tblHSNSAC" FromRole="tblItem" ToRole="tblHSNSAC" />
+          <NavigationProperty Name="tblItemType" Relationship="IMSModel.FK_tblItem_tblItemType" FromRole="tblItem" ToRole="tblItemType" />
+          <NavigationProperty Name="tblItemDetails" Relationship="IMSModel.FK_tblItemDetails_tblItem" FromRole="tblItem" ToRole="tblItemDetail" />
+        </EntityType>
+        <EntityType Name="tblItemDetail">
+          <Key>
+            <PropertyRef Name="ItemDetailsId" />
+          </Key>
+          <Property Name="ItemDetailsId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ItemId" Type="Int32" Nullable="false" />
+          <Property Name="Sku" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ItemUnitId" Type="Int32" Nullable="false" />
+          <Property Name="PackageSize" Type="Int32" Nullable="false" />
+          <Property Name="PurchasePrice" Type="Decimal" Nullable="false" Precision="19" Scale="2" />
+          <Property Name="SalePrice" Type="Decimal" Nullable="false" Precision="19" Scale="2" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="MRP" Type="Decimal" Nullable="false" Precision="19" Scale="2" />
+          <Property Name="PackageWeight" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ManufacturerId" Type="Int32" />
+          <Property Name="MinQuantity" Type="Int32" />
+          <Property Name="Discount" Type="Int32" />
+          <NavigationProperty Name="tblItem" Relationship="IMSModel.FK_tblItemDetails_tblItem" FromRole="tblItemDetail" ToRole="tblItem" />
+          <NavigationProperty Name="tblItemUnit" Relationship="IMSModel.FK_tblItemDetails_tblItemUnit" FromRole="tblItemDetail" ToRole="tblItemUnit" />
         </EntityType>
         <EntityType Name="tblLicenseType">
           <Key>
@@ -300,6 +651,7 @@
           <Property Name="CreatedDate" Type="DateTime" Precision="3" />
           <Property Name="ModifiedBy" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="ShortName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="tblManufacturer">
           <Key>
@@ -313,14 +665,98 @@
           <Property Name="CreatedDate" Type="DateTime" Precision="3" />
           <Property Name="ModifiedBy" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="ShortName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
-        <EntityType Name="tblHSNSAC">
+        <EntityType Name="tblSupplierType">
           <Key>
-            <PropertyRef Name="HSNSACId" />
+            <PropertyRef Name="SupplierTypeId" />
           </Key>
-          <Property Name="HSNSACId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="HSNSACNo" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="TaxRate" Type="Double" />
+          <Property Name="SupplierTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SupplierType" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="tblTaxSlab">
+          <Key>
+            <PropertyRef Name="TaxSlabId" />
+          </Key>
+          <Property Name="TaxSlabId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TaxSlab" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <Association Name="FK_tblItem_tblHSNSAC">
+          <End Type="IMSModel.tblHSNSAC" Role="tblHSNSAC" Multiplicity="1" />
+          <End Type="IMSModel.tblItem" Role="tblItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblHSNSAC">
+              <PropertyRef Name="HSNSACId" />
+            </Principal>
+            <Dependent Role="tblItem">
+              <PropertyRef Name="HsnSacId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblItem_tblItemType">
+          <End Type="IMSModel.tblItemType" Role="tblItemType" Multiplicity="1" />
+          <End Type="IMSModel.tblItem" Role="tblItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblItemType">
+              <PropertyRef Name="ItemTypeId" />
+            </Principal>
+            <Dependent Role="tblItem">
+              <PropertyRef Name="ItemTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblItemDetails_tblItem">
+          <End Type="IMSModel.tblItem" Role="tblItem" Multiplicity="1" />
+          <End Type="IMSModel.tblItemDetail" Role="tblItemDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblItem">
+              <PropertyRef Name="ItemId" />
+            </Principal>
+            <Dependent Role="tblItemDetail">
+              <PropertyRef Name="ItemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblItemDetails_tblItemUnit">
+          <End Type="IMSModel.tblItemUnit" Role="tblItemUnit" Multiplicity="1" />
+          <End Type="IMSModel.tblItemDetail" Role="tblItemDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblItemUnit">
+              <PropertyRef Name="ItemUnitId" />
+            </Principal>
+            <Dependent Role="tblItemDetail">
+              <PropertyRef Name="ItemUnitId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="tblInvoiceTerm">
+          <Key>
+            <PropertyRef Name="InvoiceTermId" />
+          </Key>
+          <Property Name="InvoiceTermId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="InvoiceTerm" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="tblInvoiceType">
+          <Key>
+            <PropertyRef Name="InvoiceTypeId" />
+          </Key>
+          <Property Name="InvoiceTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="InvoiceType" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="IsActive" Type="Boolean" Nullable="false" />
           <Property Name="CreatedBy" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="CreatedDate" Type="DateTime" Precision="3" />
@@ -414,9 +850,120 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="tblHSNSACs">
+            <EntityTypeMapping TypeName="IMSModel.tblHSNSAC">
+              <MappingFragment StoreEntitySet="tblHSNSAC">
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="TaxRate" ColumnName="TaxRate" />
+                <ScalarProperty Name="HSNSACNo" ColumnName="HSNSACNo" />
+                <ScalarProperty Name="HSNSACId" ColumnName="HSNSACId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblAccountingMethods">
+            <EntityTypeMapping TypeName="IMSModel.tblAccountingMethod">
+              <MappingFragment StoreEntitySet="tblAccountingMethod">
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="AccountingMethod" ColumnName="AccountingMethod" />
+                <ScalarProperty Name="AccountingMethodId" ColumnName="AccountingMethodId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblCustomerTypes">
+            <EntityTypeMapping TypeName="IMSModel.tblCustomerType">
+              <MappingFragment StoreEntitySet="tblCustomerType">
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CustomerType" ColumnName="CustomerType" />
+                <ScalarProperty Name="CustomerTypeId" ColumnName="CustomerTypeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblGSTRegistrationTypes">
+            <EntityTypeMapping TypeName="IMSModel.tblGSTRegistrationType">
+              <MappingFragment StoreEntitySet="tblGSTRegistrationType">
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="GSTRegistrationType" ColumnName="GSTRegistrationType" />
+                <ScalarProperty Name="GSTRegistrationTypeId" ColumnName="GSTRegistrationTypeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblInvoiceStatuses">
+            <EntityTypeMapping TypeName="IMSModel.tblInvoiceStatuses">
+              <MappingFragment StoreEntitySet="tblInvoiceStatus">
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="InvoiceStatus" ColumnName="InvoiceStatus" />
+                <ScalarProperty Name="InvoiceStatusId" ColumnName="InvoiceStatusId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblItems">
+            <EntityTypeMapping TypeName="IMSModel.tblItem">
+              <MappingFragment StoreEntitySet="tblItem">
+                <ScalarProperty Name="SGST" ColumnName="SGST" />
+                <ScalarProperty Name="CGST" ColumnName="CGST" />
+                <ScalarProperty Name="IGST" ColumnName="IGST" />
+                <ScalarProperty Name="Ingradient" ColumnName="Ingradient" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ItemTypeId" ColumnName="ItemTypeId" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="HsnSacId" ColumnName="HsnSacId" />
+                <ScalarProperty Name="ItemId" ColumnName="ItemId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblItemDetails">
+            <EntityTypeMapping TypeName="IMSModel.tblItemDetail">
+              <MappingFragment StoreEntitySet="tblItemDetails">
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="MinQuantity" ColumnName="MinQuantity" />
+                <ScalarProperty Name="ManufacturerId" ColumnName="ManufacturerId" />
+                <ScalarProperty Name="PackageWeight" ColumnName="PackageWeight" />
+                <ScalarProperty Name="MRP" ColumnName="MRP" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="SalePrice" ColumnName="SalePrice" />
+                <ScalarProperty Name="PurchasePrice" ColumnName="PurchasePrice" />
+                <ScalarProperty Name="PackageSize" ColumnName="PackageSize" />
+                <ScalarProperty Name="ItemUnitId" ColumnName="ItemUnitId" />
+                <ScalarProperty Name="Sku" ColumnName="Sku" />
+                <ScalarProperty Name="ItemId" ColumnName="ItemId" />
+                <ScalarProperty Name="ItemDetailsId" ColumnName="ItemDetailsId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="tblLicenseTypes">
             <EntityTypeMapping TypeName="IMSModel.tblLicenseType">
               <MappingFragment StoreEntitySet="tblLicenseType">
+                <ScalarProperty Name="ShortName" ColumnName="ShortName" />
                 <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
                 <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
                 <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
@@ -431,6 +978,7 @@
           <EntitySetMapping Name="tblManufacturers">
             <EntityTypeMapping TypeName="IMSModel.tblManufacturer">
               <MappingFragment StoreEntitySet="tblManufacturer">
+                <ScalarProperty Name="ShortName" ColumnName="ShortName" />
                 <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
                 <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
                 <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
@@ -442,17 +990,55 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="tblHSNSACs">
-            <EntityTypeMapping TypeName="IMSModel.tblHSNSAC">
-              <MappingFragment StoreEntitySet="tblHSNSAC">
+          <EntitySetMapping Name="tblSupplierTypes">
+            <EntityTypeMapping TypeName="IMSModel.tblSupplierType">
+              <MappingFragment StoreEntitySet="tblSupplierType">
                 <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
                 <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
                 <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
                 <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="TaxRate" ColumnName="TaxRate" />
-                <ScalarProperty Name="HSNSACNo" ColumnName="HSNSACNo" />
-                <ScalarProperty Name="HSNSACId" ColumnName="HSNSACId" />
+                <ScalarProperty Name="SupplierType" ColumnName="SupplierType" />
+                <ScalarProperty Name="SupplierTypeId" ColumnName="SupplierTypeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblTaxSlabs">
+            <EntityTypeMapping TypeName="IMSModel.tblTaxSlab">
+              <MappingFragment StoreEntitySet="tblTaxSlab">
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="TaxSlab" ColumnName="TaxSlab" />
+                <ScalarProperty Name="TaxSlabId" ColumnName="TaxSlabId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblInvoiceTerms">
+            <EntityTypeMapping TypeName="IMSModel.tblInvoiceTerm">
+              <MappingFragment StoreEntitySet="tblInvoiceTerm">
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="InvoiceTerm" ColumnName="InvoiceTerm" />
+                <ScalarProperty Name="InvoiceTermId" ColumnName="InvoiceTermId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblInvoiceTypes">
+            <EntityTypeMapping TypeName="IMSModel.tblInvoiceType">
+              <MappingFragment StoreEntitySet="tblInvoiceType">
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="InvoiceType" ColumnName="InvoiceType" />
+                <ScalarProperty Name="InvoiceTypeId" ColumnName="InvoiceTypeId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
