@@ -12,25 +12,21 @@ namespace IMS.DB
     using System;
     using System.Collections.Generic;
     
-    public partial class tblManufacturer
+    public partial class tblCompanyLicenseDetail
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public tblManufacturer()
-        {
-            this.tblItemDetails = new HashSet<tblItemDetail>();
-        }
-    
-        public int ManufacturerId { get; set; }
-        public string ManufacturerName { get; set; }
-        public string Description { get; set; }
+        public int CompanyLicenseDetailsId { get; set; }
+        public int LicenseTypeId { get; set; }
+        public int CompanyId { get; set; }
+        public string LicenseNo { get; set; }
+        public Nullable<System.DateTime> ValidFrom { get; set; }
+        public Nullable<System.DateTime> ValidTo { get; set; }
         public bool IsActive { get; set; }
         public string CreatedBy { get; set; }
         public Nullable<System.DateTime> CreatedDate { get; set; }
         public string ModifiedBy { get; set; }
         public Nullable<System.DateTime> ModifiedDate { get; set; }
-        public string ShortName { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblItemDetail> tblItemDetails { get; set; }
+        public virtual tblLicenseType tblLicenseType { get; set; }
+        public virtual tblCompany tblCompany { get; set; }
     }
 }

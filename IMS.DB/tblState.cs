@@ -18,6 +18,7 @@ namespace IMS.DB
         public tblState()
         {
             this.tblCities = new HashSet<tblCity>();
+            this.tblCompanies = new HashSet<tblCompany>();
         }
     
         public int StateId { get; set; }
@@ -32,5 +33,7 @@ namespace IMS.DB
         public virtual tblCountry tblCountry { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblCity> tblCities { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tblCompany> tblCompanies { get; set; }
     }
 }

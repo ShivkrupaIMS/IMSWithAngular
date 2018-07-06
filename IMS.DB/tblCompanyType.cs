@@ -14,6 +14,12 @@ namespace IMS.DB
     
     public partial class tblCompanyType
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public tblCompanyType()
+        {
+            this.tblCompanies = new HashSet<tblCompany>();
+        }
+    
         public int CompanyTypeId { get; set; }
         public string CompanyType { get; set; }
         public bool IsActive { get; set; }
@@ -21,5 +27,8 @@ namespace IMS.DB
         public Nullable<System.DateTime> CreatedDate { get; set; }
         public string ModifiedBy { get; set; }
         public Nullable<System.DateTime> ModifiedDate { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tblCompany> tblCompanies { get; set; }
     }
 }

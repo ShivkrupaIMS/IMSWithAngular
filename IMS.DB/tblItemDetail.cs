@@ -19,20 +19,22 @@ namespace IMS.DB
         public string Sku { get; set; }
         public int ItemUnitId { get; set; }
         public int PackageSize { get; set; }
-        public decimal PurchasePrice { get; set; }
-        public decimal SalePrice { get; set; }
+        public Nullable<double> PurchasePrice { get; set; }
+        public Nullable<double> SalePrice { get; set; }
         public bool IsActive { get; set; }
         public string CreatedBy { get; set; }
         public Nullable<System.DateTime> CreatedDate { get; set; }
         public string ModifiedBy { get; set; }
         public Nullable<System.DateTime> ModifiedDate { get; set; }
-        public decimal MRP { get; set; }
+        public Nullable<double> MRP { get; set; }
         public string PackageWeight { get; set; }
         public Nullable<int> ManufacturerId { get; set; }
         public Nullable<int> MinQuantity { get; set; }
-        public Nullable<int> Discount { get; set; }
+        public Nullable<double> Discount { get; set; }
+        public string Description { get; set; }
     
         public virtual tblItem tblItem { get; set; }
         public virtual tblItemUnit tblItemUnit { get; set; }
+        public virtual tblManufacturer tblManufacturer { get; set; }
     }
 }

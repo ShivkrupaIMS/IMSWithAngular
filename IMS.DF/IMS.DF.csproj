@@ -42,12 +42,14 @@
   <ItemGroup>
     <Compile Include="BL\IAccountingMethodBL.cs" />
     <Compile Include="BL\ICityBL.cs" />
+    <Compile Include="BL\ICompanyBL.cs" />
     <Compile Include="BL\ICustomerTypeBL.cs" />
     <Compile Include="BL\ICompanyTypeBL.cs" />
     <Compile Include="BL\ICountryBL.cs" />
     <Compile Include="BL\IHSNSACBL.cs" />
     <Compile Include="BL\IInvoiceTermBL.cs" />
     <Compile Include="BL\IInvoiceStatusBL.cs" />
+    <Compile Include="BL\IItemBL.cs" />
     <Compile Include="BL\ITaxSlabBL.cs" />
     <Compile Include="BL\IInvoiceTypeBL.cs" />
     <Compile Include="BL\IItemTypeBL.cs" />
@@ -59,12 +61,14 @@
     <Compile Include="BL\ISupplierTypeBL.cs" />
     <Compile Include="DL\IAccountingMethodDL.cs" />
     <Compile Include="DL\ICityDL.cs" />
+    <Compile Include="DL\ICompanyDL.cs" />
     <Compile Include="DL\ICompanyTypeDL.cs" />
     <Compile Include="DL\ICountryDL.cs" />
     <Compile Include="DL\IGSTRegistrationTypeDL.cs" />
     <Compile Include="DL\IInvoiceStatusDL.cs" />
     <Compile Include="DL\IInvoiceTypeDL.cs" />
     <Compile Include="DL\IInvoiceTermDL.cs" />
+    <Compile Include="DL\IItemDL.cs" />
     <Compile Include="DL\ISupplierTypeDL.cs" />
     <Compile Include="DL\ICustomerTypeDL.cs" />
     <Compile Include="DL\IHSNSACDL.cs" />

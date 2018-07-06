@@ -42,7 +42,9 @@
   <ItemGroup>
     <Compile Include="AccountingMethodVM.cs" />
     <Compile Include="CityVM.cs" />
+    <Compile Include="CompanyLicenseDetailsVM.cs" />
     <Compile Include="CompanyTypeVM.cs" />
+    <Compile Include="CompanyVM.cs" />
     <Compile Include="CountryVM.cs" />
     <Compile Include="CustomerTypeVM.cs" />
     <Compile Include="GSTRegistrationTypeVM.cs" />
@@ -50,8 +52,10 @@
     <Compile Include="InvoiceStatusVM.cs" />
     <Compile Include="InvoiceTermVM.cs" />
     <Compile Include="InvoiceTypeVM.cs" />
+    <Compile Include="ItemDetailsVM.cs" />
     <Compile Include="ItemTypeVM.cs" />
     <Compile Include="ItemUnitVM.cs" />
+    <Compile Include="ItemVM.cs" />
     <Compile Include="LicenseTypeVM.cs" />
     <Compile Include="ManufacturerVM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

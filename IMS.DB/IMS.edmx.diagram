@@ -18,18 +18,29 @@
         <EntityTypeShape EntityType="IMSModel.tblCustomerType" Width="1.5" PointX="2.75" PointY="7.75" />
         <EntityTypeShape EntityType="IMSModel.tblGSTRegistrationType" Width="1.5" PointX="4.75" PointY="7.75" />
         <EntityTypeShape EntityType="IMSModel.tblInvoiceStatuses" Width="1.5" PointX="6.75" PointY="8.75" />
-        <EntityTypeShape EntityType="IMSModel.tblItem" Width="1.5" PointX="9.125" PointY="3.125" />
-        <EntityTypeShape EntityType="IMSModel.tblItemDetail" Width="1.5" PointX="11.375" PointY="3" />
         <EntityTypeShape EntityType="IMSModel.tblLicenseType" Width="1.5" PointX="0.75" PointY="11.75" />
         <EntityTypeShape EntityType="IMSModel.tblManufacturer" Width="1.5" PointX="2.75" PointY="11.75" />
         <EntityTypeShape EntityType="IMSModel.tblSupplierType" Width="1.5" PointX="4.75" PointY="12.75" />
         <EntityTypeShape EntityType="IMSModel.tblTaxSlab" Width="1.5" PointX="6.75" PointY="12.75" />
-        <AssociationConnector Association="IMSModel.FK_tblItem_tblHSNSAC" />
-        <AssociationConnector Association="IMSModel.FK_tblItem_tblItemType" />
-        <AssociationConnector Association="IMSModel.FK_tblItemDetails_tblItem" />
-        <AssociationConnector Association="IMSModel.FK_tblItemDetails_tblItemUnit" />
         <EntityTypeShape EntityType="IMSModel.tblInvoiceTerm" Width="1.5" PointX="8.875" PointY="8.25" />
         <EntityTypeShape EntityType="IMSModel.tblInvoiceType" Width="1.5" PointX="11.375" PointY="8.75" />
+        <EntityTypeShape EntityType="IMSModel.tblCompanyLicenseDetail" Width="1.5" PointX="20.375" PointY="8.5" />
+        <AssociationConnector Association="IMSModel.FK_tblCompanyLicenseDetails_tblLicenseType" />
+        <EntityTypeShape EntityType="IMSModel.tblCompany" Width="1.5" PointX="13.125" PointY="0.625" />
+        <AssociationConnector Association="IMSModel.FK_tblCompany_tblCompanyType" />
+        <AssociationConnector Association="IMSModel.FK_tblCompany_tblCountry" />
+        <AssociationConnector Association="IMSModel.FK_tblCompany_tblState" />
+        <AssociationConnector Association="IMSModel.FK_tblCompanyLicenseDetails_tblCompany" />
+        <EntityTypeShape EntityType="IMSModel.tblItemLicenseDetail" Width="1.5" PointX="14" PointY="8" />
+        <AssociationConnector Association="IMSModel.FK_tblItemLicenseDetails_tblLicenseType" />
+        <EntityTypeShape EntityType="IMSModel.tblItem" Width="1.5" PointX="9.5" PointY="1" />
+        <AssociationConnector Association="IMSModel.FK_tblItem_tblHSNSAC" />
+        <AssociationConnector Association="IMSModel.FK_tblItem_tblItemType" />
+        <AssociationConnector Association="IMSModel.FK_tblItemLicenseDetails_tblItem" />
+        <EntityTypeShape EntityType="IMSModel.tblItemDetail" Width="1.5" PointX="15.75" PointY="1.375" />
+        <AssociationConnector Association="IMSModel.FK_tblItemDetails_tblItem" />
+        <AssociationConnector Association="IMSModel.FK_tblItemDetails_tblItemUnit" />
+        <AssociationConnector Association="IMSModel.FK_tblItemDetails_tblManufacturer" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

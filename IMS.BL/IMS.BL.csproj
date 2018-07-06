@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="AccountingMethodBL.cs" />
     <Compile Include="CityBL.cs" />
+    <Compile Include="CompanyBL.cs" />
     <Compile Include="CompanyTypeBL.cs" />
     <Compile Include="CountryBL.cs" />
     <Compile Include="CustomerTypeBL.cs" />
@@ -50,6 +51,7 @@
     <Compile Include="InvoiceStatusBL.cs" />
     <Compile Include="InvoiceTermBL.cs" />
     <Compile Include="InvoiceTypeBL.cs" />
+    <Compile Include="ItemBL.cs" />
     <Compile Include="ItemTypeBL.cs" />
     <Compile Include="ItemUnitBL.cs" />
     <Compile Include="LicenseTypeBL.cs" />

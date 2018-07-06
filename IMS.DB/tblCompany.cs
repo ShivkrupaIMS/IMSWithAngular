@@ -12,28 +12,43 @@ namespace IMS.DB
     using System;
     using System.Collections.Generic;
     
-    public partial class tblLicenseType
+    public partial class tblCompany
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public tblLicenseType()
+        public tblCompany()
         {
             this.tblCompanyLicenseDetails = new HashSet<tblCompanyLicenseDetail>();
-            this.tblItemLicenseDetails = new HashSet<tblItemLicenseDetail>();
         }
     
-        public int LicenseTypeId { get; set; }
-        public string LicenseType { get; set; }
-        public string Description { get; set; }
+        public int CompanyId { get; set; }
+        public int CompanyTypeId { get; set; }
+        public string CompanyName { get; set; }
+        public string GSTNo { get; set; }
+        public string Phone { get; set; }
+        public string Fax { get; set; }
+        public string Email { get; set; }
+        public string Address { get; set; }
+        public Nullable<int> CountryId { get; set; }
+        public Nullable<int> StateId { get; set; }
+        public string PinCode { get; set; }
+        public string PANNo { get; set; }
+        public string Website { get; set; }
+        public string ContactPerson { get; set; }
+        public string CINNo { get; set; }
+        public Nullable<System.DateTime> FYStartDate { get; set; }
+        public Nullable<System.DateTime> BookStartDate { get; set; }
+        public string Branch { get; set; }
         public bool IsActive { get; set; }
         public string CreatedBy { get; set; }
         public Nullable<System.DateTime> CreatedDate { get; set; }
         public string ModifiedBy { get; set; }
         public Nullable<System.DateTime> ModifiedDate { get; set; }
-        public string ShortName { get; set; }
+        public string MobileNo { get; set; }
     
+        public virtual tblCompanyType tblCompanyType { get; set; }
+        public virtual tblCountry tblCountry { get; set; }
+        public virtual tblState tblState { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblCompanyLicenseDetail> tblCompanyLicenseDetails { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblItemLicenseDetail> tblItemLicenseDetails { get; set; }
     }
 }

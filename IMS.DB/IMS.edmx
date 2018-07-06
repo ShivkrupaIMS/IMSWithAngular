@@ -30,6 +30,51 @@
           <Property Name="ModifiedBy" Type="varchar" MaxLength="255" />
           <Property Name="ModifiedDate" Type="datetime" />
         </EntityType>
+        <EntityType Name="tblCompany">
+          <Key>
+            <PropertyRef Name="CompanyId" />
+          </Key>
+          <Property Name="CompanyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CompanyTypeId" Type="int" Nullable="false" />
+          <Property Name="CompanyName" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="GSTNo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Phone" Type="varchar" MaxLength="50" />
+          <Property Name="Fax" Type="varchar" MaxLength="50" />
+          <Property Name="Email" Type="varchar" MaxLength="50" />
+          <Property Name="Address" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="CountryId" Type="int" />
+          <Property Name="StateId" Type="int" />
+          <Property Name="PinCode" Type="varchar" MaxLength="50" />
+          <Property Name="PANNo" Type="varchar" MaxLength="50" />
+          <Property Name="Website" Type="varchar" MaxLength="50" />
+          <Property Name="ContactPerson" Type="varchar" MaxLength="255" />
+          <Property Name="CINNo" Type="varchar" MaxLength="50" />
+          <Property Name="FYStartDate" Type="datetime" />
+          <Property Name="BookStartDate" Type="datetime" />
+          <Property Name="Branch" Type="varchar" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="255" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="255" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="MobileNo" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblCompanyLicenseDetails">
+          <Key>
+            <PropertyRef Name="CompanyLicenseDetailsId" />
+          </Key>
+          <Property Name="CompanyLicenseDetailsId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LicenseTypeId" Type="int" Nullable="false" />
+          <Property Name="CompanyId" Type="int" Nullable="false" />
+          <Property Name="LicenseNo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ValidFrom" Type="datetime" />
+          <Property Name="ValidTo" Type="datetime" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="255" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="255" />
+          <Property Name="ModifiedDate" Type="datetime" />
+        </EntityType>
         <EntityType Name="tblCompanyType">
           <Key>
             <PropertyRef Name="CompanyTypeId" />
@@ -134,7 +179,7 @@
           </Key>
           <Property Name="ItemId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="HsnSacId" Type="int" Nullable="false" />
-          <Property Name="Name" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="ItemName" Type="varchar" MaxLength="255" Nullable="false" />
           <Property Name="Description" Type="varchar" MaxLength="1000" Nullable="false" />
           <Property Name="Comment" Type="varchar" MaxLength="1000" Nullable="false" />
           <Property Name="IsActive" Type="bit" Nullable="false" />
@@ -143,7 +188,7 @@
           <Property Name="CreatedDate" Type="datetime" />
           <Property Name="ModifiedBy" Type="varchar" MaxLength="255" />
           <Property Name="ModifiedDate" Type="datetime" />
-          <Property Name="Ingradient" Type="varchar" MaxLength="255" />
+          <Property Name="Ingredient" Type="varchar" MaxLength="255" />
           <Property Name="IGST" Type="float" Nullable="false" />
           <Property Name="CGST" Type="float" Nullable="false" />
           <Property Name="SGST" Type="float" Nullable="false" />
@@ -157,18 +202,32 @@
           <Property Name="Sku" Type="varchar" MaxLength="255" Nullable="false" />
           <Property Name="ItemUnitId" Type="int" Nullable="false" />
           <Property Name="PackageSize" Type="int" Nullable="false" />
-          <Property Name="PurchasePrice" Type="decimal" Precision="19" Scale="2" Nullable="false" />
-          <Property Name="SalePrice" Type="decimal" Precision="19" Scale="2" Nullable="false" />
+          <Property Name="PurchasePrice" Type="float" />
+          <Property Name="SalePrice" Type="float" />
           <Property Name="IsActive" Type="bit" Nullable="false" />
           <Property Name="CreatedBy" Type="varchar" MaxLength="255" />
           <Property Name="CreatedDate" Type="datetime" />
           <Property Name="ModifiedBy" Type="varchar" MaxLength="255" />
           <Property Name="ModifiedDate" Type="datetime" />
-          <Property Name="MRP" Type="decimal" Precision="19" Scale="2" Nullable="false" />
+          <Property Name="MRP" Type="float" />
           <Property Name="PackageWeight" Type="varchar" MaxLength="50" />
           <Property Name="ManufacturerId" Type="int" />
           <Property Name="MinQuantity" Type="int" />
-          <Property Name="Discount" Type="int" />
+          <Property Name="Discount" Type="float" />
+          <Property Name="Description" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="tblItemLicenseDetails">
+          <Key>
+            <PropertyRef Name="ItemLicenseDetailsId" />
+          </Key>
+          <Property Name="ItemLicenseDetailsId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LicenseTypeId" Type="int" Nullable="false" />
+          <Property Name="ItemId" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="255" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="255" />
+          <Property Name="ModifiedDate" Type="datetime" />
         </EntityType>
         <EntityType Name="tblItemType">
           <Key>
@@ -271,6 +330,66 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_tblCompany_tblCompanyType">
+          <End Role="tblCompanyType" Type="Self.tblCompanyType" Multiplicity="1" />
+          <End Role="tblCompany" Type="Self.tblCompany" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCompanyType">
+              <PropertyRef Name="CompanyTypeId" />
+            </Principal>
+            <Dependent Role="tblCompany">
+              <PropertyRef Name="CompanyTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblCompany_tblCountry">
+          <End Role="tblCountry" Type="Self.tblCountry" Multiplicity="0..1" />
+          <End Role="tblCompany" Type="Self.tblCompany" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCountry">
+              <PropertyRef Name="CountryId" />
+            </Principal>
+            <Dependent Role="tblCompany">
+              <PropertyRef Name="CountryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblCompany_tblState">
+          <End Role="tblState" Type="Self.tblState" Multiplicity="0..1" />
+          <End Role="tblCompany" Type="Self.tblCompany" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblState">
+              <PropertyRef Name="StateId" />
+            </Principal>
+            <Dependent Role="tblCompany">
+              <PropertyRef Name="StateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblCompanyLicenseDetails_tblCompany">
+          <End Role="tblCompany" Type="Self.tblCompany" Multiplicity="1" />
+          <End Role="tblCompanyLicenseDetails" Type="Self.tblCompanyLicenseDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCompany">
+              <PropertyRef Name="CompanyId" />
+            </Principal>
+            <Dependent Role="tblCompanyLicenseDetails">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblCompanyLicenseDetails_tblLicenseType">
+          <End Role="tblLicenseType" Type="Self.tblLicenseType" Multiplicity="1" />
+          <End Role="tblCompanyLicenseDetails" Type="Self.tblCompanyLicenseDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblLicenseType">
+              <PropertyRef Name="LicenseTypeId" />
+            </Principal>
+            <Dependent Role="tblCompanyLicenseDetails">
+              <PropertyRef Name="LicenseTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_tblItem_tblHSNSAC">
           <End Role="tblHSNSAC" Type="Self.tblHSNSAC" Multiplicity="1" />
           <End Role="tblItem" Type="Self.tblItem" Multiplicity="*" />
@@ -319,6 +438,42 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_tblItemDetails_tblManufacturer">
+          <End Role="tblManufacturer" Type="Self.tblManufacturer" Multiplicity="0..1" />
+          <End Role="tblItemDetails" Type="Self.tblItemDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblManufacturer">
+              <PropertyRef Name="ManufacturerId" />
+            </Principal>
+            <Dependent Role="tblItemDetails">
+              <PropertyRef Name="ManufacturerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblItemLicenseDetails_tblItem">
+          <End Role="tblItem" Type="Self.tblItem" Multiplicity="1" />
+          <End Role="tblItemLicenseDetails" Type="Self.tblItemLicenseDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblItem">
+              <PropertyRef Name="ItemId" />
+            </Principal>
+            <Dependent Role="tblItemLicenseDetails">
+              <PropertyRef Name="ItemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblItemLicenseDetails_tblLicenseType">
+          <End Role="tblLicenseType" Type="Self.tblLicenseType" Multiplicity="1" />
+          <End Role="tblItemLicenseDetails" Type="Self.tblItemLicenseDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblLicenseType">
+              <PropertyRef Name="LicenseTypeId" />
+            </Principal>
+            <Dependent Role="tblItemLicenseDetails">
+              <PropertyRef Name="LicenseTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_tblState_tblCountry">
           <End Role="tblCountry" Type="Self.tblCountry" Multiplicity="0..1" />
           <End Role="tblState" Type="Self.tblState" Multiplicity="*" />
@@ -334,6 +489,8 @@
         <EntityContainer Name="IMSModelStoreContainer">
           <EntitySet Name="tblAccountingMethod" EntityType="Self.tblAccountingMethod" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblCity" EntityType="Self.tblCity" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblCompany" EntityType="Self.tblCompany" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblCompanyLicenseDetails" EntityType="Self.tblCompanyLicenseDetails" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblCompanyType" EntityType="Self.tblCompanyType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblCountry" EntityType="Self.tblCountry" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblCustomerType" EntityType="Self.tblCustomerType" Schema="dbo" store:Type="Tables" />
@@ -344,6 +501,7 @@
           <EntitySet Name="tblInvoiceType" EntityType="Self.tblInvoiceType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblItem" EntityType="Self.tblItem" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblItemDetails" EntityType="Self.tblItemDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblItemLicenseDetails" EntityType="Self.tblItemLicenseDetails" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblItemType" EntityType="Self.tblItemType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblItemUnit" EntityType="Self.tblItemUnit" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblLicenseType" EntityType="Self.tblLicenseType" Schema="dbo" store:Type="Tables" />
@@ -354,6 +512,26 @@
           <AssociationSet Name="FK_tblCity_tblState" Association="Self.FK_tblCity_tblState">
             <End Role="tblState" EntitySet="tblState" />
             <End Role="tblCity" EntitySet="tblCity" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblCompany_tblCompanyType" Association="Self.FK_tblCompany_tblCompanyType">
+            <End Role="tblCompanyType" EntitySet="tblCompanyType" />
+            <End Role="tblCompany" EntitySet="tblCompany" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblCompany_tblCountry" Association="Self.FK_tblCompany_tblCountry">
+            <End Role="tblCountry" EntitySet="tblCountry" />
+            <End Role="tblCompany" EntitySet="tblCompany" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblCompany_tblState" Association="Self.FK_tblCompany_tblState">
+            <End Role="tblState" EntitySet="tblState" />
+            <End Role="tblCompany" EntitySet="tblCompany" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblCompanyLicenseDetails_tblCompany" Association="Self.FK_tblCompanyLicenseDetails_tblCompany">
+            <End Role="tblCompany" EntitySet="tblCompany" />
+            <End Role="tblCompanyLicenseDetails" EntitySet="tblCompanyLicenseDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblCompanyLicenseDetails_tblLicenseType" Association="Self.FK_tblCompanyLicenseDetails_tblLicenseType">
+            <End Role="tblLicenseType" EntitySet="tblLicenseType" />
+            <End Role="tblCompanyLicenseDetails" EntitySet="tblCompanyLicenseDetails" />
           </AssociationSet>
           <AssociationSet Name="FK_tblItem_tblHSNSAC" Association="Self.FK_tblItem_tblHSNSAC">
             <End Role="tblHSNSAC" EntitySet="tblHSNSAC" />
@@ -370,6 +548,18 @@
           <AssociationSet Name="FK_tblItemDetails_tblItemUnit" Association="Self.FK_tblItemDetails_tblItemUnit">
             <End Role="tblItemUnit" EntitySet="tblItemUnit" />
             <End Role="tblItemDetails" EntitySet="tblItemDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblItemDetails_tblManufacturer" Association="Self.FK_tblItemDetails_tblManufacturer">
+            <End Role="tblManufacturer" EntitySet="tblManufacturer" />
+            <End Role="tblItemDetails" EntitySet="tblItemDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblItemLicenseDetails_tblItem" Association="Self.FK_tblItemLicenseDetails_tblItem">
+            <End Role="tblItem" EntitySet="tblItem" />
+            <End Role="tblItemLicenseDetails" EntitySet="tblItemLicenseDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblItemLicenseDetails_tblLicenseType" Association="Self.FK_tblItemLicenseDetails_tblLicenseType">
+            <End Role="tblLicenseType" EntitySet="tblLicenseType" />
+            <End Role="tblItemLicenseDetails" EntitySet="tblItemLicenseDetails" />
           </AssociationSet>
           <AssociationSet Name="FK_tblState_tblCountry" Association="Self.FK_tblState_tblCountry">
             <End Role="tblCountry" EntitySet="tblCountry" />
@@ -393,6 +583,7 @@
           <Property Name="ModifiedBy" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
           <NavigationProperty Name="tblStates" Relationship="IMSModel.FK_tblState_tblCountry" FromRole="tblCountry" ToRole="tblState" />
+          <NavigationProperty Name="tblCompanies" Relationship="IMSModel.FK_tblCompany_tblCountry" FromRole="tblCountry" ToRole="tblCompany" />
         </EntityType>
         <EntityContainer Name="IMSEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="tblCountries" EntityType="Self.tblCountry" />
@@ -414,12 +605,40 @@
           <EntitySet Name="tblCustomerTypes" EntityType="IMSModel.tblCustomerType" />
           <EntitySet Name="tblGSTRegistrationTypes" EntityType="IMSModel.tblGSTRegistrationType" />
           <EntitySet Name="tblInvoiceStatuses" EntityType="IMSModel.tblInvoiceStatuses" />
-          <EntitySet Name="tblItems" EntityType="IMSModel.tblItem" />
-          <EntitySet Name="tblItemDetails" EntityType="IMSModel.tblItemDetail" />
           <EntitySet Name="tblLicenseTypes" EntityType="IMSModel.tblLicenseType" />
           <EntitySet Name="tblManufacturers" EntityType="IMSModel.tblManufacturer" />
           <EntitySet Name="tblSupplierTypes" EntityType="IMSModel.tblSupplierType" />
           <EntitySet Name="tblTaxSlabs" EntityType="IMSModel.tblTaxSlab" />
+          <EntitySet Name="tblInvoiceTerms" EntityType="IMSModel.tblInvoiceTerm" />
+          <EntitySet Name="tblInvoiceTypes" EntityType="IMSModel.tblInvoiceType" />
+          <EntitySet Name="tblCompanyLicenseDetails" EntityType="IMSModel.tblCompanyLicenseDetail" />
+          <AssociationSet Name="FK_tblCompanyLicenseDetails_tblLicenseType" Association="IMSModel.FK_tblCompanyLicenseDetails_tblLicenseType">
+            <End Role="tblLicenseType" EntitySet="tblLicenseTypes" />
+            <End Role="tblCompanyLicenseDetail" EntitySet="tblCompanyLicenseDetails" />
+          </AssociationSet>
+          <EntitySet Name="tblCompanies" EntityType="IMSModel.tblCompany" />
+          <AssociationSet Name="FK_tblCompany_tblCompanyType" Association="IMSModel.FK_tblCompany_tblCompanyType">
+            <End Role="tblCompanyType" EntitySet="tblCompanyTypes" />
+            <End Role="tblCompany" EntitySet="tblCompanies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblCompany_tblCountry" Association="IMSModel.FK_tblCompany_tblCountry">
+            <End Role="tblCountry" EntitySet="tblCountries" />
+            <End Role="tblCompany" EntitySet="tblCompanies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblCompany_tblState" Association="IMSModel.FK_tblCompany_tblState">
+            <End Role="tblState" EntitySet="tblStates" />
+            <End Role="tblCompany" EntitySet="tblCompanies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblCompanyLicenseDetails_tblCompany" Association="IMSModel.FK_tblCompanyLicenseDetails_tblCompany">
+            <End Role="tblCompany" EntitySet="tblCompanies" />
+            <End Role="tblCompanyLicenseDetail" EntitySet="tblCompanyLicenseDetails" />
+          </AssociationSet>
+          <EntitySet Name="tblItemLicenseDetails" EntityType="IMSModel.tblItemLicenseDetail" />
+          <AssociationSet Name="FK_tblItemLicenseDetails_tblLicenseType" Association="IMSModel.FK_tblItemLicenseDetails_tblLicenseType">
+            <End Role="tblLicenseType" EntitySet="tblLicenseTypes" />
+            <End Role="tblItemLicenseDetail" EntitySet="tblItemLicenseDetails" />
+          </AssociationSet>
+          <EntitySet Name="tblItems" EntityType="IMSModel.tblItem" />
           <AssociationSet Name="FK_tblItem_tblHSNSAC" Association="IMSModel.FK_tblItem_tblHSNSAC">
             <End Role="tblHSNSAC" EntitySet="tblHSNSACs" />
             <End Role="tblItem" EntitySet="tblItems" />
@@ -428,6 +647,11 @@
             <End Role="tblItemType" EntitySet="tblItemTypes" />
             <End Role="tblItem" EntitySet="tblItems" />
           </AssociationSet>
+          <AssociationSet Name="FK_tblItemLicenseDetails_tblItem" Association="IMSModel.FK_tblItemLicenseDetails_tblItem">
+            <End Role="tblItem" EntitySet="tblItems" />
+            <End Role="tblItemLicenseDetail" EntitySet="tblItemLicenseDetails" />
+          </AssociationSet>
+          <EntitySet Name="tblItemDetails" EntityType="IMSModel.tblItemDetail" />
           <AssociationSet Name="FK_tblItemDetails_tblItem" Association="IMSModel.FK_tblItemDetails_tblItem">
             <End Role="tblItem" EntitySet="tblItems" />
             <End Role="tblItemDetail" EntitySet="tblItemDetails" />
@@ -436,8 +660,10 @@
             <End Role="tblItemUnit" EntitySet="tblItemUnits" />
             <End Role="tblItemDetail" EntitySet="tblItemDetails" />
           </AssociationSet>
-          <EntitySet Name="tblInvoiceTerms" EntityType="IMSModel.tblInvoiceTerm" />
-          <EntitySet Name="tblInvoiceTypes" EntityType="IMSModel.tblInvoiceType" />
+          <AssociationSet Name="FK_tblItemDetails_tblManufacturer" Association="IMSModel.FK_tblItemDetails_tblManufacturer">
+            <End Role="tblManufacturer" EntitySet="tblManufacturers" />
+            <End Role="tblItemDetail" EntitySet="tblItemDetails" />
+          </AssociationSet>
           </EntityContainer>
         <EntityType Name="tblState">
           <Key>
@@ -453,6 +679,7 @@
           <Property Name="CountryId" Type="Int32" />
           <NavigationProperty Name="tblCountry" Relationship="IMSModel.FK_tblState_tblCountry" FromRole="tblState" ToRole="tblCountry" />
           <NavigationProperty Name="tblCities" Relationship="IMSModel.FK_tblCity_tblState" FromRole="tblState" ToRole="tblCity" />
+          <NavigationProperty Name="tblCompanies" Relationship="IMSModel.FK_tblCompany_tblState" FromRole="tblState" ToRole="tblCompany" />
         </EntityType>
         <Association Name="FK_tblState_tblCountry">
           <End Type="IMSModel.tblCountry" Role="tblCountry" Multiplicity="0..1" />
@@ -503,6 +730,7 @@
           <Property Name="CreatedDate" Type="DateTime" Precision="3" />
           <Property Name="ModifiedBy" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tblCompanies" Relationship="IMSModel.FK_tblCompany_tblCompanyType" FromRole="tblCompanyType" ToRole="tblCompany" />
         </EntityType>
         <EntityType Name="tblItemType">
           <Key>
@@ -592,53 +820,6 @@
           <Property Name="ModifiedBy" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
         </EntityType>
-        <EntityType Name="tblItem">
-          <Key>
-            <PropertyRef Name="ItemId" />
-          </Key>
-          <Property Name="ItemId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="HsnSacId" Type="Int32" Nullable="false" />
-          <Property Name="Name" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="Description" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="false" />
-          <Property Name="Comment" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="false" />
-          <Property Name="IsActive" Type="Boolean" Nullable="false" />
-          <Property Name="ItemTypeId" Type="Int32" Nullable="false" />
-          <Property Name="CreatedBy" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
-          <Property Name="ModifiedBy" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
-          <Property Name="Ingradient" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="IGST" Type="Double" Nullable="false" />
-          <Property Name="CGST" Type="Double" Nullable="false" />
-          <Property Name="SGST" Type="Double" Nullable="false" />
-          <NavigationProperty Name="tblHSNSAC" Relationship="IMSModel.FK_tblItem_tblHSNSAC" FromRole="tblItem" ToRole="tblHSNSAC" />
-          <NavigationProperty Name="tblItemType" Relationship="IMSModel.FK_tblItem_tblItemType" FromRole="tblItem" ToRole="tblItemType" />
-          <NavigationProperty Name="tblItemDetails" Relationship="IMSModel.FK_tblItemDetails_tblItem" FromRole="tblItem" ToRole="tblItemDetail" />
-        </EntityType>
-        <EntityType Name="tblItemDetail">
-          <Key>
-            <PropertyRef Name="ItemDetailsId" />
-          </Key>
-          <Property Name="ItemDetailsId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ItemId" Type="Int32" Nullable="false" />
-          <Property Name="Sku" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="ItemUnitId" Type="Int32" Nullable="false" />
-          <Property Name="PackageSize" Type="Int32" Nullable="false" />
-          <Property Name="PurchasePrice" Type="Decimal" Nullable="false" Precision="19" Scale="2" />
-          <Property Name="SalePrice" Type="Decimal" Nullable="false" Precision="19" Scale="2" />
-          <Property Name="IsActive" Type="Boolean" Nullable="false" />
-          <Property Name="CreatedBy" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
-          <Property Name="ModifiedBy" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
-          <Property Name="MRP" Type="Decimal" Nullable="false" Precision="19" Scale="2" />
-          <Property Name="PackageWeight" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ManufacturerId" Type="Int32" />
-          <Property Name="MinQuantity" Type="Int32" />
-          <Property Name="Discount" Type="Int32" />
-          <NavigationProperty Name="tblItem" Relationship="IMSModel.FK_tblItemDetails_tblItem" FromRole="tblItemDetail" ToRole="tblItem" />
-          <NavigationProperty Name="tblItemUnit" Relationship="IMSModel.FK_tblItemDetails_tblItemUnit" FromRole="tblItemDetail" ToRole="tblItemUnit" />
-        </EntityType>
         <EntityType Name="tblLicenseType">
           <Key>
             <PropertyRef Name="LicenseTypeId" />
@@ -652,6 +833,8 @@
           <Property Name="ModifiedBy" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
           <Property Name="ShortName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tblCompanyLicenseDetails" Relationship="IMSModel.FK_tblCompanyLicenseDetails_tblLicenseType" FromRole="tblLicenseType" ToRole="tblCompanyLicenseDetail" />
+          <NavigationProperty Name="tblItemLicenseDetails" Relationship="IMSModel.FK_tblItemLicenseDetails_tblLicenseType" FromRole="tblLicenseType" ToRole="tblItemLicenseDetail" />
         </EntityType>
         <EntityType Name="tblManufacturer">
           <Key>
@@ -666,6 +849,7 @@
           <Property Name="ModifiedBy" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
           <Property Name="ShortName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tblItemDetails" Relationship="IMSModel.FK_tblItemDetails_tblManufacturer" FromRole="tblManufacturer" ToRole="tblItemDetail" />
         </EntityType>
         <EntityType Name="tblSupplierType">
           <Key>
@@ -691,54 +875,6 @@
           <Property Name="ModifiedBy" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
         </EntityType>
-        <Association Name="FK_tblItem_tblHSNSAC">
-          <End Type="IMSModel.tblHSNSAC" Role="tblHSNSAC" Multiplicity="1" />
-          <End Type="IMSModel.tblItem" Role="tblItem" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tblHSNSAC">
-              <PropertyRef Name="HSNSACId" />
-            </Principal>
-            <Dependent Role="tblItem">
-              <PropertyRef Name="HsnSacId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_tblItem_tblItemType">
-          <End Type="IMSModel.tblItemType" Role="tblItemType" Multiplicity="1" />
-          <End Type="IMSModel.tblItem" Role="tblItem" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tblItemType">
-              <PropertyRef Name="ItemTypeId" />
-            </Principal>
-            <Dependent Role="tblItem">
-              <PropertyRef Name="ItemTypeId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_tblItemDetails_tblItem">
-          <End Type="IMSModel.tblItem" Role="tblItem" Multiplicity="1" />
-          <End Type="IMSModel.tblItemDetail" Role="tblItemDetail" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tblItem">
-              <PropertyRef Name="ItemId" />
-            </Principal>
-            <Dependent Role="tblItemDetail">
-              <PropertyRef Name="ItemId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_tblItemDetails_tblItemUnit">
-          <End Type="IMSModel.tblItemUnit" Role="tblItemUnit" Multiplicity="1" />
-          <End Type="IMSModel.tblItemDetail" Role="tblItemDetail" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tblItemUnit">
-              <PropertyRef Name="ItemUnitId" />
-            </Principal>
-            <Dependent Role="tblItemDetail">
-              <PropertyRef Name="ItemUnitId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="tblInvoiceTerm">
           <Key>
             <PropertyRef Name="InvoiceTermId" />
@@ -763,6 +899,266 @@
           <Property Name="ModifiedBy" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
         </EntityType>
+        <EntityType Name="tblCompanyLicenseDetail">
+          <Key>
+            <PropertyRef Name="CompanyLicenseDetailsId" />
+          </Key>
+          <Property Name="CompanyLicenseDetailsId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LicenseTypeId" Type="Int32" Nullable="false" />
+          <Property Name="CompanyId" Type="Int32" Nullable="false" />
+          <Property Name="LicenseNo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ValidFrom" Type="DateTime" Precision="3" />
+          <Property Name="ValidTo" Type="DateTime" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tblLicenseType" Relationship="IMSModel.FK_tblCompanyLicenseDetails_tblLicenseType" FromRole="tblCompanyLicenseDetail" ToRole="tblLicenseType" />
+          <NavigationProperty Name="tblCompany" Relationship="IMSModel.FK_tblCompanyLicenseDetails_tblCompany" FromRole="tblCompanyLicenseDetail" ToRole="tblCompany" />
+        </EntityType>
+        <Association Name="FK_tblCompanyLicenseDetails_tblLicenseType">
+          <End Type="IMSModel.tblLicenseType" Role="tblLicenseType" Multiplicity="1" />
+          <End Type="IMSModel.tblCompanyLicenseDetail" Role="tblCompanyLicenseDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblLicenseType">
+              <PropertyRef Name="LicenseTypeId" />
+            </Principal>
+            <Dependent Role="tblCompanyLicenseDetail">
+              <PropertyRef Name="LicenseTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="tblCompany">
+          <Key>
+            <PropertyRef Name="CompanyId" />
+          </Key>
+          <Property Name="CompanyId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CompanyTypeId" Type="Int32" Nullable="false" />
+          <Property Name="CompanyName" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="GSTNo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Fax" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="CountryId" Type="Int32" />
+          <Property Name="StateId" Type="Int32" />
+          <Property Name="PinCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PANNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Website" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ContactPerson" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="CINNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FYStartDate" Type="DateTime" Precision="3" />
+          <Property Name="BookStartDate" Type="DateTime" Precision="3" />
+          <Property Name="Branch" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="MobileNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tblCompanyType" Relationship="IMSModel.FK_tblCompany_tblCompanyType" FromRole="tblCompany" ToRole="tblCompanyType" />
+          <NavigationProperty Name="tblCountry" Relationship="IMSModel.FK_tblCompany_tblCountry" FromRole="tblCompany" ToRole="tblCountry" />
+          <NavigationProperty Name="tblState" Relationship="IMSModel.FK_tblCompany_tblState" FromRole="tblCompany" ToRole="tblState" />
+          <NavigationProperty Name="tblCompanyLicenseDetails" Relationship="IMSModel.FK_tblCompanyLicenseDetails_tblCompany" FromRole="tblCompany" ToRole="tblCompanyLicenseDetail" />
+        </EntityType>
+        <Association Name="FK_tblCompany_tblCompanyType">
+          <End Type="IMSModel.tblCompanyType" Role="tblCompanyType" Multiplicity="1" />
+          <End Type="IMSModel.tblCompany" Role="tblCompany" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCompanyType">
+              <PropertyRef Name="CompanyTypeId" />
+            </Principal>
+            <Dependent Role="tblCompany">
+              <PropertyRef Name="CompanyTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblCompany_tblCountry">
+          <End Type="IMSModel.tblCountry" Role="tblCountry" Multiplicity="0..1" />
+          <End Type="IMSModel.tblCompany" Role="tblCompany" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCountry">
+              <PropertyRef Name="CountryId" />
+            </Principal>
+            <Dependent Role="tblCompany">
+              <PropertyRef Name="CountryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblCompany_tblState">
+          <End Type="IMSModel.tblState" Role="tblState" Multiplicity="0..1" />
+          <End Type="IMSModel.tblCompany" Role="tblCompany" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblState">
+              <PropertyRef Name="StateId" />
+            </Principal>
+            <Dependent Role="tblCompany">
+              <PropertyRef Name="StateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblCompanyLicenseDetails_tblCompany">
+          <End Type="IMSModel.tblCompany" Role="tblCompany" Multiplicity="1" />
+          <End Type="IMSModel.tblCompanyLicenseDetail" Role="tblCompanyLicenseDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCompany">
+              <PropertyRef Name="CompanyId" />
+            </Principal>
+            <Dependent Role="tblCompanyLicenseDetail">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="tblItemLicenseDetail">
+          <Key>
+            <PropertyRef Name="ItemLicenseDetailsId" />
+          </Key>
+          <Property Name="ItemLicenseDetailsId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LicenseTypeId" Type="Int32" Nullable="false" />
+          <Property Name="ItemId" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tblLicenseType" Relationship="IMSModel.FK_tblItemLicenseDetails_tblLicenseType" FromRole="tblItemLicenseDetail" ToRole="tblLicenseType" />
+          <NavigationProperty Name="tblItem" Relationship="IMSModel.FK_tblItemLicenseDetails_tblItem" FromRole="tblItemLicenseDetail" ToRole="tblItem" />
+        </EntityType>
+        <Association Name="FK_tblItemLicenseDetails_tblLicenseType">
+          <End Type="IMSModel.tblLicenseType" Role="tblLicenseType" Multiplicity="1" />
+          <End Type="IMSModel.tblItemLicenseDetail" Role="tblItemLicenseDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblLicenseType">
+              <PropertyRef Name="LicenseTypeId" />
+            </Principal>
+            <Dependent Role="tblItemLicenseDetail">
+              <PropertyRef Name="LicenseTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="tblItem">
+          <Key>
+            <PropertyRef Name="ItemId" />
+          </Key>
+          <Property Name="ItemId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HsnSacId" Type="Int32" Nullable="false" />
+          <Property Name="ItemName" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="Comment" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="ItemTypeId" Type="Int32" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="Ingredient" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="IGST" Type="Double" Nullable="false" />
+          <Property Name="CGST" Type="Double" Nullable="false" />
+          <Property Name="SGST" Type="Double" Nullable="false" />
+          <NavigationProperty Name="tblHSNSAC" Relationship="IMSModel.FK_tblItem_tblHSNSAC" FromRole="tblItem" ToRole="tblHSNSAC" />
+          <NavigationProperty Name="tblItemType" Relationship="IMSModel.FK_tblItem_tblItemType" FromRole="tblItem" ToRole="tblItemType" />
+          <NavigationProperty Name="tblItemLicenseDetails" Relationship="IMSModel.FK_tblItemLicenseDetails_tblItem" FromRole="tblItem" ToRole="tblItemLicenseDetail" />
+          <NavigationProperty Name="tblItemDetails" Relationship="IMSModel.FK_tblItemDetails_tblItem" FromRole="tblItem" ToRole="tblItemDetail" />
+        </EntityType>
+        <Association Name="FK_tblItem_tblHSNSAC">
+          <End Type="IMSModel.tblHSNSAC" Role="tblHSNSAC" Multiplicity="1" />
+          <End Type="IMSModel.tblItem" Role="tblItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblHSNSAC">
+              <PropertyRef Name="HSNSACId" />
+            </Principal>
+            <Dependent Role="tblItem">
+              <PropertyRef Name="HsnSacId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblItem_tblItemType">
+          <End Type="IMSModel.tblItemType" Role="tblItemType" Multiplicity="1" />
+          <End Type="IMSModel.tblItem" Role="tblItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblItemType">
+              <PropertyRef Name="ItemTypeId" />
+            </Principal>
+            <Dependent Role="tblItem">
+              <PropertyRef Name="ItemTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblItemLicenseDetails_tblItem">
+          <End Type="IMSModel.tblItem" Role="tblItem" Multiplicity="1" />
+          <End Type="IMSModel.tblItemLicenseDetail" Role="tblItemLicenseDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblItem">
+              <PropertyRef Name="ItemId" />
+            </Principal>
+            <Dependent Role="tblItemLicenseDetail">
+              <PropertyRef Name="ItemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="tblItemDetail">
+          <Key>
+            <PropertyRef Name="ItemDetailsId" />
+          </Key>
+          <Property Name="ItemDetailsId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ItemId" Type="Int32" Nullable="false" />
+          <Property Name="Sku" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ItemUnitId" Type="Int32" Nullable="false" />
+          <Property Name="PackageSize" Type="Int32" Nullable="false" />
+          <Property Name="PurchasePrice" Type="Double" />
+          <Property Name="SalePrice" Type="Double" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="MRP" Type="Double" />
+          <Property Name="PackageWeight" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ManufacturerId" Type="Int32" />
+          <Property Name="MinQuantity" Type="Int32" />
+          <Property Name="Discount" Type="Double" />
+          <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tblItem" Relationship="IMSModel.FK_tblItemDetails_tblItem" FromRole="tblItemDetail" ToRole="tblItem" />
+          <NavigationProperty Name="tblItemUnit" Relationship="IMSModel.FK_tblItemDetails_tblItemUnit" FromRole="tblItemDetail" ToRole="tblItemUnit" />
+          <NavigationProperty Name="tblManufacturer" Relationship="IMSModel.FK_tblItemDetails_tblManufacturer" FromRole="tblItemDetail" ToRole="tblManufacturer" />
+        </EntityType>
+        <Association Name="FK_tblItemDetails_tblItem">
+          <End Type="IMSModel.tblItem" Role="tblItem" Multiplicity="1" />
+          <End Type="IMSModel.tblItemDetail" Role="tblItemDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblItem">
+              <PropertyRef Name="ItemId" />
+            </Principal>
+            <Dependent Role="tblItemDetail">
+              <PropertyRef Name="ItemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblItemDetails_tblItemUnit">
+          <End Type="IMSModel.tblItemUnit" Role="tblItemUnit" Multiplicity="1" />
+          <End Type="IMSModel.tblItemDetail" Role="tblItemDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblItemUnit">
+              <PropertyRef Name="ItemUnitId" />
+            </Principal>
+            <Dependent Role="tblItemDetail">
+              <PropertyRef Name="ItemUnitId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblItemDetails_tblManufacturer">
+          <End Type="IMSModel.tblManufacturer" Role="tblManufacturer" Multiplicity="0..1" />
+          <End Type="IMSModel.tblItemDetail" Role="tblItemDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblManufacturer">
+              <PropertyRef Name="ManufacturerId" />
+            </Principal>
+            <Dependent Role="tblItemDetail">
+              <PropertyRef Name="ManufacturerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -916,50 +1312,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="tblItems">
-            <EntityTypeMapping TypeName="IMSModel.tblItem">
-              <MappingFragment StoreEntitySet="tblItem">
-                <ScalarProperty Name="SGST" ColumnName="SGST" />
-                <ScalarProperty Name="CGST" ColumnName="CGST" />
-                <ScalarProperty Name="IGST" ColumnName="IGST" />
-                <ScalarProperty Name="Ingradient" ColumnName="Ingradient" />
-                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
-                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
-                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-                <ScalarProperty Name="ItemTypeId" ColumnName="ItemTypeId" />
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="Comment" ColumnName="Comment" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="HsnSacId" ColumnName="HsnSacId" />
-                <ScalarProperty Name="ItemId" ColumnName="ItemId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tblItemDetails">
-            <EntityTypeMapping TypeName="IMSModel.tblItemDetail">
-              <MappingFragment StoreEntitySet="tblItemDetails">
-                <ScalarProperty Name="Discount" ColumnName="Discount" />
-                <ScalarProperty Name="MinQuantity" ColumnName="MinQuantity" />
-                <ScalarProperty Name="ManufacturerId" ColumnName="ManufacturerId" />
-                <ScalarProperty Name="PackageWeight" ColumnName="PackageWeight" />
-                <ScalarProperty Name="MRP" ColumnName="MRP" />
-                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
-                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
-                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="SalePrice" ColumnName="SalePrice" />
-                <ScalarProperty Name="PurchasePrice" ColumnName="PurchasePrice" />
-                <ScalarProperty Name="PackageSize" ColumnName="PackageSize" />
-                <ScalarProperty Name="ItemUnitId" ColumnName="ItemUnitId" />
-                <ScalarProperty Name="Sku" ColumnName="Sku" />
-                <ScalarProperty Name="ItemId" ColumnName="ItemId" />
-                <ScalarProperty Name="ItemDetailsId" ColumnName="ItemDetailsId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="tblLicenseTypes">
             <EntityTypeMapping TypeName="IMSModel.tblLicenseType">
               <MappingFragment StoreEntitySet="tblLicenseType">
@@ -1039,6 +1391,112 @@
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
                 <ScalarProperty Name="InvoiceType" ColumnName="InvoiceType" />
                 <ScalarProperty Name="InvoiceTypeId" ColumnName="InvoiceTypeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblCompanyLicenseDetails">
+            <EntityTypeMapping TypeName="IMSModel.tblCompanyLicenseDetail">
+              <MappingFragment StoreEntitySet="tblCompanyLicenseDetails">
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="ValidTo" ColumnName="ValidTo" />
+                <ScalarProperty Name="ValidFrom" ColumnName="ValidFrom" />
+                <ScalarProperty Name="LicenseNo" ColumnName="LicenseNo" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="LicenseTypeId" ColumnName="LicenseTypeId" />
+                <ScalarProperty Name="CompanyLicenseDetailsId" ColumnName="CompanyLicenseDetailsId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblCompanies">
+            <EntityTypeMapping TypeName="IMSModel.tblCompany">
+              <MappingFragment StoreEntitySet="tblCompany">
+                <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Branch" ColumnName="Branch" />
+                <ScalarProperty Name="BookStartDate" ColumnName="BookStartDate" />
+                <ScalarProperty Name="FYStartDate" ColumnName="FYStartDate" />
+                <ScalarProperty Name="CINNo" ColumnName="CINNo" />
+                <ScalarProperty Name="ContactPerson" ColumnName="ContactPerson" />
+                <ScalarProperty Name="Website" ColumnName="Website" />
+                <ScalarProperty Name="PANNo" ColumnName="PANNo" />
+                <ScalarProperty Name="PinCode" ColumnName="PinCode" />
+                <ScalarProperty Name="StateId" ColumnName="StateId" />
+                <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Fax" ColumnName="Fax" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="GSTNo" ColumnName="GSTNo" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="CompanyTypeId" ColumnName="CompanyTypeId" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblItemLicenseDetails">
+            <EntityTypeMapping TypeName="IMSModel.tblItemLicenseDetail">
+              <MappingFragment StoreEntitySet="tblItemLicenseDetails">
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="ItemId" ColumnName="ItemId" />
+                <ScalarProperty Name="LicenseTypeId" ColumnName="LicenseTypeId" />
+                <ScalarProperty Name="ItemLicenseDetailsId" ColumnName="ItemLicenseDetailsId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblItems">
+            <EntityTypeMapping TypeName="IMSModel.tblItem">
+              <MappingFragment StoreEntitySet="tblItem">
+                <ScalarProperty Name="SGST" ColumnName="SGST" />
+                <ScalarProperty Name="CGST" ColumnName="CGST" />
+                <ScalarProperty Name="IGST" ColumnName="IGST" />
+                <ScalarProperty Name="Ingredient" ColumnName="Ingredient" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ItemTypeId" ColumnName="ItemTypeId" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+                <ScalarProperty Name="HsnSacId" ColumnName="HsnSacId" />
+                <ScalarProperty Name="ItemId" ColumnName="ItemId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblItemDetails">
+            <EntityTypeMapping TypeName="IMSModel.tblItemDetail">
+              <MappingFragment StoreEntitySet="tblItemDetails">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="MinQuantity" ColumnName="MinQuantity" />
+                <ScalarProperty Name="ManufacturerId" ColumnName="ManufacturerId" />
+                <ScalarProperty Name="PackageWeight" ColumnName="PackageWeight" />
+                <ScalarProperty Name="MRP" ColumnName="MRP" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="SalePrice" ColumnName="SalePrice" />
+                <ScalarProperty Name="PurchasePrice" ColumnName="PurchasePrice" />
+                <ScalarProperty Name="PackageSize" ColumnName="PackageSize" />
+                <ScalarProperty Name="ItemUnitId" ColumnName="ItemUnitId" />
+                <ScalarProperty Name="Sku" ColumnName="Sku" />
+                <ScalarProperty Name="ItemId" ColumnName="ItemId" />
+                <ScalarProperty Name="ItemDetailsId" ColumnName="ItemDetailsId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

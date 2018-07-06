@@ -73,6 +73,12 @@
     <Compile Include="tblCity.cs">
       <DependentUpon>IMS.tt</DependentUpon>
     </Compile>
+    <Compile Include="tblCompany.cs">
+      <DependentUpon>IMS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblCompanyLicenseDetail.cs">
+      <DependentUpon>IMS.tt</DependentUpon>
+    </Compile>
     <Compile Include="tblCompanyType.cs">
       <DependentUpon>IMS.tt</DependentUpon>
     </Compile>
@@ -101,6 +107,9 @@
       <DependentUpon>IMS.tt</DependentUpon>
     </Compile>
     <Compile Include="tblItemDetail.cs">
+      <DependentUpon>IMS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblItemLicenseDetail.cs">
       <DependentUpon>IMS.tt</DependentUpon>
     </Compile>
     <Compile Include="tblItemType.cs">

@@ -52,6 +52,7 @@
     <Compile Include="AccountingMethodDL.cs" />
     <Compile Include="BaseDL.cs" />
     <Compile Include="CityDL.cs" />
+    <Compile Include="CompanyDL.cs" />
     <Compile Include="CompanyTypeDL.cs" />
     <Compile Include="CountryDL.cs" />
     <Compile Include="CustomerTypeDL.cs" />
@@ -60,6 +61,7 @@
     <Compile Include="InvoiceStatusDL.cs" />
     <Compile Include="InvoiceTermDL.cs" />
     <Compile Include="InvoiceTypeDL.cs" />
+    <Compile Include="ItemDL.cs" />
     <Compile Include="ItemTypeDL.cs" />
     <Compile Include="ItemUnitDL.cs" />
     <Compile Include="LicenseTypeDL.cs" />

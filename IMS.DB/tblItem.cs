@@ -17,12 +17,13 @@ namespace IMS.DB
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public tblItem()
         {
+            this.tblItemLicenseDetails = new HashSet<tblItemLicenseDetail>();
             this.tblItemDetails = new HashSet<tblItemDetail>();
         }
     
         public int ItemId { get; set; }
         public int HsnSacId { get; set; }
-        public string Name { get; set; }
+        public string ItemName { get; set; }
         public string Description { get; set; }
         public string Comment { get; set; }
         public bool IsActive { get; set; }
@@ -31,13 +32,15 @@ namespace IMS.DB
         public Nullable<System.DateTime> CreatedDate { get; set; }
         public string ModifiedBy { get; set; }
         public Nullable<System.DateTime> ModifiedDate { get; set; }
-        public string Ingradient { get; set; }
+        public string Ingredient { get; set; }
         public double IGST { get; set; }
         public double CGST { get; set; }
         public double SGST { get; set; }
     
         public virtual tblHSNSAC tblHSNSAC { get; set; }
         public virtual tblItemType tblItemType { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tblItemLicenseDetail> tblItemLicenseDetails { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblItemDetail> tblItemDetails { get; set; }
     }
