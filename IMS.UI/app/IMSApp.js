@@ -126,6 +126,78 @@ var configFunction = function ($routeProvider, $httpProvider) {
             templateUrl: "/app/gstRegistrationType/gstRegistrationType.html",
             controller: "gstRegistrationTypeController"
         })
+        .when("/itemUnit", {
+            templateUrl: "/app/itemUnit/itemUnitList.html",
+            controller: "itemUnitController"
+        })
+        .when("/newItemUnit", {
+            templateUrl: "/app/itemUnit/itemUnit.html",
+            controller: "itemUnitController"
+        })
+        .when("/updateItemUnit/:itemUnitId", {
+            templateUrl: "/app/itemUnit/itemUnit.html",
+            controller: "itemUnitController"
+        })
+        .when("/companyType", {
+            templateUrl: "/app/companyType/companyTypeList.html",
+            controller: "companyTypeController"
+        })
+        .when("/newCompanyType", {
+            templateUrl: "/app/companyType/companyType.html",
+            controller: "companyTypeController"
+        })
+        .when("/updateCompanyType/:companyTypeId", {
+            templateUrl: "/app/companyType/companyType.html",
+            controller: "companyTypeController"
+        })
+        .when("/manufacturer", {
+            templateUrl: "/app/manufacturer/manufacturerList.html",
+            controller: "manufacturerController"
+        })
+        .when("/newManufacturer", {
+            templateUrl: "/app/manufacturer/manufacturer.html",
+            controller: "manufacturerController"
+        })
+        .when("/updateManufacturer/:manufacturerId", {
+            templateUrl: "/app/manufacturer/manufacturer.html",
+            controller: "manufacturerController"
+        })
+        .when("/supplierType", {
+            templateUrl: "/app/supplierType/supplierTypeList.html",
+            controller: "supplierTypeController"
+        })
+        .when("/newSupplierType", {
+            templateUrl: "/app/supplierType/supplierType.html",
+            controller: "supplierTypeController"
+        })
+        .when("/updateSupplierType/:supplierTypeId", {
+            templateUrl: "/app/supplierType/supplierType.html",
+            controller: "supplierTypeController"
+        })
+        .when("/accountingMethod", {
+            templateUrl: "/app/accountingMethod/accountingMethodList.html",
+            controller: "accountingMethodController"
+        })
+        .when("/newAccountingMethod", {
+            templateUrl: "/app/accountingMethod/accountingMethod.html",
+            controller: "accountingMethodController"
+        })
+        .when("/updateAccountingMethod/:accountingMethodId", {
+            templateUrl: "/app/accountingMethod/accountingMethod.html",
+            controller: "accountingMethodController"
+        })
+        .when("/invoiceType", {
+            templateUrl: "/app/invoiceType/invoiceTypeList.html",
+            controller: "invoiceTypeController"
+        })
+        .when("/newInvoiceType", {
+            templateUrl: "/app/invoiceType/invoiceType.html",
+            controller: "invoiceTypeController"
+        })
+        .when("/updateInvoiceType/:invoiceTypeId", {
+            templateUrl: "/app/invoiceType/invoiceType.html",
+            controller: "invoiceTypeController"
+        })
         .otherwise({
             redirectTo: "/home"
         });
