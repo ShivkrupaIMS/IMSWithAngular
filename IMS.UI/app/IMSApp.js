@@ -66,6 +66,30 @@ var configFunction = function ($routeProvider, $httpProvider) {
             templateUrl: "/app/licenseType/licenseType.html",
             controller: "licenseTypeController"
         })
+        .when("/taxSlab", {
+            templateUrl: "/app/taxSlab/taxSlabList.html",
+            controller: "taxSlabController"
+        })
+        .when("/newTaxSlab", {
+            templateUrl: "/app/taxSlab/taxSlab.html",
+            controller: "taxSlabController"
+        })
+        .when("/updateTaxSlab/:taxSlabId", {
+            templateUrl: "/app/taxSlab/taxSlab.html",
+            controller: "taxSlabController"
+        })
+        .when("/customerType", {
+            templateUrl: "/app/customerType/customerTypeList.html",
+            controller: "customerTypeController"
+        })
+        .when("/newCustomerType", {
+            templateUrl: "/app/customerType/customerType.html",
+            controller: "customerTypeController"
+        })
+        .when("/updateCustomerType/:customerTypeId", {
+            templateUrl: "/app/customerType/customerType.html",
+            controller: "customerTypeController"
+        })
         .when("/invoiceStatus", {
             templateUrl: "/app/invoiceStatus/invoiceStatusList.html",
             controller: "invoiceStatusController"
@@ -77,6 +101,18 @@ var configFunction = function ($routeProvider, $httpProvider) {
         .when("/updateInvoiceStatus/:invoiceStatusId", {
             templateUrl: "/app/invoiceStatus/invoiceStatus.html",
             controller: "invoiceStatusController"
+        })
+        .when("/invoiceTerm", {
+            templateUrl: "/app/invoiceTerm/invoiceTermList.html",
+            controller: "invoiceTermController"
+        })
+        .when("/newInvoiceTerm", {
+            templateUrl: "/app/invoiceTerm/invoiceTerm.html",
+            controller: "invoiceTermController"
+        })
+        .when("/updateInvoiceTerm/:invoiceTermId", {
+            templateUrl: "/app/invoiceTerm/invoiceTerm.html",
+            controller: "invoiceTermController"
         })
         .when("/gstRegistrationType", {
             templateUrl: "/app/gstRegistrationType/gstRegistrationTypeList.html",

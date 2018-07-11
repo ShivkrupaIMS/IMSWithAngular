@@ -61,6 +61,15 @@ namespace IMS.UI
                       "~/app/licenseType/licenseTypeService.js",
                       "~/app/licenseType/licenseTypeController.js",
                       "~/app/licenseType/licenseTypeDirective.js",
+                      "~/app/taxSlab/taxSlabService.js",
+                      "~/app/taxSlab/taxSlabController.js",
+                      "~/app/taxSlab/taxSlabDirective.js",
+                      "~/app/invoiceTerm/invoiceTermService.js",
+                      "~/app/invoiceTerm/invoiceTermController.js",
+                      "~/app/invoiceTerm/invoiceTermDirective.js",
+                      "~/app/customerType/customerTypeService.js",
+                      "~/app/customerType/customerTypeController.js",
+                      "~/app/customerType/customerTypeDirective.js",
                       "~/app/homeController.js"
                       ));
         }
