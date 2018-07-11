@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace IMS.BL
 {
-    class LicenseTypeBL : ILicenseTypeBL
+    public class LicenseTypeBL : ILicenseTypeBL
     {
         private ILicenseTypeDL _LicenseTypeDL;
 

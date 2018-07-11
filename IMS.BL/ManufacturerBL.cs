@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace IMS.BL
 {
-    class ManufacturerBL : IManufacturerBL
+    public class ManufacturerBL : IManufacturerBL
     {
         private IManufacturerDL _ManufacturerDL;
 

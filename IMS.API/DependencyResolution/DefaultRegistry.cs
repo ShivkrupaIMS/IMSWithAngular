@@ -48,6 +48,30 @@ namespace IMS.API.DependencyResolution {
             For<ICompanyTypeBL>().Use<CompanyTypeBL>();
             For<IHSNSACDL>().Use<HSNSACDL>();
             For<IHSNSACBL>().Use<HSNSACBL>();
+            For<ILicenseTypeBL>().Use<LicenseTypeBL>();
+            For<ILicenseTypeDL>().Use<LicenseTypeDL>();
+            For<IAccountingMethodBL>().Use<AccountingMethodBL>();
+            For<IAccountingMethodDL>().Use<AccountingMethodDL>();
+            For<ICompanyBL>().Use<CompanyBL>();
+            For<ICompanyDL>().Use<CompanyDL>();
+            For<ICustomerTypeBL>().Use<CustomerTypeBL>();
+            For<ICustomerTypeDL>().Use<CustomerTypeDL>();
+            For<IGSTRegistrationTypeBL>().Use<GSTRegistrationTypeBL>();
+            For<IGSTRegistrationTypeDL>().Use<GSTRegistrationTypeDL>();
+            For<IInvoiceStatusBL>().Use<InvoiceStatusBL>();
+            For<IInvoiceStatusDL>().Use<InvoiceStatusDL>();
+            For<IInvoiceTermBL>().Use<InvoiceTermBL>();
+            For<IInvoiceTermDL>().Use<InvoiceTermDL>();
+            For<IInvoiceTypeBL>().Use<InvoiceTypeBL>();
+            For<IInvoiceTypeDL>().Use<InvoiceTypeDL>();
+            For<IItemBL>().Use<ItemBL>();
+            For<IItemDL>().Use<ItemDL>();
+            For<IManufacturerBL>().Use<ManufacturerBL>();
+            For<IManufacturerDL>().Use<ManufacturerDL>();
+            For<ISupplierTypeBL>().Use<SupplierTypeBL>();
+            For<ISupplierTypeDL>().Use<SupplierTypeDL>();
+            For<ITaxSlabBL>().Use<TaxSlabBL>();
+            For<ITaxSlabDL>().Use<TaxSlabDL>();
         }
 
         #endregion
