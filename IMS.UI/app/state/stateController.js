@@ -5,6 +5,7 @@ function ($scope, $location, $window, $routeParams, stateService,countryService)
             $scope.loading = true;
             stateService.getStateList().then(function (data) {
                 $scope.stateList = data.data;
+                $scope.totalItems = $scope.stateList.length;
                  $scope.loading = false;
             }, function (data) {
                 alert("An Error has occured while getting state list! " + data);
@@ -112,4 +113,8 @@ function ($scope, $location, $window, $routeParams, stateService,countryService)
         $scope.cancelForm = function () {
             $window.history.back();
         };
+
+        $scope.currentPage = 1;
+        $scope.itemsPerPage = 2;
+        $scope.maxSize = 5;
     }]);

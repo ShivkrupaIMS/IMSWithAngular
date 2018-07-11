@@ -157,7 +157,34 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app\invoiceStatus\invoiceStatus.html" />
+    <Content Include="app\invoiceStatus\invoiceStatusController.js" />
+    <Content Include="app\invoiceStatus\invoiceStatusDirective.js" />
+    <Content Include="app\invoiceStatus\invoiceStatusList.html" />
+    <Content Include="app\invoiceStatus\invoiceStatusService.js" />
+    <Content Include="app\gstRegistrationType\gstRegistrationType.html" />
+    <Content Include="app\gstRegistrationType\gstRegistrationTypeController.js" />
+    <Content Include="app\gstRegistrationType\gstRegistrationTypeDirective.js" />
+    <Content Include="app\gstRegistrationType\gstRegistrationTypeList.html" />
+    <Content Include="app\gstRegistrationType\gstRegistrationTypeService.js" />
+    <Content Include="app\licenseType\licenseType.html" />
+    <Content Include="app\licenseType\licenseTypeController.js" />
+    <Content Include="app\licenseType\licenseTypeDirective.js" />
+    <Content Include="app\licenseType\licenseTypeList.html" />
+    <Content Include="app\licenseType\licenseTypeService.js" />
+    <Content Include="app\itemType\itemType.html" />
+    <Content Include="app\itemType\itemTypeController.js" />
+    <Content Include="app\itemType\itemTypeDirective.js" />
+    <Content Include="app\itemType\itemTypeList.html" />
+    <Content Include="app\itemType\itemTypeService.js" />
     <Content Include="app\loadingDirective.js" />
+    <Content Include="app\pagination.html" />
+    <Content Include="app\paginationDirective.js" />
+    <Content Include="app\city\city.html" />
+    <Content Include="app\city\cityController.js" />
+    <Content Include="app\city\cityDirective.js" />
+    <Content Include="app\city\cityList.html" />
+    <Content Include="app\city\cityService.js" />
     <Content Include="app\state\state.html" />
     <Content Include="app\state\stateController.js" />
     <Content Include="app\state\stateDirective.js" />
@@ -288,9 +315,6 @@
   <ItemGroup>
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
-  </ItemGroup>
-  <ItemGroup>
-    <TypeScriptCompile Include="Scripts\index.d.ts" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />

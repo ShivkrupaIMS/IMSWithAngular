@@ -27,7 +27,7 @@ namespace IMS.UI
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/ui-bootstrap-csp.css",
+                      //"~/Content/ui-bootstrap-csp.css",
                       "~/Content/font-awesome.css",
                       "~/Content/site.css"));
 
@@ -43,9 +43,24 @@ namespace IMS.UI
                       "~/app/country/countryService.js",
                       "~/app/country/countryController.js",
                       "~/app/country/countryDirective.js",
-                       "~/app/state/stateService.js",
+                      "~/app/state/stateService.js",
                       "~/app/state/stateController.js",
                       "~/app/state/stateDirective.js",
+                      "~/app/city/cityService.js",
+                      "~/app/city/cityController.js",
+                      "~/app/city/cityDirective.js",
+                      "~/app/itemType/itemTypeService.js",
+                      "~/app/itemType/itemTypeController.js",
+                      "~/app/itemType/itemTypeDirective.js",
+                      "~/app/invoiceStatus/invoiceStatusService.js",
+                      "~/app/invoiceStatus/invoiceStatusController.js",
+                      "~/app/invoiceStatus/invoiceStatusDirective.js",
+                       "~/app/gstRegistrationType/gstRegistrationTypeService.js",
+                      "~/app/gstRegistrationType/gstRegistrationTypeController.js",
+                      "~/app/gstRegistrationType/gstRegistrationTypeDirective.js",
+                      "~/app/licenseType/licenseTypeService.js",
+                      "~/app/licenseType/licenseTypeController.js",
+                      "~/app/licenseType/licenseTypeDirective.js",
                       "~/app/homeController.js"
                       ));
         }

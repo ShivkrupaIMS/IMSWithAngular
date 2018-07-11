@@ -1,0 +1,40 @@
+﻿<div class="modal-header">
+    <h3 class="modal-title">LicenseType</h3>
+</div>
+<div class="modal-body">
+    <form role="form" class="form-horizontal" name="licenseType">
+            <div class="form-group" ng-class="{'has-error': editableLicenseType.licenseType.$invalid}">
+                <label for="licenseType" class="col-sm-3 control-label">Item Type</label>
+                <div class="col-sm-9">
+                    <input type="text" name="licenseType" id="licenseType" class="form-control" ng-required="true" autocomplete="on" ng-model="editableLicenseType.licenseType" />
+                    <span class="help-block" ng-show="editableLicenseType.licenseType.$error.required">Item type is required</span>
+                </div>
+            </div>
+            <div class="form-group" ng-class="{'has-error': editableLicenseType.shortName.$invalid}">
+                <label for="shortName" class="col-sm-3 control-label">Short Name</label>
+                <div class="col-sm-9">
+                    <input type="text" name="shortName" id="shortName" class="form-control" ng-required="true" autocomplete="on" ng-model="editableLicenseType.shortName" />
+                    <span class="help-block" ng-show="editableLicenseType.shortName.$error.required">Short name is required</span>
+                </div>
+            </div>
+            <div class="form-group" ng-class="{'has-error': editableLicenseType.description.$invalid}">
+                <label for="description" class="col-sm-3 control-label">Description</label>
+                <div class="col-sm-9">
+                    <input type="text" name="description" id="description" class="form-control" ng-required="true" autocomplete="on" ng-model="editableLicenseType.description" />
+                    <span class="help-block" ng-show="editableLicenseType.description.$error.required">Description is required</span>
+                </div>
+            </div>
+        <div class="form-group">
+            <div class="checkbox col-sm-9 col-sm-offset-3" >
+                <label><input type="checkbox" name="isActive" value="isActive" ng-model="editableLicenseType.isActive" />Is Active</label>
+            </div>
+        </div>
+    </form>
+</div>
+<div>
+    <div class="col-sm-9  col-sm-offset-3">
+        <a class="btn btn-sm btn-secondary" ng-click="cancelForm()"><i class="fa fa-backward icon-style"></i><span class="icon-style"><strong>Cancel</strong></span></a>
+        <a class="btn btn-sm btn-primary" ng-click="submitForm()"><i class="fa fa-save icon-style"></i><span class="icon-style"><strong>Save</strong></span></a>
+
+    </div>
+</div>

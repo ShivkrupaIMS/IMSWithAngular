@@ -1,6 +1,6 @@
-﻿<div id="loadingDiv" ng-show="loading">
+﻿<!--<div id="loadingDiv" ng-show="loading">
     <img src="~/../images/loading.gif" class="ajax-loader" />
-</div>
+</div>-->
 <div class="container-fluid">
     <a class="btn btn-sm btn-primary" ng-click="addNewCountry()"><i class="fa fa-plus icon-style"></i><span class="icon-style"><strong>Add</strong></span></a>
     <br /><br />
@@ -15,7 +15,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="x in countryList">
+            <tr ng-repeat="x in countryList.slice(((currentPage-1)*itemsPerPage), ((currentPage)*itemsPerPage))">
                 <td>{{x.countryId}}</td>
                 <td>{{x.countryName}}</td>
                 <td>{{x.countryCode}}</td>
@@ -23,6 +23,8 @@
                 <td><a class="btn btn-sm btn-primary a-btn-slide-text" ng-click="updateCountry(x.countryId)"><i class="fa fa-edit icon-style"></i><span class="icon-style"><strong>Edit</strong></span></a></td>
                 <td><a class="btn btn-sm btn-primary a-btn-slide-text" ng-click="deleteCountry(x)"><i class="fa fa-remove icon-style"></i><span class="icon-style"><strong>Delete</strong></span></a></td>
             </tr>
+            
         </tbody>
     </table>
+    <ul uib-pagination total-items="totalItems" ng-model="currentPage" max-size="maxSize" class="pagination-sm" boundary-link-numbers="true" rotate="false" num-pages="numPages" items-per-page="itemsPerPage"></ul>
 </div>

@@ -1,0 +1,28 @@
+﻿<!--<div id="loadingDiv" ng-show="loading">
+    <img src="~/../images/loading.gif" class="ajax-loader" />
+</div>-->
+<div class="container-fluid">
+    <a class="btn btn-sm btn-primary" ng-click="addNewItemType()"><i class="fa fa-plus icon-style"></i><span class="icon-style"><strong>Add</strong></span></a>
+    <br /><br />
+    <table class="table table-responsive table-bordered table-striped table-hover">
+        <thead>
+            <tr>
+                <th width="10%">Id</th>
+                <th width="40%">Item Type</th>
+                <th width="10%">Is Active</th>
+                <th width="10%" colspan="2" style="text-align:center">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="x in itemTypeList.slice(((currentPage-1)*itemsPerPage), ((currentPage)*itemsPerPage))">
+                <td>{{x.itemTypeId}}</td>
+                <td>{{x.itemType}}</td>
+                <td>{{x.isActive}}</td>
+                <td><a class="btn btn-sm btn-primary a-btn-slide-text" ng-click="updateItemType(x.itemTypeId)"><i class="fa fa-edit icon-style"></i><span class="icon-style"><strong>Edit</strong></span></a></td>
+                <td><a class="btn btn-sm btn-primary a-btn-slide-text" ng-click="deleteItemType(x)"><i class="fa fa-remove icon-style"></i><span class="icon-style"><strong>Delete</strong></span></a></td>
+            </tr>
+            
+        </tbody>
+    </table>
+    <ul uib-pagination total-items="totalItems" ng-model="currentPage" max-size="maxSize" class="pagination-sm" boundary-link-numbers="true" rotate="false" num-pages="numPages" items-per-page="itemsPerPage"></ul>
+</div>

@@ -15,16 +15,18 @@
             </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="x in stateList">
+            <tr ng-repeat="x in stateList.slice(((currentPage-1)*itemsPerPage), ((currentPage)*itemsPerPage))">
                 <td>{{x.stateId}}</td>
                 <td>{{x.stateName}}</td>
                 <td>{{x.country.countryName}}</td>
                 <td>{{x.isActive}}</td>
-                <td><a class="btn btn-sm btn-primary a-btn-slide-text" ng-click="updateState(x.stateId)"><i class="fa fa-edit icon-style" ></i><span class="icon-style"><strong>Edit</strong></span></a></td>
+                <td><a class="btn btn-sm btn-primary a-btn-slide-text" ng-click="updateState(x.stateId)"><i class="fa fa-edit icon-style"></i><span class="icon-style"><strong>Edit</strong></span></a></td>
                 <td><a class="btn btn-sm btn-primary a-btn-slide-text" ng-click="deleteState(x)"><i class="fa fa-remove icon-style"></i><span class="icon-style"><strong>Delete</strong></span></a></td>
                 <!--<td><input type="button" class="btn btn-sm btn-primary" value="Edit" ng-click="updateState(x.stateId)"><i class="fa fa-remove"></i><span><strong>Edit</strong></span></input></td>
-                <td><input type="button" class="btn btn-sm btn-primary" value="Delete" ng-click="deleteState(x)" /></td>-->
+        <td><input type="button" class="btn btn-sm btn-primary" value="Delete" ng-click="deleteState(x)" /></td>-->
             </tr>
         </tbody>
     </table>
+    <ul uib-pagination total-items="totalItems" ng-model="currentPage" max-size="maxSize" class="pagination-sm" boundary-link-numbers="true" rotate="false" num-pages="numPages" items-per-page="itemsPerPage"></ul>
+
 </div>

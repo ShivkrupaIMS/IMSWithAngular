@@ -3,31 +3,28 @@
         if ($routeParams.countryId) {
             countryService.getCountry($routeParams.countryId).then(function (data) {
                 $scope.country = data.data;
-                //$scope.customers.push(data);
                 $scope.editableCountry = angular.copy($scope.country);
                 
             }, function (data) {
                 alert("An Error has occured while getting Country! " + data);
-                //$scope.loading = false;
             });
         }
         else {
             $scope.country = { countryId: 0 };
-            //$scope.countryList = getCountryList();
         }
 
         var getCountryList = function () {
-            $scope.loading = true;
+            //$scope.loading = true;
             countryService.getCountryList().then(function (data) {
                 $scope.countryList = data.data;
-                $scope.loading = false;
+                $scope.totalItems = $scope.countryList.length;
+                //$scope.loading = false;
             }, function (data) {
                 alert("An Error has occured while getting Country list! " + data);
             });
         }
 
         getCountryList();
-        //alert(JSON.stringify($scope.countryList));
 
         $scope.addNewCountry = function () {
             $location.path('/newCountry');
@@ -43,12 +40,10 @@
                 if (r == true) {
                     countryService.deleteCountry(id).then(function (data) {
                         alert("deleted Successfully!!");
-                        //$scope.customers.push(data);
                         getCountryList();
                         $location.path('/country');
                     }, function (data) {
                         alert("An Error has occured while deleting Country! " + data);
-                        //$scope.loading = false;
                     });
                 } else {
                     getCountryList();
@@ -58,25 +53,15 @@
             }
         };
 
-        //$scope.countryList = function () {
-        //    countryService.getCountryList().then(function (data) {
-        //        return data.data;
-        //    }, function (data) {
-        //        alert("An Error has occured while getting Country list! " + data);
-        //    });
-        //}
-        //alert($scope.country);
         $scope.submitForm = function () {
             
             if ($scope.editableCountry.countryId == undefined) {
                 countryService.insertCountry($scope.editableCountry).then(function (data) {
                     alert("Added Successfully!!");
-                    //$scope.customers.push(data);
                     getCountryList();
                     $location.path('/country');
                 },function (data) {
                     alert("An Error has occured while Adding Country! " + data);
-                    //$scope.loading = false;
                 });
             }
             else {
@@ -84,19 +69,36 @@
                     alert("Updated Successfully!!");
                     getCountryList();
                     $location.path('/country');
-                    //$scope.customers.push(data);
                 }, function (data) {
                     alert("An Error has occured while updating Country! " + data);
-                    //$scope.loading = false;
                 });
             }
 
             $scope.country = angular.copy($scope.editableCountry);
             
-            //$window.history.back();
         };
 
         $scope.cancelForm = function () {
             $window.history.back();
         };
+
+        //$scope.viewby = 2;
+        
+        $scope.currentPage = 1;
+        $scope.itemsPerPage =2;
+        $scope.maxSize = 5; //Number of pager buttons to show
+
+        //$scope.setPage = function (pageNo) {
+        //    $scope.currentPage = pageNo;
+        //};
+
+        //$scope.pageChanged = function () {
+        //    console.log('Page changed to: ' + $scope.currentPage);
+        //};
+
+        //$scope.setItemsPerPage = function (num) {
+        //    $scope.itemsPerPage = num;
+        //    $scope.currentPage = 1; //reset to first page
+        //}
+
     }]);

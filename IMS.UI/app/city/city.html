@@ -1,0 +1,32 @@
+﻿<div class="modal-header">
+    <h3 class="modal-title">City</h3>
+</div>
+<div class="modal-body">
+    <form role="form" class="form-horizontal" name="city">
+            <div class="form-group" ng-class="{'has-error': editableCity.cityName.$invalid}">
+                <label for="cityName" class="col-sm-3 control-label">Name</label>
+                <div class="col-sm-9">
+                    <input type="text" name="cityName" id="cityName" class="form-control" ng-required="true" autocomplete="on" ng-model="editableCity.cityName" />
+                    <span class="help-block" ng-show="editableCity.cityName.$error.required">Name is required</span>
+                </div>
+            </div>
+        <div class="form-group" ng-class="{'has-error': editableCity.state.$invalid}">
+            <label for="state" class="col-sm-3 control-label">Country</label>
+            <div class="col-sm-9" *ngIf="stateList">
+                <input type="text" ng-model="stateValue" uib-typeahead="state as state.stateName for state in stateList | filter:$viewValue | limitTo:10" class="form-control">
+                <span class="help-block" ng-show="editableCity.state.$error.required">State is required</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="checkbox col-sm-9 col-sm-offset-3" >
+                <label><input type="checkbox" name="isActive" value="isActive" ng-model="editableCity.isActive" />Is Active</label>
+            </div>
+        </div>
+    </form>
+</div>
+<div>
+    <div class="col-sm-9  col-sm-offset-3">
+        <a class="btn btn-sm btn-secondary" ng-click="cancelForm()"><i class="fa fa-backward icon-style"></i><span class="icon-style"><strong>Cancel</strong></span></a>
+        <a class="btn btn-sm btn-primary" ng-click="submitForm()"><i class="fa fa-save icon-style"></i><span class="icon-style"><strong>Save</strong></span></a>
+    </div>
+</div>
