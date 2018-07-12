@@ -1,0 +1,73 @@
+﻿<div class="modal-header">
+    <h3 class="modal-title">Company</h3>
+</div>
+<div class="modal-body">
+    <form role="form" class="form-horizontal" name="state">
+        <div class="form-group" ng-class="{'has-error': editableCompany.companyName.$invalid}">
+            <label for="companyName" class="col-sm-3 control-label">Name</label>
+            <div class="col-sm-9">
+                <input type="text" name="companyName" id="companyName" class="form-control" ng-required="true" autocomplete="on" ng-model="editableCompany.companyName" />
+                <span class="help-block" ng-show="editableCompany.companyName.$error.required">Name is required</span>
+            </div>
+        </div>
+        <div class="form-group" ng-class="{'has-error': editableCompany.companyType.$invalid}">
+            <label for="companyType" class="col-sm-3 control-label">Company Type</label>
+            <div class="col-sm-9" *ngIf="companyTypeList">
+                <input type="text" ng-model="companyTypeValue" uib-typeahead="companyType as companyType.companyType for companyType in companyTypeList | filter:$viewValue | limitTo:10" class="form-control">
+                <span class="help-block" ng-show="editableCompany.companyType.$error.required">Company Type is required</span>
+            </div>
+        </div>
+        <div class="form-group" ng-class="{'has-error': editableCompany.phone.$invalid}">
+            <label for="phone" class="col-sm-3 control-label">Phone</label>
+            <div class="col-sm-9">
+                <input type="text" name="phone" id="phone" class="form-control" ng-required="true" autocomplete="on" ng-model="editableCompany.phone" />
+                <span class="help-block" ng-show="editableCompany.phone.$error.required">Phone is required</span>
+            </div>
+        </div>
+        <div class="form-group" ng-class="{'has-error': editableCompany.fax.$invalid}">
+            <label for="fax" class="col-sm-3 control-label">Fax</label>
+            <div class="col-sm-9">
+                <input type="text" name="fax" id="fax" class="form-control"  autocomplete="on" ng-model="editableCompany.fax" />
+            </div>
+        </div>
+        <div class="form-group" ng-class="{'has-error': editableCompany.email.$invalid}">
+            <label for="email" class="col-sm-3 control-label">Email</label>
+            <div class="col-sm-9">
+                <input type="text" name="email" id="email" class="form-control" ng-required="true" autocomplete="on" ng-model="editableCompany.email" />
+                <span class="help-block" ng-show="editableCompany.email.$error.required">Email is required</span>
+            </div>
+        </div>
+        <div class="form-group" ng-class="{'has-error': editableCompany.address.$invalid}">
+            <label for="address" class="col-sm-3 control-label">Address</label>
+            <div class="col-sm-9">
+                <input type="text" name="address" id="address" class="form-control" ng-required="true" autocomplete="on" ng-model="editableCompany.address" />
+                <span class="help-block" ng-show="editableCompany.companyName.$error.required">Name is required</span>
+            </div>
+        </div>
+        <div class="form-group" ng-class="{'has-error': editableCompany.country.$invalid}">
+            <label for="country" class="col-sm-3 control-label">Country</label>
+            <div class="col-sm-9" *ngIf="countryList">
+                <input type="text" ng-model="countryValue" uib-typeahead="country as country.countryName for country in countryList | filter:$viewValue | limitTo:10" class="form-control">
+                <span class="help-block" ng-show="editableCompany.country.$error.required">Country is required</span>
+            </div>
+        </div>
+        <div class="form-group" ng-class="{'has-error': editableCompany.state.$invalid}">
+            <label for="state" class="col-sm-3 control-label">State</label>
+            <div class="col-sm-9" *ngIf="stateList">
+                <input type="text" ng-model="stateValue" uib-typeahead="state as state.stateName for state in stateList | filter:$viewValue | limitTo:10" class="form-control">
+                <span class="help-block" ng-show="editableCompany.state.$error.required">State is required</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="checkbox col-sm-9 col-sm-offset-3" >
+                <label><input type="checkbox" name="isActive" value="isActive" ng-model="editableCompany.isActive" />Is Active</label>
+            </div>
+        </div>
+    </form>
+</div>
+<div>
+    <div class="col-sm-9  col-sm-offset-3">
+        <a class="btn btn-sm btn-secondary" ng-click="cancelForm()"><i class="fa fa-backward icon-style"></i><span class="icon-style"><strong>Cancel</strong></span></a>
+        <a class="btn btn-sm btn-primary" ng-click="submitForm()"><i class="fa fa-save icon-style"></i><span class="icon-style"><strong>Save</strong></span></a>
+    </div>
+</div>

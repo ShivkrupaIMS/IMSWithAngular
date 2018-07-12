@@ -198,6 +198,30 @@ var configFunction = function ($routeProvider, $httpProvider) {
             templateUrl: "/app/invoiceType/invoiceType.html",
             controller: "invoiceTypeController"
         })
+        .when("/hsnSac", {
+            templateUrl: "/app/hsnSac/hsnSacList.html",
+            controller: "hsnSacController"
+        })
+        .when("/newHSNSAC", {
+            templateUrl: "/app/hsnSac/hsnSac.html",
+            controller: "hsnSacController"
+        })
+        .when("/updateHSNSAC/:hsnsacId", {
+            templateUrl: "/app/hsnSac/hsnSac.html",
+            controller: "hsnSacController"
+        })
+        .when("/company", {
+            templateUrl: "/app/company/companyList.html",
+            controller: "companyController"
+        })
+        .when("/newCompany", {
+            templateUrl: "/app/company/company.html",
+            controller: "companyController"
+        })
+        .when("/updateCompany/:hsnsacId", {
+            templateUrl: "/app/company/company.html",
+            controller: "companyController"
+        })
         .otherwise({
             redirectTo: "/home"
         });

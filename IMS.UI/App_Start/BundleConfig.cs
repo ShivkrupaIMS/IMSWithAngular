@@ -88,6 +88,12 @@ namespace IMS.UI
                       "~/app/invoiceType/invoiceTypeService.js",
                       "~/app/invoiceType/invoiceTypeController.js",
                       "~/app/invoiceType/invoiceTypeDirective.js",
+                      "~/app/hsnSac/hsnSacService.js",
+                      "~/app/hsnSac/hsnSacController.js",
+                      "~/app/hsnSac/hsnSacDirective.js",
+                      "~/app/company/companyService.js",
+                      "~/app/company/companyController.js",
+                      "~/app/company/companyDirective.js",
                       "~/app/homeController.js"
                       ));
         }

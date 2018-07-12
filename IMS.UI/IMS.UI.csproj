@@ -192,6 +192,16 @@
     <Content Include="app\invoiceType\invoiceTypeDirective.js" />
     <Content Include="app\invoiceType\invoiceTypeList.html" />
     <Content Include="app\invoiceType\invoiceTypeService.js" />
+    <Content Include="app\hsnSac\hsnSac.html" />
+    <Content Include="app\hsnSac\hsnSacController.js" />
+    <Content Include="app\hsnSac\hsnSacDirective.js" />
+    <Content Include="app\hsnSac\hsnSacList.html" />
+    <Content Include="app\hsnSac\hsnSacService.js" />
+    <Content Include="app\company\company.html" />
+    <Content Include="app\company\companyController.js" />
+    <Content Include="app\company\companyDirective.js" />
+    <Content Include="app\company\companyList.html" />
+    <Content Include="app\company\companyService.js" />
     <Content Include="app\supplierType\supplierType.html" />
     <Content Include="app\supplierType\supplierTypeController.js" />
     <Content Include="app\supplierType\supplierTypeDirective.js" />
