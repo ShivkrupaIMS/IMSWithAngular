@@ -92,8 +92,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Controllers\HomeControllerTest.cs" />
-    <Compile Include="Controllers\ValuesControllerTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App.config" />
@@ -102,10 +100,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\IMS.API\IMS.API.csproj">
-      <Project>{77dfd44d-e65d-437a-9569-cff8d5db39cd}</Project>
-      <Name>IMS.API</Name>
-    </ProjectReference>
     <ProjectReference Include="..\IMS.BL\IMS.BL.csproj">
       <Project>{949ad2c1-c99a-4222-bbbc-00477fe2d138}</Project>
       <Name>IMS.BL</Name>
@@ -118,6 +112,9 @@
       <Project>{a4c7c276-2d5f-4d25-872b-10fb6fde6a39}</Project>
       <Name>IMS.VM</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Controllers\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
