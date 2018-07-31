@@ -41,7 +41,7 @@
             <label for="address" class="col-sm-3 control-label">Address</label>
             <div class="col-sm-9">
                 <input type="text" name="address" id="address" class="form-control" ng-required="true" autocomplete="on" ng-model="editableCompany.address" />
-                <span class="help-block" ng-show="editableCompany.companyName.$error.required">Name is required</span>
+                <span class="help-block" ng-show="editableCompany.address.$error.required">address is required</span>
             </div>
         </div>
         <div class="form-group" ng-class="{'has-error': editableCompany.country.$invalid}">
@@ -56,6 +56,59 @@
             <div class="col-sm-9" *ngIf="stateList">
                 <input type="text" ng-model="stateValue" uib-typeahead="state as state.stateName for state in stateList | filter:$viewValue | limitTo:10" class="form-control">
                 <span class="help-block" ng-show="editableCompany.state.$error.required">State is required</span>
+            </div>
+        </div>
+        <div class="form-group" ng-class="{'has-error': editableCompany.pinCode.$invalid}">
+            <label for="email" class="col-sm-3 control-label">PinCode</label>
+            <div class="col-sm-9">
+                <input type="text" name="pinCode" id="pinCode" class="form-control" ng-required="true" autocomplete="on" ng-model="editableCompany.pinCode" />
+                <span class="help-block" ng-show="editableCompany.pinCode.$error.required">PinCode is required</span>
+            </div>
+        </div>
+        <div class="form-group" ng-class="{'has-error': editableCompany.panNo.$invalid}">
+            <label for="panNo" class="col-sm-3 control-label">PAN No</label>
+            <div class="col-sm-9">
+                <input type="text" name="panNo" id="panNo" class="form-control" ng-required="true" autocomplete="on" ng-model="editableCompany.panNo" />
+                <span class="help-block" ng-show="editableCompany.panNo.$error.required">PAN no is required</span>
+            </div>
+        </div>
+        <div class="form-group" ng-class="{'has-error': editableCompany.website.$invalid}">
+            <label for="website" class="col-sm-3 control-label">Website</label>
+            <div class="col-sm-9">
+                <input type="text" name="website" id="website" class="form-control" ng-required="true" autocomplete="on" ng-model="editableCompany.website" />
+                <span class="help-block" ng-show="editableCompany.website.$error.required">Website is required</span>
+            </div>
+        </div>
+        <div class="form-group" ng-class="{'has-error': editableCompany.contactPerson.$invalid}">
+            <label for="website" class="col-sm-3 control-label">Contact Person</label>
+            <div class="col-sm-9">
+                <input type="text" name="contactPerson" id="contactPerson" class="form-control" ng-required="true" autocomplete="on" ng-model="editableCompany.contactPerson" />
+                <span class="help-block" ng-show="editableCompany.contactPerson.$error.required">Contact Person is required</span>
+            </div>
+        </div>
+        <div class="form-group" ng-class="{'has-error': editableCompany.cinNo.$invalid}">
+            <label for="cinNo" class="col-sm-3 control-label">CIN No</label>
+            <div class="col-sm-9">
+                <input type="text" name="cinNo" id="cinNo" class="form-control" ng-required="true" autocomplete="on" ng-model="editableCompany.cinNo" />
+                <span class="help-block" ng-show="editableCompany.cinNo.$error.required">CIN No is required</span>
+            </div>
+        </div>
+        <div class="form-group" ng-class="{'has-error': editableCompany.branch.$invalid}">
+            <label for="branch" class="col-sm-3 control-label">Branch</label>
+            <div class="col-sm-9">
+                <input type="text" name="branch" id="branch" class="form-control" ng-required="true" autocomplete="on" ng-model="editableCompany.branch" />
+                <span class="help-block" ng-show="editableCompany.branch.$error.required">Branch is required</span>
+            </div>
+        </div>
+        <div class="form-group" ng-class="{'has-error': editableCompany.fyStartDate.$invalid}">
+            <label for="fyStartDate" class="col-sm-3 control-label">FY StartDate</label>
+            <div class="col-sm-9">
+                <p class="input-group">
+                    <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="fyStartDate" is-open="opened" min-date="minDate" max-date="'2015-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </p>
             </div>
         </div>
         <div class="form-group">

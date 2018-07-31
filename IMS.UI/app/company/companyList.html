@@ -10,6 +10,10 @@
                 <th width="10%">Id</th>
                 <th width="40%">Name</th>
                 <th width="20%">Company Type</th>
+                <th width="20%">GSTN</th>
+                <th width="20%">Phone</th>
+                <th width="20%">Email</th>
+                <th width="20%">Fax</th>
                 <th width="10%">Is Active</th>
                 <th width="10%" colspan="2" style="text-align:center">Actions</th>
             </tr>
@@ -19,11 +23,13 @@
                 <td>{{x.companyId}}</td>
                 <td>{{x.companyName}}</td>
                 <td>{{x.companyType.companyType}}</td>
+                <td>{{x.gstNo}}</td>
+                <td>{{x.phone}}</td>
+                <td>{{x.email}}</td>
+                <td>{{x.fax}}</td>
                 <td>{{x.isActive}}</td>
                 <td><a class="btn btn-sm btn-primary a-btn-slide-text" ng-click="updateCompany(x.companyId)"><i class="fa fa-edit icon-style"></i><span class="icon-style"><strong>Edit</strong></span></a></td>
                 <td><a class="btn btn-sm btn-primary a-btn-slide-text" ng-click="deleteCompany(x)"><i class="fa fa-remove icon-style"></i><span class="icon-style"><strong>Delete</strong></span></a></td>
-                <!--<td><input type="button" class="btn btn-sm btn-primary" value="Edit" ng-click="updateCompany(x.companyId)"><i class="fa fa-remove"></i><span><strong>Edit</strong></span></input></td>
-        <td><input type="button" class="btn btn-sm btn-primary" value="Delete" ng-click="deleteCompany(x)" /></td>-->
             </tr>
         </tbody>
     </table>
