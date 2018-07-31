@@ -12,38 +12,31 @@ namespace IMS.DB
     using System;
     using System.Collections.Generic;
     
-    public partial class tblItem
+    public partial class tblInvoice
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public tblItem()
+        public tblInvoice()
         {
-            this.tblItemLicenseDetails = new HashSet<tblItemLicenseDetail>();
-            this.tblItemDetails = new HashSet<tblItemDetail>();
             this.tblInvoiceDetails = new HashSet<tblInvoiceDetail>();
         }
     
-        public int ItemId { get; set; }
-        public int HsnSacId { get; set; }
-        public string ItemName { get; set; }
-        public string Description { get; set; }
-        public string Comment { get; set; }
+        public int InvoiceId { get; set; }
+        public int InvoiceTypeId { get; set; }
+        public int CompanyId { get; set; }
+        public string CompanyGSTIN { get; set; }
+        public System.DateTime InvoiceDate { get; set; }
+        public string InvoiceNumber { get; set; }
+        public double TotalInvoiceAmount { get; set; }
+        public int SupplyStateId { get; set; }
+        public bool IsReverseCharge { get; set; }
         public bool IsActive { get; set; }
-        public int ItemTypeId { get; set; }
         public string CreatedBy { get; set; }
         public Nullable<System.DateTime> CreatedDate { get; set; }
         public string ModifiedBy { get; set; }
         public Nullable<System.DateTime> ModifiedDate { get; set; }
-        public string Ingredient { get; set; }
-        public double IGST { get; set; }
-        public double CGST { get; set; }
-        public double SGST { get; set; }
     
-        public virtual tblHSNSAC tblHSNSAC { get; set; }
-        public virtual tblItemType tblItemType { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblItemLicenseDetail> tblItemLicenseDetails { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblItemDetail> tblItemDetails { get; set; }
+        public virtual tblInvoiceType tblInvoiceType { get; set; }
+        public virtual tblState tblState { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblInvoiceDetail> tblInvoiceDetails { get; set; }
     }

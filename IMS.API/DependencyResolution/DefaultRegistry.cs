@@ -72,6 +72,8 @@ namespace IMS.API.DependencyResolution {
             For<ISupplierTypeDL>().Use<SupplierTypeDL>();
             For<ITaxSlabBL>().Use<TaxSlabBL>();
             For<ITaxSlabDL>().Use<TaxSlabDL>();
+            For<IInvoiceBL>().Use<InvoiceBL>();
+            For<IInvoiceDL>().Use<InvoiceDL>();
         }
 
         #endregion

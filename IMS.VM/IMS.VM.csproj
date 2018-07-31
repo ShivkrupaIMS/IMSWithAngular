@@ -49,6 +49,8 @@
     <Compile Include="CustomerTypeVM.cs" />
     <Compile Include="GSTRegistrationTypeVM.cs" />
     <Compile Include="HSNSACVM.cs" />
+    <Compile Include="InvoiceVM.cs" />
+    <Compile Include="InvoiceDetailsVM.cs" />
     <Compile Include="InvoiceStatusVM.cs" />
     <Compile Include="InvoiceTermVM.cs" />
     <Compile Include="InvoiceTypeVM.cs" />

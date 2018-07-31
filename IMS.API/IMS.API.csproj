@@ -229,6 +229,7 @@
     <Compile Include="Controllers\InvoiceStatusController.cs" />
     <Compile Include="Controllers\InvoiceTermController.cs" />
     <Compile Include="Controllers\InvoiceTypeController.cs" />
+    <Compile Include="Controllers\InvoiceController.cs" />
     <Compile Include="Controllers\ItemController.cs" />
     <Compile Include="Controllers\ItemTypeController.cs" />
     <Compile Include="Controllers\ItemUnitController.cs" />

@@ -137,6 +137,55 @@
           <Property Name="ModifiedBy" Type="varchar" MaxLength="255" />
           <Property Name="ModifiedDate" Type="datetime" />
         </EntityType>
+        <EntityType Name="tblInvoice">
+          <Key>
+            <PropertyRef Name="InvoiceId" />
+          </Key>
+          <Property Name="InvoiceId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="InvoiceTypeId" Type="int" Nullable="false" />
+          <Property Name="CompanyId" Type="int" Nullable="false" />
+          <Property Name="CompanyGSTIN" Type="varchar" MaxLength="50" />
+          <Property Name="InvoiceDate" Type="datetime" Nullable="false" />
+          <Property Name="InvoiceNumber" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="TotalInvoiceAmount" Type="float" Nullable="false" />
+          <Property Name="SupplyStateId" Type="int" Nullable="false" />
+          <Property Name="IsReverseCharge" Type="bit" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="255" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="255" />
+          <Property Name="ModifiedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tblInvoiceDetails">
+          <Key>
+            <PropertyRef Name="InvoiceDetailsId" />
+          </Key>
+          <Property Name="InvoiceDetailsId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="InvoiceId" Type="int" Nullable="false" />
+          <Property Name="ItemId" Type="int" Nullable="false" />
+          <Property Name="ItemDetailsId" Type="int" Nullable="false" />
+          <Property Name="PackageSize" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Quantity" Type="int" Nullable="false" />
+          <Property Name="DiscountPercent" Type="float" Nullable="false" />
+          <Property Name="ItemValue" Type="float" Nullable="false" />
+          <Property Name="DiscountValue" Type="float" Nullable="false" />
+          <Property Name="TaxableValue" Type="float" Nullable="false" />
+          <Property Name="IGSTRate" Type="float" Nullable="false" />
+          <Property Name="IGSTAmount" Type="float" Nullable="false" />
+          <Property Name="CGSTRate" Type="float" Nullable="false" />
+          <Property Name="CGSTAmount" Type="float" Nullable="false" />
+          <Property Name="SGSTRate" Type="float" Nullable="false" />
+          <Property Name="SGSTAmount" Type="float" Nullable="false" />
+          <Property Name="CessRate" Type="float" Nullable="false" />
+          <Property Name="CessAmount" Type="float" Nullable="false" />
+          <Property Name="TotalTaxPlusCess" Type="float" Nullable="false" />
+          <Property Name="TotalTransactionAmount" Type="float" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="255" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="255" />
+          <Property Name="ModifiedDate" Type="datetime" />
+        </EntityType>
         <EntityType Name="tblInvoiceStatus">
           <Key>
             <PropertyRef Name="InvoiceStatusId" />
@@ -390,6 +439,66 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_tblInvoice_tblInvoiceType">
+          <End Role="tblInvoiceType" Type="Self.tblInvoiceType" Multiplicity="1" />
+          <End Role="tblInvoice" Type="Self.tblInvoice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblInvoiceType">
+              <PropertyRef Name="InvoiceTypeId" />
+            </Principal>
+            <Dependent Role="tblInvoice">
+              <PropertyRef Name="InvoiceTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblInvoice_tblState">
+          <End Role="tblState" Type="Self.tblState" Multiplicity="1" />
+          <End Role="tblInvoice" Type="Self.tblInvoice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblState">
+              <PropertyRef Name="StateId" />
+            </Principal>
+            <Dependent Role="tblInvoice">
+              <PropertyRef Name="SupplyStateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblInvoiceDetails_tblInvoice">
+          <End Role="tblInvoice" Type="Self.tblInvoice" Multiplicity="1" />
+          <End Role="tblInvoiceDetails" Type="Self.tblInvoiceDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblInvoice">
+              <PropertyRef Name="InvoiceId" />
+            </Principal>
+            <Dependent Role="tblInvoiceDetails">
+              <PropertyRef Name="InvoiceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblInvoiceDetails_tblItem">
+          <End Role="tblItem" Type="Self.tblItem" Multiplicity="1" />
+          <End Role="tblInvoiceDetails" Type="Self.tblInvoiceDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblItem">
+              <PropertyRef Name="ItemId" />
+            </Principal>
+            <Dependent Role="tblInvoiceDetails">
+              <PropertyRef Name="ItemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblInvoiceDetails_tblItemDetails">
+          <End Role="tblItemDetails" Type="Self.tblItemDetails" Multiplicity="1" />
+          <End Role="tblInvoiceDetails" Type="Self.tblInvoiceDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblItemDetails">
+              <PropertyRef Name="ItemDetailsId" />
+            </Principal>
+            <Dependent Role="tblInvoiceDetails">
+              <PropertyRef Name="ItemDetailsId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_tblItem_tblHSNSAC">
           <End Role="tblHSNSAC" Type="Self.tblHSNSAC" Multiplicity="1" />
           <End Role="tblItem" Type="Self.tblItem" Multiplicity="*" />
@@ -496,6 +605,8 @@
           <EntitySet Name="tblCustomerType" EntityType="Self.tblCustomerType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblGSTRegistrationType" EntityType="Self.tblGSTRegistrationType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblHSNSAC" EntityType="Self.tblHSNSAC" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblInvoice" EntityType="Self.tblInvoice" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblInvoiceDetails" EntityType="Self.tblInvoiceDetails" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblInvoiceStatus" EntityType="Self.tblInvoiceStatus" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblInvoiceTerm" EntityType="Self.tblInvoiceTerm" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblInvoiceType" EntityType="Self.tblInvoiceType" Schema="dbo" store:Type="Tables" />
@@ -532,6 +643,26 @@
           <AssociationSet Name="FK_tblCompanyLicenseDetails_tblLicenseType" Association="Self.FK_tblCompanyLicenseDetails_tblLicenseType">
             <End Role="tblLicenseType" EntitySet="tblLicenseType" />
             <End Role="tblCompanyLicenseDetails" EntitySet="tblCompanyLicenseDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblInvoice_tblInvoiceType" Association="Self.FK_tblInvoice_tblInvoiceType">
+            <End Role="tblInvoiceType" EntitySet="tblInvoiceType" />
+            <End Role="tblInvoice" EntitySet="tblInvoice" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblInvoice_tblState" Association="Self.FK_tblInvoice_tblState">
+            <End Role="tblState" EntitySet="tblState" />
+            <End Role="tblInvoice" EntitySet="tblInvoice" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblInvoiceDetails_tblInvoice" Association="Self.FK_tblInvoiceDetails_tblInvoice">
+            <End Role="tblInvoice" EntitySet="tblInvoice" />
+            <End Role="tblInvoiceDetails" EntitySet="tblInvoiceDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblInvoiceDetails_tblItem" Association="Self.FK_tblInvoiceDetails_tblItem">
+            <End Role="tblItem" EntitySet="tblItem" />
+            <End Role="tblInvoiceDetails" EntitySet="tblInvoiceDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblInvoiceDetails_tblItemDetails" Association="Self.FK_tblInvoiceDetails_tblItemDetails">
+            <End Role="tblItemDetails" EntitySet="tblItemDetails" />
+            <End Role="tblInvoiceDetails" EntitySet="tblInvoiceDetails" />
           </AssociationSet>
           <AssociationSet Name="FK_tblItem_tblHSNSAC" Association="Self.FK_tblItem_tblHSNSAC">
             <End Role="tblHSNSAC" EntitySet="tblHSNSAC" />
@@ -664,6 +795,28 @@
             <End Role="tblManufacturer" EntitySet="tblManufacturers" />
             <End Role="tblItemDetail" EntitySet="tblItemDetails" />
           </AssociationSet>
+          <EntitySet Name="tblInvoices" EntityType="IMSModel.tblInvoice" />
+          <EntitySet Name="tblInvoiceDetails" EntityType="IMSModel.tblInvoiceDetail" />
+          <AssociationSet Name="FK_tblInvoice_tblInvoiceType" Association="IMSModel.FK_tblInvoice_tblInvoiceType">
+            <End Role="tblInvoiceType" EntitySet="tblInvoiceTypes" />
+            <End Role="tblInvoice" EntitySet="tblInvoices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblInvoice_tblState" Association="IMSModel.FK_tblInvoice_tblState">
+            <End Role="tblState" EntitySet="tblStates" />
+            <End Role="tblInvoice" EntitySet="tblInvoices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblInvoiceDetails_tblInvoice" Association="IMSModel.FK_tblInvoiceDetails_tblInvoice">
+            <End Role="tblInvoice" EntitySet="tblInvoices" />
+            <End Role="tblInvoiceDetail" EntitySet="tblInvoiceDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblInvoiceDetails_tblItem" Association="IMSModel.FK_tblInvoiceDetails_tblItem">
+            <End Role="tblItem" EntitySet="tblItems" />
+            <End Role="tblInvoiceDetail" EntitySet="tblInvoiceDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblInvoiceDetails_tblItemDetails" Association="IMSModel.FK_tblInvoiceDetails_tblItemDetails">
+            <End Role="tblItemDetail" EntitySet="tblItemDetails" />
+            <End Role="tblInvoiceDetail" EntitySet="tblInvoiceDetails" />
+          </AssociationSet>
           </EntityContainer>
         <EntityType Name="tblState">
           <Key>
@@ -680,6 +833,7 @@
           <NavigationProperty Name="tblCountry" Relationship="IMSModel.FK_tblState_tblCountry" FromRole="tblState" ToRole="tblCountry" />
           <NavigationProperty Name="tblCities" Relationship="IMSModel.FK_tblCity_tblState" FromRole="tblState" ToRole="tblCity" />
           <NavigationProperty Name="tblCompanies" Relationship="IMSModel.FK_tblCompany_tblState" FromRole="tblState" ToRole="tblCompany" />
+          <NavigationProperty Name="tblInvoices" Relationship="IMSModel.FK_tblInvoice_tblState" FromRole="tblState" ToRole="tblInvoice" />
         </EntityType>
         <Association Name="FK_tblState_tblCountry">
           <End Type="IMSModel.tblCountry" Role="tblCountry" Multiplicity="0..1" />
@@ -898,6 +1052,7 @@
           <Property Name="CreatedDate" Type="DateTime" Precision="3" />
           <Property Name="ModifiedBy" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tblInvoices" Relationship="IMSModel.FK_tblInvoice_tblInvoiceType" FromRole="tblInvoiceType" ToRole="tblInvoice" />
         </EntityType>
         <EntityType Name="tblCompanyLicenseDetail">
           <Key>
@@ -1060,6 +1215,7 @@
           <NavigationProperty Name="tblItemType" Relationship="IMSModel.FK_tblItem_tblItemType" FromRole="tblItem" ToRole="tblItemType" />
           <NavigationProperty Name="tblItemLicenseDetails" Relationship="IMSModel.FK_tblItemLicenseDetails_tblItem" FromRole="tblItem" ToRole="tblItemLicenseDetail" />
           <NavigationProperty Name="tblItemDetails" Relationship="IMSModel.FK_tblItemDetails_tblItem" FromRole="tblItem" ToRole="tblItemDetail" />
+          <NavigationProperty Name="tblInvoiceDetails" Relationship="IMSModel.FK_tblInvoiceDetails_tblItem" FromRole="tblItem" ToRole="tblInvoiceDetail" />
         </EntityType>
         <Association Name="FK_tblItem_tblHSNSAC">
           <End Type="IMSModel.tblHSNSAC" Role="tblHSNSAC" Multiplicity="1" />
@@ -1122,6 +1278,7 @@
           <NavigationProperty Name="tblItem" Relationship="IMSModel.FK_tblItemDetails_tblItem" FromRole="tblItemDetail" ToRole="tblItem" />
           <NavigationProperty Name="tblItemUnit" Relationship="IMSModel.FK_tblItemDetails_tblItemUnit" FromRole="tblItemDetail" ToRole="tblItemUnit" />
           <NavigationProperty Name="tblManufacturer" Relationship="IMSModel.FK_tblItemDetails_tblManufacturer" FromRole="tblItemDetail" ToRole="tblManufacturer" />
+          <NavigationProperty Name="tblInvoiceDetails" Relationship="IMSModel.FK_tblInvoiceDetails_tblItemDetails" FromRole="tblItemDetail" ToRole="tblInvoiceDetail" />
         </EntityType>
         <Association Name="FK_tblItemDetails_tblItem">
           <End Type="IMSModel.tblItem" Role="tblItem" Multiplicity="1" />
@@ -1156,6 +1313,121 @@
             </Principal>
             <Dependent Role="tblItemDetail">
               <PropertyRef Name="ManufacturerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="tblInvoice">
+          <Key>
+            <PropertyRef Name="InvoiceId" />
+          </Key>
+          <Property Name="InvoiceId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="InvoiceTypeId" Type="Int32" Nullable="false" />
+          <Property Name="CompanyId" Type="Int32" Nullable="false" />
+          <Property Name="CompanyGSTIN" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="InvoiceDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="InvoiceNumber" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="TotalInvoiceAmount" Type="Double" Nullable="false" />
+          <Property Name="SupplyStateId" Type="Int32" Nullable="false" />
+          <Property Name="IsReverseCharge" Type="Boolean" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tblInvoiceType" Relationship="IMSModel.FK_tblInvoice_tblInvoiceType" FromRole="tblInvoice" ToRole="tblInvoiceType" />
+          <NavigationProperty Name="tblState" Relationship="IMSModel.FK_tblInvoice_tblState" FromRole="tblInvoice" ToRole="tblState" />
+          <NavigationProperty Name="tblInvoiceDetails" Relationship="IMSModel.FK_tblInvoiceDetails_tblInvoice" FromRole="tblInvoice" ToRole="tblInvoiceDetail" />
+        </EntityType>
+        <EntityType Name="tblInvoiceDetail">
+          <Key>
+            <PropertyRef Name="InvoiceDetailsId" />
+          </Key>
+          <Property Name="InvoiceDetailsId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="InvoiceId" Type="Int32" Nullable="false" />
+          <Property Name="ItemId" Type="Int32" Nullable="false" />
+          <Property Name="ItemDetailsId" Type="Int32" Nullable="false" />
+          <Property Name="PackageSize" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Quantity" Type="Int32" Nullable="false" />
+          <Property Name="DiscountPercent" Type="Double" Nullable="false" />
+          <Property Name="ItemValue" Type="Double" Nullable="false" />
+          <Property Name="DiscountValue" Type="Double" Nullable="false" />
+          <Property Name="TaxableValue" Type="Double" Nullable="false" />
+          <Property Name="IGSTRate" Type="Double" Nullable="false" />
+          <Property Name="IGSTAmount" Type="Double" Nullable="false" />
+          <Property Name="CGSTRate" Type="Double" Nullable="false" />
+          <Property Name="CGSTAmount" Type="Double" Nullable="false" />
+          <Property Name="SGSTRate" Type="Double" Nullable="false" />
+          <Property Name="SGSTAmount" Type="Double" Nullable="false" />
+          <Property Name="CessRate" Type="Double" Nullable="false" />
+          <Property Name="CessAmount" Type="Double" Nullable="false" />
+          <Property Name="TotalTaxPlusCess" Type="Double" Nullable="false" />
+          <Property Name="TotalTransactionAmount" Type="Double" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tblInvoice" Relationship="IMSModel.FK_tblInvoiceDetails_tblInvoice" FromRole="tblInvoiceDetail" ToRole="tblInvoice" />
+          <NavigationProperty Name="tblItem" Relationship="IMSModel.FK_tblInvoiceDetails_tblItem" FromRole="tblInvoiceDetail" ToRole="tblItem" />
+          <NavigationProperty Name="tblItemDetail" Relationship="IMSModel.FK_tblInvoiceDetails_tblItemDetails" FromRole="tblInvoiceDetail" ToRole="tblItemDetail" />
+        </EntityType>
+        <Association Name="FK_tblInvoice_tblInvoiceType">
+          <End Type="IMSModel.tblInvoiceType" Role="tblInvoiceType" Multiplicity="1" />
+          <End Type="IMSModel.tblInvoice" Role="tblInvoice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblInvoiceType">
+              <PropertyRef Name="InvoiceTypeId" />
+            </Principal>
+            <Dependent Role="tblInvoice">
+              <PropertyRef Name="InvoiceTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblInvoice_tblState">
+          <End Type="IMSModel.tblState" Role="tblState" Multiplicity="1" />
+          <End Type="IMSModel.tblInvoice" Role="tblInvoice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblState">
+              <PropertyRef Name="StateId" />
+            </Principal>
+            <Dependent Role="tblInvoice">
+              <PropertyRef Name="SupplyStateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblInvoiceDetails_tblInvoice">
+          <End Type="IMSModel.tblInvoice" Role="tblInvoice" Multiplicity="1" />
+          <End Type="IMSModel.tblInvoiceDetail" Role="tblInvoiceDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblInvoice">
+              <PropertyRef Name="InvoiceId" />
+            </Principal>
+            <Dependent Role="tblInvoiceDetail">
+              <PropertyRef Name="InvoiceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblInvoiceDetails_tblItem">
+          <End Type="IMSModel.tblItem" Role="tblItem" Multiplicity="1" />
+          <End Type="IMSModel.tblInvoiceDetail" Role="tblInvoiceDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblItem">
+              <PropertyRef Name="ItemId" />
+            </Principal>
+            <Dependent Role="tblInvoiceDetail">
+              <PropertyRef Name="ItemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblInvoiceDetails_tblItemDetails">
+          <End Type="IMSModel.tblItemDetail" Role="tblItemDetail" Multiplicity="1" />
+          <End Type="IMSModel.tblInvoiceDetail" Role="tblInvoiceDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblItemDetail">
+              <PropertyRef Name="ItemDetailsId" />
+            </Principal>
+            <Dependent Role="tblInvoiceDetail">
+              <PropertyRef Name="ItemDetailsId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1497,6 +1769,57 @@
                 <ScalarProperty Name="Sku" ColumnName="Sku" />
                 <ScalarProperty Name="ItemId" ColumnName="ItemId" />
                 <ScalarProperty Name="ItemDetailsId" ColumnName="ItemDetailsId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblInvoices">
+            <EntityTypeMapping TypeName="IMSModel.tblInvoice">
+              <MappingFragment StoreEntitySet="tblInvoice">
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsReverseCharge" ColumnName="IsReverseCharge" />
+                <ScalarProperty Name="SupplyStateId" ColumnName="SupplyStateId" />
+                <ScalarProperty Name="TotalInvoiceAmount" ColumnName="TotalInvoiceAmount" />
+                <ScalarProperty Name="InvoiceNumber" ColumnName="InvoiceNumber" />
+                <ScalarProperty Name="InvoiceDate" ColumnName="InvoiceDate" />
+                <ScalarProperty Name="CompanyGSTIN" ColumnName="CompanyGSTIN" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="InvoiceTypeId" ColumnName="InvoiceTypeId" />
+                <ScalarProperty Name="InvoiceId" ColumnName="InvoiceId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblInvoiceDetails">
+            <EntityTypeMapping TypeName="IMSModel.tblInvoiceDetail">
+              <MappingFragment StoreEntitySet="tblInvoiceDetails">
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="TotalTransactionAmount" ColumnName="TotalTransactionAmount" />
+                <ScalarProperty Name="TotalTaxPlusCess" ColumnName="TotalTaxPlusCess" />
+                <ScalarProperty Name="CessAmount" ColumnName="CessAmount" />
+                <ScalarProperty Name="CessRate" ColumnName="CessRate" />
+                <ScalarProperty Name="SGSTAmount" ColumnName="SGSTAmount" />
+                <ScalarProperty Name="SGSTRate" ColumnName="SGSTRate" />
+                <ScalarProperty Name="CGSTAmount" ColumnName="CGSTAmount" />
+                <ScalarProperty Name="CGSTRate" ColumnName="CGSTRate" />
+                <ScalarProperty Name="IGSTAmount" ColumnName="IGSTAmount" />
+                <ScalarProperty Name="IGSTRate" ColumnName="IGSTRate" />
+                <ScalarProperty Name="TaxableValue" ColumnName="TaxableValue" />
+                <ScalarProperty Name="DiscountValue" ColumnName="DiscountValue" />
+                <ScalarProperty Name="ItemValue" ColumnName="ItemValue" />
+                <ScalarProperty Name="DiscountPercent" ColumnName="DiscountPercent" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="PackageSize" ColumnName="PackageSize" />
+                <ScalarProperty Name="ItemDetailsId" ColumnName="ItemDetailsId" />
+                <ScalarProperty Name="ItemId" ColumnName="ItemId" />
+                <ScalarProperty Name="InvoiceId" ColumnName="InvoiceId" />
+                <ScalarProperty Name="InvoiceDetailsId" ColumnName="InvoiceDetailsId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

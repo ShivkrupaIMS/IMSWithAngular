@@ -61,6 +61,7 @@
     <Compile Include="InvoiceStatusDL.cs" />
     <Compile Include="InvoiceTermDL.cs" />
     <Compile Include="InvoiceTypeDL.cs" />
+    <Compile Include="InvoiceDL.cs" />
     <Compile Include="ItemDL.cs" />
     <Compile Include="ItemTypeDL.cs" />
     <Compile Include="ItemUnitDL.cs" />

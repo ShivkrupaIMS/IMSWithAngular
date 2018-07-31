@@ -41,6 +41,13 @@
         <AssociationConnector Association="IMSModel.FK_tblItemDetails_tblItem" />
         <AssociationConnector Association="IMSModel.FK_tblItemDetails_tblItemUnit" />
         <AssociationConnector Association="IMSModel.FK_tblItemDetails_tblManufacturer" />
+        <EntityTypeShape EntityType="IMSModel.tblInvoice" Width="1.5" PointX="16.625" PointY="8.25" />
+        <EntityTypeShape EntityType="IMSModel.tblInvoiceDetail" Width="1.5" PointX="18.875" PointY="0.75" />
+        <AssociationConnector Association="IMSModel.FK_tblInvoice_tblInvoiceType" />
+        <AssociationConnector Association="IMSModel.FK_tblInvoice_tblState" />
+        <AssociationConnector Association="IMSModel.FK_tblInvoiceDetails_tblInvoice" />
+        <AssociationConnector Association="IMSModel.FK_tblInvoiceDetails_tblItem" />
+        <AssociationConnector Association="IMSModel.FK_tblInvoiceDetails_tblItemDetails" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

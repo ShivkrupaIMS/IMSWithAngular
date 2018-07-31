@@ -94,6 +94,12 @@
     <Compile Include="tblHSNSAC.cs">
       <DependentUpon>IMS.tt</DependentUpon>
     </Compile>
+    <Compile Include="tblInvoice.cs">
+      <DependentUpon>IMS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblInvoiceDetail.cs">
+      <DependentUpon>IMS.tt</DependentUpon>
+    </Compile>
     <Compile Include="tblInvoiceStatuses.cs">
       <DependentUpon>IMS.tt</DependentUpon>
     </Compile>

@@ -47,5 +47,7 @@ namespace IMS.DB
         public virtual DbSet<tblItemLicenseDetail> tblItemLicenseDetails { get; set; }
         public virtual DbSet<tblItem> tblItems { get; set; }
         public virtual DbSet<tblItemDetail> tblItemDetails { get; set; }
+        public virtual DbSet<tblInvoice> tblInvoices { get; set; }
+        public virtual DbSet<tblInvoiceDetail> tblInvoiceDetails { get; set; }
     }
 }

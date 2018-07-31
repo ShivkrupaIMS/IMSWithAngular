@@ -49,6 +49,7 @@
     <Compile Include="BL\IHSNSACBL.cs" />
     <Compile Include="BL\IInvoiceTermBL.cs" />
     <Compile Include="BL\IInvoiceStatusBL.cs" />
+    <Compile Include="BL\IInvoiceBL.cs" />
     <Compile Include="BL\IItemBL.cs" />
     <Compile Include="BL\ITaxSlabBL.cs" />
     <Compile Include="BL\IInvoiceTypeBL.cs" />
@@ -68,6 +69,7 @@
     <Compile Include="DL\IInvoiceStatusDL.cs" />
     <Compile Include="DL\IInvoiceTypeDL.cs" />
     <Compile Include="DL\IInvoiceTermDL.cs" />
+    <Compile Include="DL\IInvoiceDL.cs" />
     <Compile Include="DL\IItemDL.cs" />
     <Compile Include="DL\ISupplierTypeDL.cs" />
     <Compile Include="DL\ICustomerTypeDL.cs" />

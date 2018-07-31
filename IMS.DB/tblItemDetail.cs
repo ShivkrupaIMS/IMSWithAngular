@@ -14,6 +14,12 @@ namespace IMS.DB
     
     public partial class tblItemDetail
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public tblItemDetail()
+        {
+            this.tblInvoiceDetails = new HashSet<tblInvoiceDetail>();
+        }
+    
         public int ItemDetailsId { get; set; }
         public int ItemId { get; set; }
         public string Sku { get; set; }
@@ -36,5 +42,7 @@ namespace IMS.DB
         public virtual tblItem tblItem { get; set; }
         public virtual tblItemUnit tblItemUnit { get; set; }
         public virtual tblManufacturer tblManufacturer { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tblInvoiceDetail> tblInvoiceDetails { get; set; }
     }
 }

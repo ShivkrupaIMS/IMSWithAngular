@@ -51,6 +51,7 @@
     <Compile Include="InvoiceStatusBL.cs" />
     <Compile Include="InvoiceTermBL.cs" />
     <Compile Include="InvoiceTypeBL.cs" />
+    <Compile Include="InvoiceBL.cs" />
     <Compile Include="ItemBL.cs" />
     <Compile Include="ItemTypeBL.cs" />
     <Compile Include="ItemUnitBL.cs" />
