@@ -1,5 +1,0 @@
-F:\E Drive\BhaminiWork\Assets\IMS\IMSWithAngular\IMS.VM\bin\Release\IMS.VM.dll
-F:\E Drive\BhaminiWork\Assets\IMS\IMSWithAngular\IMS.VM\bin\Release\IMS.VM.pdb
-F:\E Drive\BhaminiWork\Assets\IMS\IMSWithAngular\IMS.VM\obj\Release\IMS.VM.csprojResolveAssemblyReference.cache
-F:\E Drive\BhaminiWork\Assets\IMS\IMSWithAngular\IMS.VM\obj\Release\IMS.VM.dll
-F:\E Drive\BhaminiWork\Assets\IMS\IMSWithAngular\IMS.VM\obj\Release\IMS.VM.pdb
